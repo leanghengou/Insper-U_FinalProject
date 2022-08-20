@@ -1,6 +1,11 @@
+const { v4: uuidv4 } = require("uuid");
+
 const articles = [
   {
+    id: uuidv4(),
     title: "Does talent exist or just hardwork?",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956989/InsperU/Hardwork_2-01_xjvkm1.jpg",
     postDate: {
       month: "January",
       day: "19",
@@ -11,8 +16,8 @@ const articles = [
     content: [
       "We, humans, tend to have unique talents, and that makes us special, that is our asset. Talent is a common word that everyone knows and respects. Most people believe that talent is inborn and the special ability of a person to do something, is the gift that everyone is born with. Do you think what they believe is true? Is talent a gift that everyone gets without doing anything? If it’s true, what were all those talented footballers, basketballers, painters, and musicians doing before their talents were discovered? Were they good at nothing before they found their talents? According to our research and experience, we’ve found that talent doesn’t exist by not doing anything, also three main factors create talents within us, these crucial factors are hard work, environment, and passion.",
       "Hard work refers to the practice, it is the construction of talent. Talent wouldn’t exist in us if we didn’t do anything to achieve it. Talent isn’t a gift, it’s the reward that we receive from practicing. When we practice a lot, our skill and technique will be developed and improve, with better skill and technique, we’ll surely be able to perform better, more skillful, and professional. We’ll additionally gain a lot more experience by practicing, having a lot of experience will expand our knowledge, such as making us be able to think smarter, faster, and more flexible in various situations. Moreover, it boosts our confidence in the field of studies or occupations, it helps us per-forming better when we have strong confidence when we believe in ourselves. Lionel Messi, one of the most famous footballers in the world, five times Ballon d’Or winner, and the player who helped Bar-celona won four Champion Leagues in just 11 years (2004-2015). Messi is the player that defined as talented, gifted because he has the best dribbling skill. When we explore his past, we’ll see that Messi was a kid in Argentina who loved to play football, he started playing when he was around 5 years old, and always loved to show his dribbling skill in the field. In 2000, at the age of 13, Messi moved to Barcelona, one of the best clubs in the world, he started to improve his skill there with other talented kids in the club. In 2008-2009, Messi won his first Ballon d’Or by helping Barcelona to win 6 trophies in a year, including Champion League. After that unforgettable year, most people started to acknowledge Messi’s skills. After his victory, Messi publicly said ‘’I started early, and I stay late, day after day after day, year after year. It took me 17 years and 114 days to become an over-night success.’’ Messi proves that without his hard work, his talent and success wouldn’t exist. We tend to look at what he has rather than how he achieved it. We only see him when he’s on the top of the mountain, but never noticed him when he was climbing.",
-      " ‘’If people knew how hard I had to work to gain my mastery, it would not seem so wonderful at all.’’ – Michelangelo",
-      "Another factor is the environment; it also plays an important role in improving talent. For instance, if children were raised in a singer family, those children will most likely are going to be singers in the future because of what their parents influence them. Children are like papers, they can get stained, cut, and folded pretty easily so, if they see their parents doing something over and over again, they will try to mimic them. Another positive reason is environment can as well sharpen their way of thinking and the way they interact in the real world. Michelangelo was one of the greatest artists of his time, he was born in the Republic of Florence during the High Renaissance. Considered by many the greatest artist of his lifetime, and by some the greatest artist of all time, his artistic versatility was of such a high order that he is often considered a contender for the title of the archetypal Renaissance man, along with his rival, the fellow Florentine and client of the Medici, Leonardo da Vinci. Michelangelo was influenced by many artists throughout his career. Although he preferred to tell people that he was self-taught there were those along the way who helped to shape his skills. For example, at a young age Michelangelo worked under the great Florentine sculptor Domenico Ghirlandaio, who helped to form Michelangelo’s opinions about art, and taught him different drawing methods. Due to the environment that Michelangelo was raised that turned him into a great artist. Environment can also influence our passion. If our passion is painting, then our environment can also be one of the factors that helps us sharpening our passion. Salvador Dali, one of the most famous surrealist painter in the his-tory. Dali was born in Spain, the place where many spectacular and brilliant artworks located in, he also was born during the era that paintings were so popular, so precious for most people. This led him to observe and obsess with painting because of the influence, inspiration, and the impact from his envi-ronment since he was around 6 years old. When he was 12 years old, Dali started to learn how to paint at the drawing school called Colegio de Hermanos-Maristas and the Instituto. Due to the inspiration and influence by famous artists that were in his era, Sal-vador Dali was became so passionate with art, and soon became the famous artist in Spain. ",
+      "‘’If people knew how hard I had to work to gain my mastery, it would not seem so wonderful at all.’’ – Michelangelo",
+      "Another factor is the environment; it also plays an important role in improving talent. For instance, if children were raised in a singer family, those children will most likely are going to be singers in the future because of what their parents influence them. Children are like papers, they can get stained, cut, and folded pretty easily so, if they see their parents doing something over and over again, they will try to mimic them. Another positive reason is environment can as well sharpen their way of thinking and the way they interact in the real world. Michelangelo was one of the greatest artists of his time, he was born in the Republic of Florence during the High Renaissance. Considered by many the greatest artist of his lifetime, and by some the greatest artist of all time, his artistic versatility was of such a high order that he is often considered a contender for the title of the archetypal Renaissance man, along with his rival, the fellow Florentine and client of the Medici, Leonardo da Vinci. Michelangelo was influenced by many artists throughout his career. Although he preferred to tell people that he was self-taught there were those along the way who helped to shape his skills. For example, at a young age Michelangelo worked under the great Florentine sculptor Domenico Ghirlandaio, who helped to form Michelangelo’s opinions about art, and taught him different drawing methods. Due to the environment that Michelangelo was raised that turned him into a great artist. Environment can also influence our passion. If our passion is painting, then our environment can also be one of the factors that helps us sharpening our passion. Salvador Dali, one of the most famous surrealist painter in the his-tory. Dali was born in Spain, the place where many spectacular and brilliant artworks located in, he also was born during the era that paintings were so popular, so precious for most people. This led him to observe and obsess with painting because of the influence, inspiration, and the impact from his envi-ronment since he was around 6 years old. When he was 12 years old, Dali started to learn how to paint at the drawing school called Colegio de Hermanos-Maristas and the Instituto. Due to the inspiration and influence by famous artists that were in his era, Sal-vador Dali was became so passionate with art, and soon became the famous artist in Spain.",
 
       "Last factor is passion, it’s certainly true, that most of A, B students are the students who have love study-ing, who take things very serious on their lessons, who always pay attention while learning. While C, D, E students are the students who enjoy doing differ-ent stuffs, such as hanging out, playing video games. This is passion is all about, passion is the factor that motivates us to work hard and give everything we have to what we love. Hard work without passion is like a great hunter without good equipment, when a decent hunter goes hunting without equipment he needs, he might not be able to hunt animals effec-tively like other hunters who have equipment. Simi-lar to the guy who works really hard without passion, he won’t improve his skill effectively like the person who has, because he doesn’t have motivation, inten-tion in doing it. This is why some people spent the large amount of their life practicing but still not fruit-fully improve like others, because they don’t spend all their attention to what they learn. ‘’I have no special talent, but I am just passionately curious’’ –Albert Einstein When we love something, we tend to focus, pay all our attention and do it with strong intention, with love, we take thing seriously without noticing on it, and these actions will cause our skill to improve rapidly and effectively than others. This is why most talented people seems to fall in love with their talent, and this is the reason why they got their talent. If we ask talent painters about how they are so good at painting, they might say ‘’I have been practicing for a long time, and I love painting.’’, and if we ask Messi how he become so good at footballing, he must say ‘’Because I love playing it’’ The famous tennis player named Roger Federer once advised to young players about how to reach their dreams, mentioned ‘’First, you have to have a passion for the game’’ In short, passion is the factor that pushes us to work hard to attain what we aimed, and the factors that push-es us to give everything while we trying to achieve, it’s the inside power. Without passion, there will be no motivation, without motivation there will be no inside power. Yanni Chryssomallis, a famous Greek self-taught pianist, and composer said ‘’All you need is passion. If you have a passion for something, you’ll create the talent.’’",
       "In conclusion, talent is special aptitude that everyone possesses it. Not everyone is already born a scien-tist, doctor, footballer or singer, yet as human beings, we can develop our talents to fit in different catego-ries. In our ideas, we have come up with a cycle of talent: it starts with environment, up to the passion, till hard work and back to environment again. The reason is that we contemplate they are related to each other, if one of them was out of the picture, the other two wouldn’t correlate with each other. Never-theless, as we read the paragraphs above, there are enough evidence to prove that talent wouldn’t exist without doing anything, it’s not a gift from the god that sent to everyone. However, talent is the combi-nation of three factors, hard-work, environment, and passion.",
@@ -22,7 +27,10 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title: "Three smart goals to help you accomplish your ideal life",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956990/InsperU/Top_of_Mountain-01_aqip5w.jpg",
     postDate: {
       month: "May",
       day: "15",
@@ -39,7 +47,10 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title: "Globalization is important for any countries in the world",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/GLobalization-01_o6ydke.jpg",
     postDate: {
       month: "April",
       day: "25",
@@ -57,7 +68,10 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title: "The effect of social media to the young consumers",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956989/InsperU/Social_Media_and_Teen-01_sv26au.jpg",
     postDate: {
       month: "March",
       day: "10",
@@ -75,7 +89,10 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title: "The un-talk culture of salary",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956989/InsperU/Money-01_a5q2jh.jpg",
     postDate: {
       month: "March",
       day: "18",
@@ -91,8 +108,11 @@ const articles = [
   },
 
   {
+    id: uuidv4(),
     title:
       "Are cultural dimensions mentioned in the book practically accurate?",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956989/InsperU/Japan_Culture-01_fwavln.jpg",
     postDate: {
       month: "June",
       day: "05",
@@ -114,7 +134,10 @@ const articles = [
   },
 
   {
+    id: uuidv4(),
     title: "Human communications are more revealed in body language",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956989/InsperU/2-01_rh1npn.jpg",
     postDate: {
       month: "July",
       day: "27",
@@ -132,7 +155,10 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title: "The impact of industrial revolution",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956989/InsperU/Robot-01_lusvlp.jpg",
     postDate: {
       month: "June",
       day: "13",
@@ -150,7 +176,10 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title: "The feeding frenzy",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/Frozen_Feeding-01_dww1nr.jpg",
     postDate: {
       month: "October",
       day: "02",
@@ -168,7 +197,10 @@ const articles = [
   },
 
   {
+    id: uuidv4(),
     title: "The three habits of creative people",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/Creative_People_tshhfc.jpg",
     postDate: {
       month: "March",
       day: "01",
@@ -187,7 +219,10 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title: "Livingin city and staying in small village",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/City_vv_h9xhgl.jpg",
     postDate: {
       month: "february",
       day: "11",
@@ -211,7 +246,10 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title: "Cliques and their impacts on students",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/City_vv_h9xhgl.jpg",
     postDate: {
       month: "May",
       day: "15",
@@ -237,7 +275,10 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title: "Amusing ourselves to death response paper",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956989/InsperU/pexels-joy-anne-pura-1186116_girzci.jpg",
     postDate: {
       month: "June",
       day: "23",
@@ -256,6 +297,7 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title: "Fear of the unknown",
     postDate: {
       month: "March",
@@ -272,7 +314,10 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title: "Impact of air pollution",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/Air_Pollution-01_lx7twf.jpg",
     postDate: {
       month: "July",
       day: "12",
@@ -292,8 +337,11 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title:
       "The production of genetically modified crops has been increasing around the globe",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/GM_Crops_vv__xosyyt.jpg",
     postDate: {
       month: "January",
       day: "09",
@@ -313,7 +361,10 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
     title: "Flooding puts people’s lives in danger",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/Flooding_v__lzmwfj.jpg",
     postDate: {
       month: "July",
       day: "16",
@@ -335,8 +386,33 @@ const articles = [
     comments: [],
   },
   {
+    id: uuidv4(),
+    title: "Is the lack of education the leading cause of poverty in society?",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956989/InsperU/Poverty-01_jeoyqc.jpg",
+    postDate: {
+      month: "June",
+      day: "24",
+      year: "2012",
+    },
+    authors: ["Tangnay Ou"],
+    category: ["economic", "issue"],
+    content: [
+      "The link between poverty and education is inseparable because lack of education leads to poverty. Education is referred to the opportunity that every kid and everyone could access to school for primary education, at least they could finish high school. People who get a proper education are literate people while who do not know how to read and write count as illiterate people. If the number of illiterate people is high than the number of literate people, the economy is not good. For example, in Singapore, Switzerland, the United Kingdom, and other developed countries, the number of educated people is higher, and their economy is stable. Proponents say that education is the tool to get people out of poverty. While the opponents say that poverty is caused by lack of health care and disadvantage of the climate or geography of that country. However, the main root of poverty is education because without education people could not get a better job, and the economy of the country will be down.",
+      "First of all, education is a wonderful weapon to get better jobs. The people who get a primary education or training skill in school are more likely to get a proper career in the future. For example, some companies and firms, need people who have a degree or certificate to be their employees such as Google, Apple, Microsoft, law firm, and other companies. Going to school to get proper training is a good opportunity to prepare for your future academic career. This fact reflects my belief that people who get a higher education are likely to get higher-paid jobs than those who do not. In addition, the literate people are more confident to look for a better job and do not afraid to negotiate for what is better benefits themselves. They know their rights and the benefit that they should get from the companies or firms. Most of the big companies need people who had a degree and the employee get a better high paid job too.",
+      "Second, educated people bend the curve of the economy. For example, the majority of beggars or homeless people are illiterate or school dropout students. Due to this fact, they could not job in their life, so they end up like that. Once the number of beggars or homeless people is higher than normal, the number of illegal activities will increase so the government needs to spend more budget on those issues. As the result, the state’s economy is not growing well. Once educated people get a proper job, they could support their families and send their kids to school, the more money they spend the more tax that the government would get from them. Those educated people are civilized citizens which are less crime in the country too. Furthermore, instead of using the money for the prisoner or others, the government could use all of that tax (money) to build more hospitals, schools, infrastructures, and more investment. These facts show that the literature people could improve the country’s economy.",
+      "Some people claim that lack of education is not the cause of poverty because many reasons cause poverty such as lack of clean water and nutritious food. For example, African countries could not fully access clean water because of drought. They believed that this is the reason to cause poverty. That may be so, but education is the main tool to get people out of the property. For example, before 1975, Cambodia was one of the famous countries in ASEAN that had developed infrastructure, and economy, there were so many architects, businessmen, and professors to develop the country. However, during the Khmer Rouge Regime, (3 years 8 months 20 days), millions of educated people were killed by Khmer Rouge Leader. The remained people after the regime were not well-educated people. It takes Cambodia years to build up its education system and the economy. Even though now, Cambodia still improving its education system, allowing every child to go to school and support them to finish high school. As a result, Cambodian people could get a proper jobs and even do the fair international trade stage with other developed countries. It cannot conclude that the disadvantages of the climate and geography of a country are the reason for poverty, while many other reasons cause poverty.",
+      "In conclusion, there are many sectors to cause poverty, but education is a powerful tool to break the cycle of poverty in society. Education brings people out of illiteracy; education could make people understand more about their rights and obligation to be civilized citizens. Everyone deserved to have equal access to school and the government should take a proper method to increase the literature number in their country.",
+    ],
+    like: 13,
+    comments: [],
+  },
+  {
+    id: uuidv4(),
     title:
-      "Do you think online shopping will be the only way to shop in the future? ",
+      "Do you think online shopping will be the only way to shop in the future?",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/AMAZON_vvava_zq02q9.jpg",
     postDate: {
       month: "November",
       day: "15",
