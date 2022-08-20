@@ -13,9 +13,6 @@ const batchImport = async (dbName) => {
     const db = client.db(dbName);
     await client.connect();
     await db.collection("articles").insertOne(articles);
-    // await db.collection("flightseats").insertMany(flightData);
-    // await db.collection("reservations").insertMany(correctedReservations);
-    // await db.collection("reservations").deleteMany({ flight: "SA231" });
     client.close();
   } catch (err) {
     console.log(err);

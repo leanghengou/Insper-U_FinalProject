@@ -1,7 +1,7 @@
 const { v4: uuidv4 } = require("uuid");
 
 const articles = {
-  allArticle: [
+  allArticles: [
     {
       id: uuidv4(),
       title: "Does talent exist or just hardwork?",
