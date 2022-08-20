@@ -1,6 +1,7 @@
 const { v4: uuidv4 } = require("uuid");
 
 const articles = {
+  brandName: "perspective101",
   allArticles: [
     {
       id: uuidv4(),

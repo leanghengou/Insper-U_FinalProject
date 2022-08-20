@@ -3,6 +3,7 @@
 // import the needed node_modules.
 const express = require("express");
 const morgan = require("morgan");
+const { getAllArticles } = require("./handlerFunc.js/getAllArticles");
 
 express()
   // Below are methods that are included in express(). We chain them for convenience.
@@ -18,14 +19,7 @@ express()
   // Nothing to modify above this line
   // ---------------------------------
 
-  .get("/api/hello", (req, res) => {
-    console.log("hello");
-    res.status(200).json({
-      status: 200,
-      data: "Wassup my bodddyydddd!!",
-      message: "BANG BANssssssG!!",
-    });
-  })
+  .get("/api/hello", getAllArticles)
 
   // ---------------------------------
   // Nothing to modify below this line
