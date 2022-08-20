@@ -1,6 +1,7 @@
 const { articles } = require("./data");
 const { MongoClient } = require("mongodb");
 require("dotenv").config();
+const cors = require("cors");
 const { MONGO_URI } = process.env;
 const options = {
   useNewUrlParser: true,
