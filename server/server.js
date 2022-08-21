@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const { getAllArticles } = require("./handlerFunc.js/getAllArticles");
 const { getSpecArticle } = require("./handlerFunc.js/getSpecArticle");
 const { getAllUsers } = require("./handlerFunc.js/getAllUsers");
+const { getCategories } = require("./handlerFunc.js/getCategories");
 
 express()
   // Below are methods that are included in express(). We chain them for convenience.
@@ -20,7 +21,7 @@ express()
 
   // Nothing to modify above this line
   // ---------------------------------
-
+  .get("/api/categories", getCategories)
   .get("/api/all-articles", getAllArticles)
   .get("/api/get-spec-article/:articleId", getSpecArticle)
   .get("/api/get-users", getAllUsers)
