@@ -5,10 +5,10 @@ import { CurrentUserContext } from "./CurrentUserContext";
 
 function App() {
   const { contextMessage, allArticles } = useContext(CurrentUserContext);
-  console.log(">>>>> ", allArticles && allArticles.allArticles[0].image);
+  console.log(">>>>> ", allArticles && allArticles[0].image);
   return (
     <div className="App">
-      <img src={allArticles && allArticles.allArticles[0].image} />
+      <img src={allArticles && allArticles[0].image} />
     </div>
   );
 }

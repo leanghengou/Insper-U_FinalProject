@@ -11,18 +11,29 @@ const getSpecArticle = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
     const db = client.db("insperu");
     await client.connect();
-    const allArticles = await db
+    const articles = await db
       .collection("articles")
       .findOne({ brandName: "perspective101" });
-
+    const allArticles = articles.allArticles;
     const specArticle = allArticles.filter((article) => {
-      return article._id === idParam;
+      return article.id === idParam;
     });
-    console.log("SpecArticle >>>", specArticle);
-
-    res.status(200).json({ status: 200, data: "heere", message: "Success!!" });
+    if (specArticle.length <= 0) {
+      return res
+        .status(404)
+        .json({ status: 404, message: "Article not found." });
+    } else {
+      return res.status(200).json({
+        status: 200,
+        data: specArticle,
+        message: "The request is success.",
+      });
+    }
   } catch (err) {
-    console.log(err);
+    res.status(500).json({
+      status: 500,
+      message: "Something is wrong!",
+    });
   }
 };
 

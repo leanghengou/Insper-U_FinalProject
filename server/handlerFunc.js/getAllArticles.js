@@ -13,11 +13,16 @@ const getAllArticles = async (req, res) => {
     const allArticles = await db
       .collection("articles")
       .findOne({ brandName: "perspective101" });
-    res
-      .status(200)
-      .json({ status: 200, data: allArticles, message: "Success!!" });
+    res.status(200).json({
+      status: 200,
+      data: allArticles.allArticles,
+      message: "The request is success.",
+    });
   } catch (err) {
-    console.log(err);
+    res.status(500).json({
+      status: 500,
+      message: "Something is wrong!",
+    });
   }
 };
 
