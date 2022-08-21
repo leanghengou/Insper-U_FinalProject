@@ -10,6 +10,7 @@ const { getSpecUser } = require("./handlerFunc.js/getSpecUser");
 const { createUser } = require("./handlerFunc.js/createUser");
 const { getCategories } = require("./handlerFunc.js/getCategories");
 const { postComment } = require("./handlerFunc.js/postComment");
+const { likeArticle } = require("./handlerFunc.js/likeArticle");
 
 express()
   // Below are methods that are included in express(). We chain them for convenience.
@@ -31,6 +32,7 @@ express()
   .get("/api/get-spec-user/:userId", getSpecUser)
   .post("/api/create-user", createUser)
   .post("/api/post-comment", postComment)
+  .patch("/api/like-article", likeArticle)
 
   // ---------------------------------
   // Nothing to modify below this line
