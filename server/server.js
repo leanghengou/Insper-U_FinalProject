@@ -6,6 +6,8 @@ const morgan = require("morgan");
 const { getAllArticles } = require("./handlerFunc.js/getAllArticles");
 const { getSpecArticle } = require("./handlerFunc.js/getSpecArticle");
 const { getAllUsers } = require("./handlerFunc.js/getAllUsers");
+const { getSpecUser } = require("./handlerFunc.js/getSpecUser");
+const { createUser } = require("./handlerFunc.js/createUser");
 const { getCategories } = require("./handlerFunc.js/getCategories");
 const { postComment } = require("./handlerFunc.js/postComment");
 
@@ -26,7 +28,10 @@ express()
   .get("/api/all-articles", getAllArticles)
   .get("/api/get-spec-article/:articleId", getSpecArticle)
   .get("/api/get-users", getAllUsers)
+  .get("/api/get-spec-user/:userId", getSpecUser)
+  .post("/api/create-user", createUser)
   .post("/api/post-comment", postComment)
+
   // ---------------------------------
   // Nothing to modify below this line
   // this is our catch all endpoint.

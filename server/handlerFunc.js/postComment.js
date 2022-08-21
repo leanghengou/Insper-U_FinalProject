@@ -38,7 +38,7 @@ const postComment = async (req, res) => {
     res.status(200).json({
       status: 200,
       data: postComment,
-      message: "The request is success.",
+      message: "The comment is successfully posted.",
     });
   } catch (err) {
     console.log(err);

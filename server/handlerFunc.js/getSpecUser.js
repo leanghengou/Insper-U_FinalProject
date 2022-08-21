@@ -5,21 +5,19 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
-const getSpecArticle = async (req, res) => {
+const getSpecUser = async (req, res) => {
   try {
-    const idParam = req.params.articleId;
+    const idParam = req.params.userId;
     const client = new MongoClient(MONGO_URI, options);
     const db = client.db("insperu");
     await client.connect();
-    const article = await db.collection("articles").findOne({ _id: idParam });
-    if (!article) {
-      return res
-        .status(404)
-        .json({ status: 404, message: "Article not found." });
+    const user = await db.collection("users").findOne({ _id: idParam });
+    if (!user) {
+      return res.status(404).json({ status: 404, message: "User not found." });
     } else {
       return res.status(200).json({
         status: 200,
-        data: article,
+        data: user,
         message: "The request is success.",
       });
     }
@@ -31,4 +29,4 @@ const getSpecArticle = async (req, res) => {
   }
 };
 
-module.exports = { getSpecArticle };
+module.exports = { getSpecUser };
