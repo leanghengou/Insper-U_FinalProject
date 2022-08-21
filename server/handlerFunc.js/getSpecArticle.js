@@ -14,7 +14,7 @@ const getSpecArticle = async (req, res) => {
     const articles = await db
       .collection("articles")
       .findOne({ brandName: "perspective101" });
-    const allArticles = articles.allArticles;
+    const allArticles = articles;
     const specArticle = allArticles.filter((article) => {
       return article.id === idParam;
     });

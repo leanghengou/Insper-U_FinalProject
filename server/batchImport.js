@@ -17,18 +17,23 @@ const batchImport = async (dbName) => {
     await client.connect();
 
     // Insert all articles-------------------
-    // await db.collection("articles").insertOne(articles);
+    const correctArticles = articles.map((article) => {
+      article._id = article.id;
+      delete article.id;
+      return article;
+    });
+    await db.collection("articles").insertMany(correctArticles);
     // -----------------------------------------
     // Insert all categories-------------------
     // await db.collection("categories").insertOne(categories);
     // -----------------------------------------
     // Insert all users-------------------
-    const correctUsers = userData.map((user) => {
-      user._id = user.id;
-      delete user.id;
-      return user;
-    });
-    await db.collection("users").insertMany(correctUsers);
+    // const correctUsers = userData.map((user) => {
+    //   user._id = user.id;
+    //   delete user.id;
+    //   return user;
+    // });
+    // await db.collection("users").insertMany(correctUsers);
     // -----------------------------------------
 
     client.close();

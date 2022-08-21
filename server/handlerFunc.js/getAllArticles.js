@@ -10,12 +10,10 @@ const getAllArticles = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
     const db = client.db("insperu");
     await client.connect();
-    const allArticles = await db
-      .collection("articles")
-      .findOne({ brandName: "perspective101" });
+    const allArticles = await db.collection("articles").find().toArray();
     res.status(200).json({
       status: 200,
-      data: allArticles.allArticles,
+      data: allArticles,
       message: "The request is success.",
     });
   } catch (err) {
