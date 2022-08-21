@@ -24,7 +24,7 @@ const articles = [
       "In conclusion, talent is special aptitude that everyone possesses it. Not everyone is already born a scien-tist, doctor, footballer or singer, yet as human beings, we can develop our talents to fit in different catego-ries. In our ideas, we have come up with a cycle of talent: it starts with environment, up to the passion, till hard work and back to environment again. The reason is that we contemplate they are related to each other, if one of them was out of the picture, the other two wouldn’t correlate with each other. Never-theless, as we read the paragraphs above, there are enough evidence to prove that talent wouldn’t exist without doing anything, it’s not a gift from the god that sent to everyone. However, talent is the combi-nation of three factors, hard-work, environment, and passion.",
       "‘’There’s no talent here, this is hard work. This is an obsession. Talent does not exist, we are all equals as human beings, you could be anyone if you put in the time. You will reach the top, and that’s that. I am not talented, I am obsessed.”  - Connor McGregor",
     ],
-    like: 5,
+    likes: [],
     comments: [],
   },
   {
@@ -44,7 +44,7 @@ const articles = [
       "When a goal is too general, it can limit our motivation value which will make us lose interest in attaining the goal that we want to achieve. Therefore, I think that setting a specific goal will put me on a direct course. I plan on setting clear and precise goals that can be measurable with KPI. Key Performance Indicator is really important for me because it lets me see my progress and where I am at which point.",
       "In order to have a stable job, I think that it is absolutely important to make as many connections as possible because when people know you for a long time, they can recommend jobs that are well suited to your ability. I can do that with online social media platforms these days such as Facebook and especially Linkedin which is getting more famous among the new generation. By establishing my own identity and profile, I can now use these tools to help me spread and advertise myself much better and easier.",
     ],
-    like: 8,
+    likes: [],
     comments: [],
   },
   {
@@ -65,7 +65,7 @@ const articles = [
       "In addition, it seems meaningless whether our traditional value is better or western’s is better. What is important is the selection process. What we should do is absorb the essence and desert the dregs, why do not we consider it as critical assimilation? Imagine if the essence of different cultures and values are collected and combined with that of our own, we cannot only possess the incredible traditional culture that has instructed and inspired hundreds of generations of our own country. But on the quintessence of other cultures some having been cultivated over the long course of history. As for us people of the 21st century, we can see the drastic innovation the society has been undergoing and the current circumstance can bring about rap-id development to the culture of our society if dealt with appropriately.",
       "In conclusion, globalization brings many benefits along with it, from modern technologies to presenting the world of our own culture. Therefore every country needs globalization because it will help us in time turn our culture into a more civilized one.",
     ],
-    like: 8,
+    likes: [],
     comments: [],
   },
   {
@@ -86,7 +86,7 @@ const articles = [
       "In Phnom Penh, the youth is segmented from young adults to the so-called Generation Z, which is one of the most in the crosshairs of traders in recent decades. New media is used by this segment primarily for entertainment rather than information. Social media are becoming increasingly important since the 2000s, especially Facebook and Instagram. They also download videos and music, watch videos and TV online, play, and do online shopping. Notably, increased activities relate directly to Facebook.",
       "As a result of this, companies have had to adapt their advertising communication to this segment in several respects. By using social media as a platform for digital marketing; there can be a reduction in the expense of traditional advertisement. Moreover, it can help build brand awareness; digital marketing can significantly increase traffic to a site to generate more customers. Therefore, social media is undoubtedly one of the best channels for digital marketing.",
     ],
-    like: 3,
+    likes: [],
     comments: [],
   },
   {
@@ -104,7 +104,7 @@ const articles = [
     content: [
       "I got the shocked of my life when Igot my first intern job last years, that you don’t discussabout your sala-ryor your co-worker salary with each other,nomatter how close you are with them. It’s like a culture or a rule. It’s like it wrong to find out that you might make more or less than your co-worker. Peoplewon’t tell you it bad or offensiveto askabout it,they will glareat you, like you break some rule that you shouldknow. The reason Iask other co-worker about their salary is to know how much they made when they got the same job and join to work as the same time as me. Is this person pay more than me why, what this per-son have or do to germore pay, or why is this person getpay less than me.And alsoIwantto know is there a pay gap as the same at foreigncountieswhere men are being paid more than woman. But Iwill nev-er know about that now.Irealize that adult that are workingfor 3 to 5 years now that they don’tshare how much they make to their close friends. When ask “why?”they replythat it weirdto take about, andwhat happenedtheymake less it embarrassed!Ialsostart tobelievepeopledoesn’t want to share about how much they got paid is becausethey afraidthat other will start to ask for something from them and treat them differently and when they brokeor aren’t willing to helppeople will turnon them. Well Ibelieve people should talk and share about their payment, so fresh graduatecan preparethemselves for what to come and because you might not know thatsomeone or maybe even you are being taking advantage.",
     ],
-    like: 9,
+    likes: [],
     comments: [],
   },
 
@@ -130,7 +130,7 @@ const articles = [
       "Lastly, the time concept of culture. In the book, there are 2 main concepts: Linear time and flexible time. I thought it is interesting because not only do different countries have different time rules, there is an influence between them. Meaning that after some time one culture can change another culture. To elaborate, I had a few trips with the exchange students’ group, which includes many nations such as Cambodian, Chinese, German, Georgian, French, Belgian, Spanish, Malaysia, and American. Out of all, the 2 Spanish guys always appear last on any trip. They are always 15-30 minutes behind others. I don’t mind that because it happens every day in Cambodia. But what is interesting here, after a few trips I noticed that the German guy also appears late with the Spanish guy. Hence, it is clear that a person of one culture can influence another person of a different culture to follow.",
       "To sum up, I wish I had read this book before my exchange program because I would have adjusted better and made fewer mistakes. Though it is not the end of the world to commit cultural mistakes, it is the best way to learn a culture, in my opinion. All information in this book is absolutely helpful for anyone as it is easy to understand and relatable. There are many more cultural aspects that are yet to be explored. I would say let’s go out there and talk with other cultures and find it out.",
     ],
-    like: 21,
+    likes: [],
     comments: [],
   },
 
@@ -152,7 +152,7 @@ const articles = [
       "For example, a woman suddenly uses an aggressive tone of voice while saying polite words during the conflict. Another example is a man always touching his ear when being asked if he stole something or did some crime. Mostly, when a person always touching their ear or neck it’s a sign showing they are nervous and trying to hide something.",
       "Words are tools to lie and deceive people. It is used to manipulate others to serve our interests. A person could say anything we want in an instant.  That is why we should pay more attention to body language, facial expression, and tone of voice instead of putting our trust in the words people say.",
     ],
-    like: 35,
+    likes: [],
     comments: [],
   },
   {
@@ -173,7 +173,7 @@ const articles = [
       "Secondly, corporate social responsibility (CSR) has been an important part of any company these days because it is a way for companies to show off their activities and what they have done for society to the public. Moreover, based on an online article from the University of Applied Sciences, predicted that companies can implement more efficient energy management (Gabriel & Pessl, 2016, p. 141). The new industry 4.0 facilitates greater transparency in the energy system of a company. “ Smart grids’’ help the company to better understand how their energy consumption is being used and whether it is effective and efficient enough (Castagna, 2019, para. 1) This can reduce energy costs and extend the life cycle of the user devices (Jasperneite/Bretschneider 2013). In addition to saving the environment, transportation also plays an important part since we are living in a globalized world where people buy so many cars in which this activity affects releases carbon dioxide into the air which damages the earth. Now, with industry 4.0, everywhere can be easily accessed in a short time and convenience. More people are starting to realize that they do not have to buy a car anymore to travel to work or anywhere. According to economic-forum.com, as traffic congestion continues to grow more and more in urban areas, more citizens have realized that the government should invest more money in public transport modes, such as metro trains, bus rapid transit systems (BRT) or buses, instead of personal vehicles (Fang, 2015, para. 1).",
       "In conclusion, the industrial revolution will bring about major changes to the world we live in today. It will not only make the lives of the citizens more convenient and accessible but also contribute to the environment as well. From steam-powered to the mass production model that dominated the second, or even the emergence of computer-driven systems from the third revolution that we are living in today. This new industry 4.0 will help shape the world into a ‘’gig economy’’ where people can work from home or anywhere they want to without having to travel far.",
     ],
-    like: 23,
+    likes: [],
     comments: [],
   },
   {
@@ -193,7 +193,7 @@ const articles = [
       "Such, I do think that the documentary is right blaming our current society’s obesity-related problems on the food industry. This has indeed become a societal problem when 1 out of 3 Americans are obese. I believe that it is important to also let others know that this isn’t just about personal responsibility. An individual shouldn’t be entirely disappointed by their weak willpower, as this is the actually-major problem caused by our money-hungry society. What’s as scary as our growing health problems is the food industry’s marketing system. The fact that food industries would do anything to get customers is honestly very disturbing. For example, many companies create, for the customers, an illusion of health by creating green-colored labels, inserting words such as “natural” and “whole wheat” onto their cover, and inferring health claims. Moreover, most advertisements are targeted toward children, as they have large spending power and purchasing influence. As well, children could be conditioned to become loyal consumers. Additionally, the products that are constantly being sold and marketed are incredibly bad for the consumers’ health. These products contain huge amounts of sugar and, consequently, make self-control very difficult to achieve. For example, Doritos are made so that you can’t just have one bite. Even educated people on this matter have a hard time avoiding junk food. Portion sizes have also grown, making self-control even more difficult.",
       "I do find scary the degree to which companies are willing to take to get people to purchase their products. Regrettably, I think that the only way to solve this is to completely change our political system into one less axed upon maximum profit.",
     ],
-    like: 68,
+    likes: [],
     comments: [],
   },
 
@@ -216,7 +216,7 @@ const articles = [
       "Thirdly, they are the type to show how confident they are when it comes to idea sharing.  However, most creative people’s mindsets tend to not involve in the crowd that much because unnecessarily conversations are not for them. Nevertheless, being an introvert person or extrovert person doesn’t mean you’re creative. According to research, our DNA is probably most responsible for being creative or not.  if some creative people are introverts, we can’t consider them rude or mean people just because they don’t socialize as extroverts do. Nonetheless, when it comes to ideas, they are always open up and always trying to learn new things. Additionally, having those creative people in a team will make the discussion even better.  Elanor Roosevelt said, “Great minds discuss ideas; average minds discuss events; small minds discuss people.” For example, Mark Zuckerberg, is an American technology entrepreneur, philanthropist as well as the founder of Facebook. He is one of the most creative people based on his creation, Facebook. Another example is Steve Jobs, Jobs was the founder of Apple, and he also shared his idea through inventions and Apple products. He wasn’t the type to let his body wander around, just his mind that was wandering around, That’s why he came up with Apple.",
       "In conclusion, every one of us has our uniqueness as well as our creativity. Being an intelligent individual doesn’t mean you have a creative mind. On the hand, being a creative person doesn’t mean you are smart, it means you are more governed in the way you are thinking. Those three habits that we have mentioned above are established by our experiences and points of view, there are more ways to be creative. Like Albert Einstein once said,” Creativity is contagious, pass it on”.",
     ],
-    like: 27,
+    likes: [],
     comments: [],
   },
   {
@@ -243,7 +243,7 @@ const articles = [
       "Last but not least, technology plays an important role in considering whether to live in the city or a rural area. With the fast growth of technology and facilities in most cities, people can easily live their lives with convenience. Moreover, the modern transport stations that the city offers, make working and living even more accessible. In contrast, electricity is often very poor and distant for people who live in the far urban area; thus people usually use the old traditional ways of working and living.",
       "In conclusion, both city and small town have their advantages and disadvantages. Everyone has different thoughts in choosing a place for living a life. It ultimately depends on the taste of people.",
     ],
-    like: 18,
+    likes: [],
     comments: [],
   },
   {
@@ -272,21 +272,21 @@ const articles = [
       "Through our knowledge and the results from the conducted survey on the topic, it can be concluded that cliques can be both good and bad, and even though their drawbacks outweigh their benefits, sometimes it depends on us, ourselves to let how much of an impact clique has on our behaviors and perspectives toward in-class performance and classroom interactions.",
       "The world of cliques is very complicated and confusing. By being in one, students can be at an advantage or at risk of improving or disimproving themselves. Looking at it from a positive side, cliques give students a sense of belonging, confidence, and the potential to discover where they belong. However, from the opposite side, cliques can be hazardous as they limit creativity and diversity in friendships. It can be very difficult to not fall under a student clique but to avoid all those negative impacts, you have to be an open-minded person by trying to respect and understand other people; if every student practices this, the drawbacks of clique won’t be the most serious problem that affects their performance inside and also outside the classroom.",
     ],
-    like: 13,
+    likes: [],
     comments: [],
   },
   {
     id: uuidv4(),
     title: "Amusing ourselves to death response paper",
     image:
-      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956989/InsperU/pexels-joy-anne-pura-1186116_girzci.jpg",
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1661120405/InsperU/Amusing_Ourselves_to_Death_Respone-01-01_xvets4.jpg",
     postDate: {
       month: "June",
       day: "23",
       year: "2020",
     },
     authors: ["Meng Huo"],
-    category: ["social"],
+    category: ["social", "psychology"],
     content: [
       "Inspired by “the medium is the message” (McLuhan, 1967), Neil Postman used the phrase as his fundamental point and developed a new media theory in the age of television. In his experiment, television was the focus. He analyzed media evolution throughout the history of America and pointed out that media has a major impact on society’s literacy rate. In his finding, Postman believed that medium does not only affect the way a message is received but also shaped the discussion among people in society. This paper will discuss Postman’s three main ideas, including “the medium is the metaphor”, “Peek-a-Boo world” and “teaching as an amusing activity”.",
       "First, “the medium is the metaphor”, argued that medium had an impact on how information is retrieved and at the same time limited the topic that should be addressed from the message itself. Postman believed that a medium is more than a message but rather a much more complicated metaphor. Television, for example, framed audiences to examine messages from a different perspective. It also slowly shaped the discourse, that we communicated daily. The problem is that society stopped discussing some big topics, like politics, education, religion, etc. According to Kövecses (2018), the medium did affect our discourse by creating virtual realities. These virtual realities could cause us to feel offended, fun, manipulate, lie, etc. It can be found in advertisements to increase sales. In the long term, people are manipulated by unnecessary information. Kövecses concluded that there should be ethical responsibility for the medium, but that depends on how much influence advertisements had put on the medium. While, as an individual, learning about metaphor theory could greatly help us.",
@@ -294,7 +294,7 @@ const articles = [
       "The third idea, “teaching as an amusing activity”, explained that everything had turned into entertainment. Television became the new learning place for children. People considered by adding entertainment into education, kids will like learning. Unfortunately, it only made the kids love television, not the book. Postman worried that people start to look at everything entertainingly. Whereas television was not a literate and logical platform, the knowledge that we learned from there was not credible. This practice led to irrational thought and ignorance of big issues in culture. Also, the information could be misleading and create confusion, especially in politics. According to the journal Reilly (2011), Canada experienced a media election in 2011. Candi-dates used social media as a platform to promote and don their campaign. They targeted youths, aged between 18-24, considering these youngsters didn’t know much about politics from their media. Politicians used YouTube videos, editing, elegant color logo, and manipulated picture. Thus, people voted for the most attractive campaign, not the one with the best vision and principle.",
       "In conclusion, Postman was right about the medium. It is not just affecting the message itself, but also indirectly shaping the culture. His theory is a great way to look at how media impacts a civilization. It is slowly shaping the culture differently. This can be problematic if people continue to ignore what the media does. However, it can be great if people start to be aware and use media the right way. In Postman's view, people should control the media, not be controlled by media.",
     ],
-    like: 18,
+    likes: [],
     comments: [],
   },
   {
@@ -311,7 +311,7 @@ const articles = [
       "For when I am trying to apply for some sort of job for the first time, since all I ever did in my past 20 years of experience in life here in Cambodia is holing myself in the room of my parent’s house wasting away, and all I did was go back and forth from school, the thought process of applying for an Intern, or doing it, really frightens me, the anxiety of failing to hear back an email from an Intern I applied, or doing an Online Interview, or even the thought of succeeding in getting the job, the thought of having to show up and do your work, being a responsible individual, hoping when you go to this new place, people will be nice, you would have co-worker or friends to talk with, the job itself, hoping that it wouldn’t be so boring as many of your friends has so far complained about. I don’t have a means of transportation by myself, I have to rely on Grab, for two rides per day, back and forth for a month, would probably estimate 50$, a hefty cost for someone like me when you never got a chance into driving a motorcycle while your brain is developing, now fearing to get on the road when the developing world streets are as dangerous as ever since not quite everyone drives nicely say Japan2 would’ve been beginner-friendly, especially when you have an experience of a bus coming right at you when you were biking across a four road intersect trying to cross a green light while theirs was red. Aside from that, here in 2020, in this coronavirus pandemic, you have to also be concerned whether or not your job will get you involved in a high risk of covid exposure, I mean, you don’t want to get infected or infect your family members for some Intern, yet not trying to Intern now would be a loss of time and opportunity, not the year to be graduating into. But even so, after accounting for all these issues and weighing the pros and cons, after talking to my family members, they encourage me to go out there still, which is a very helpful emotional support. In the end, I ended up, day by day, step by step, taking action towards and applying and submitting my CV anyway.",
       "This isn’t the year for upcoming graduates to be entering the job market and exploring the opportunities in the capitalist’s world, lots of success bread more anxiety and FOMO3 in us all, it can be crippling for some people, to the point of becoming a degenerate who fears going out and socialize, 4 but even so, I do hope some would encourage others, and some themselves would try to experience the outer world as they are bad, but just as beautiful.",
     ],
-    like: 7,
+    likes: [],
     comments: [],
   },
   {
@@ -334,7 +334,7 @@ const articles = [
       "In comparison between the air pollution in Cambodia and Singapore, there are some interesting similarities and differences. Cambodia has is a less serious problem with air pollution since there was war and there were fewer factories than in Singapore. In the past, Singapore's air pollution was caused by pig farming, while Cambodia has not encountered serious air pollution yet. But later on, materialism took over Cambodian people's mindset which led to the usage of vehicles to show off their wealth and their power in the urbanizing society. The use of fossil fuels is a big factor in the pollution in both countries. Fossil fuel was the main power resource in the factories for industrial production. Both pollutions in these two countries have such a big impact on the health of living species in their respective country. For the solution to air pollution in Singapore, the government has two solid solutions such as encouraging Singaporeans to use public transportation that cuts down the high rates of traffic congestion and decreases the smoke coming out from vehicles. Adding an AI camera to the roads is also a good addition to the solution. Another solution is to reduce the use of fossil fuel as a power resource and replace it with electricity. Meanwhile, in Cambodia, the only solution from the government is using public transportation but it is not quite convenient because people still value materialism and continue to increase the number of vehicles in the country.",
       "In conclusion, for the past ten years, climate change has been a major and global problem that cannot be neglected and the increase of carbon dioxide is rapidly growing. Some of the highly suggested solutions are to reduce the use of private vehicles and more public transportation such as public buses and metro for a faster commuting experience. Furthermore, we can also conclude that the government alone cannot tackle all of these problems at once without the help of all citizens too.",
     ],
-    like: 5,
+    likes: [],
     comments: [],
   },
   {
@@ -358,7 +358,7 @@ const articles = [
       "Furthermore, the long-term effects of GMOs are not certain. Pests that are targeted by these agricultural methods can adapt to pesticides and herbicides, in addition to the DNA changes in GM plants to make them resistant. This means that they will not always be effective, but their toxic legacies will remain. The cumulative effects of products such as GMOs are important to take into consideration. Evidence also suggests that small genetic changes in plants may produce even larger ecological shifts, meaning that there is potential for GMOs to become persistent and weedy in agricultural conditions since they are modified to be resistant to some modern agricultural techniques. This can also mean being invasive in natural settings, where GMOs, of course, do not occur naturally. New, human-modified, plants can become invasive species in delicate, natural ecosystems.",
       "In conclusion, although GM crops provide us with a big number of benefits, they still have an alarmingly negative effect on our health, environment, and the release of toxins into the soil.",
     ],
-    like: 9,
+    likes: [],
     comments: [],
   },
   {
@@ -383,7 +383,7 @@ const articles = [
       "Last but not least flooding is not all about affecting it, it has some kinds of advantages for the world too. Sometimes it provides many benefits for natural and living things like a tree, many kinds of fish, and a lot of plants. Water improves fish shelter and helps many dead plants like soil to be alive once again. Cities, utilities, reservoir operators, agriculture, and other industries depend on accurate forecasts of water availability. Flooding helps the environment to be clean and safe for the forest to grown faster which is a great shelter for many living things like fish, snails, and seaweed. The benefit of flooding to the farmer is to help the soil to grow faster and provide many nutrients for the soil that were lacking during summer, and also help the forest to grow healthier.",
       "In conclusion, flooding is the most common natural disaster in the world. Floods result from rain, snow, coastal storms, storm surges, and overflows of dams and other water systems. We want to prevent them because they threaten our lives and ways of life. To control flooding, we need to work with the forces of nature, instead of simply trying to eliminate them. Flooding provides a lot of advantages and disadvantages for our society. Flooding damage many building or villages, and affect a lot of living things like human, plants, and many animals. But also benefits many forests, plants under the water, and fish. Flood also heal the earth by decreasing the temperature and saving a lot of plants from lacking water. Overall flooding may occur as an overflow of water from water bodies, such as a river, lake, or ocean, in which the water overtops or breaks levees, resulting in some of that water escaping its usual boundaries, or it may occur due to an accumulation of rainwater on saturated ground in an area flood. People need to be together against flooding.",
     ],
-    like: 4,
+    likes: [],
     comments: [],
   },
   {
@@ -405,7 +405,7 @@ const articles = [
       "Some people claim that lack of education is not the cause of poverty because many reasons cause poverty such as lack of clean water and nutritious food. For example, African countries could not fully access clean water because of drought. They believed that this is the reason to cause poverty. That may be so, but education is the main tool to get people out of the property. For example, before 1975, Cambodia was one of the famous countries in ASEAN that had developed infrastructure, and economy, there were so many architects, businessmen, and professors to develop the country. However, during the Khmer Rouge Regime, (3 years 8 months 20 days), millions of educated people were killed by Khmer Rouge Leader. The remained people after the regime were not well-educated people. It takes Cambodia years to build up its education system and the economy. Even though now, Cambodia still improving its education system, allowing every child to go to school and support them to finish high school. As a result, Cambodian people could get a proper jobs and even do the fair international trade stage with other developed countries. It cannot conclude that the disadvantages of the climate and geography of a country are the reason for poverty, while many other reasons cause poverty.",
       "In conclusion, there are many sectors to cause poverty, but education is a powerful tool to break the cycle of poverty in society. Education brings people out of illiteracy; education could make people understand more about their rights and obligation to be civilized citizens. Everyone deserved to have equal access to school and the government should take a proper method to increase the literature number in their country.",
     ],
-    like: 13,
+    likes: [],
     comments: [],
   },
   {
@@ -428,7 +428,28 @@ const articles = [
       "The last reason is no crowd or long queues at cashier or fitting room. Indeed, online shopping does not need to wait in long queues line for a cashier. It is less crowded for people, just click pay then everything your order will be shipped to you. From my own experience, I found that waiting for the cashier unpleased me, and it is time-consuming. Then when I go to the parking lot, sometimes, I forget where I park my car which is another waste of time for me again.",
       "Based on all of those three reasons I believed that online shopping will replace the physical mall. With convenience, variety of products, and less crowd, online shopping will give people more time to do something else besides shopping at physical the mall.",
     ],
-    like: 37,
+    likes: [],
+    comments: [],
+  },
+  {
+    id: uuidv4(),
+    title: "Amusing ourselves to death response paper",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956989/InsperU/pexels-joy-anne-pura-1186116_girzci.jpg",
+    postDate: {
+      month: "March",
+      day: "14",
+      year: "2020",
+    },
+    authors: ["Meng Huo"],
+    category: ["social", "psychology"],
+    content: [
+      "The main topic that was discussed in the video was “The medium is the message (McLuhan, 1964)”. Me, when I first saw the phrase, I got really confused. In the video, professor McLuhan used the telephone as an example. What I understood from the explanation is that the medium is the connector. So, it is what people use to spread their thoughts and ideas. Whatever sending through this medium creates the environment. And that environment can make an effect on people or the public. For instance, television or radio is what could be called the medium. So, they create a message that can greatly impact audiences much more than the telephone one. Two things stood out for me, which are one the way we expressed is important, and two sometimes it can be misleading if the message is shared by many channels.",
+      "What I think about the concept from professor McLuhan is that it is kind of true not only during the time that the video takes place but also during the current generation as well. I like the way he expresses the media by saying “Medium is the message” (McLuhan). It seems to make sense to me now. Now I start to think that some theories misled us to see the medium and the message are not related at all even though they are closely related according to McLuhan. I used to believe that the medium doesn’t matter at all, what matters is what is said or expressed. But I think I was wrong, the way our idea is being shared or spread is as necessary as the message itself. Because the more messages move from one to another the more it changes their meaning.",
+      "It is dangerous since it can lead to misunderstanding and miscommunication. It is really useful to know that because next time I will be more careful about what channel I am using to express my opinion. I agree with his opinion about television as well. Though television is now getting less popular, other new media are kind of similar things. It acts as the medium and whatever it does can greatly influence some people. Television can be a new way of creating awareness among the public. Besides, the advertisement was getting popular. It has become an art. Just like other artists, advertisers wanted to make a hook that can catch anyone’s attention. But the way it works can change as the years go by. It was when television was popular, therefore, it can create such a big effect on the message it had.  Another thing about media is that it can alter violence. Since media can manipulate the public, it can cool down the situation with what it says. So, the media can go any way either good or bad.",
+      "All in all, I find that the phrase is still relevant to staff with what we are on right now. It tells us that there could be cultural or societal changes with the new and upcoming media that will create the new medium effects. So, we can warn ourselves and seek to understand the new medium beforehand. And the fact that media nowadays can spread quickly whatever we say can easily mislead and lead to many issues, we must be cautious.",
+    ],
+    likes: [],
     comments: [],
   },
 ];
