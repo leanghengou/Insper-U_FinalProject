@@ -1,15 +1,20 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useContext } from "react";
 import { CurrentUserContext } from "./CurrentUserContext";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Article from "./pages/Article";
 
 function App() {
   const { contextMessage, allArticles } = useContext(CurrentUserContext);
   console.log(">>>>> ", allArticles && allArticles[0].image);
   return (
-    <div className="App">
-      <img src={allArticles && allArticles[0].image} />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/article/:id" element={<Article />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
