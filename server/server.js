@@ -27,13 +27,20 @@ express()
   // ---------------------------------
   .get("/api/categories", getCategories)
   .get("/api/all-articles", getAllArticles)
-  .get("/api/get-spec-article/:articleId", getSpecArticle)
+  .get("/api/article/:articleId", getSpecArticle)
   .get("/api/get-users", getAllUsers)
   .get("/api/get-spec-user/:userId", getSpecUser)
   .post("/api/create-user", createUser)
   .post("/api/post-comment", postComment)
   .patch("/api/like-article", likeArticle)
+  // --------------------------------------------
+  // .get("/users",)
+  // .get("/users/:id",)
+  // .post("/users",createUser)
 
+  // .get("/articles/:id",)
+  //  .post("/articles/:id/comments",)
+  // .delete("")
   // ---------------------------------
   // Nothing to modify below this line
   // this is our catch all endpoint.

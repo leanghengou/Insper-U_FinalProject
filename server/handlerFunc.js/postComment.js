@@ -6,16 +6,20 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
+
 const postComment = async (req, res) => {
+  console.log("hello");
   try {
     const client = new MongoClient(MONGO_URI, options);
     const db = client.db("insperu");
     await client.connect();
     const articleId = req.body.articleId;
 
-    const updatedArticle = await db
-      .collection("articles")
-      .findOne({ _id: articleId });
+    // get spec article comment array,
+
+    const article = await db.collection("articles").findOne({ _id: articleId });
+    const articleComments = article.comments;
+    // --------------------------------
 
     const newComment = {
       articleId: articleId,
@@ -50,20 +54,23 @@ const postComment = async (req, res) => {
           "User must be providing more information than the necessary requirments.",
       });
     } else {
-      updatedArticle.comments.push(newComment);
-      const postComment = updatedArticle.comments;
-      db.collection("articles").updateOne(
-        { _id: articleId },
-        { $set: { comments: postComment } }
-      );
+      const updateArticleComment = [...articleComments, newComment.commentId];
+      await db.collection("comments").insertOne(newComment);
+      await db
+        .collection("articles")
+        .updateOne(
+          { _id: articleId },
+          { $set: { comments: updateArticleComment } }
+        );
       res.status(200).json({
         status: 200,
-        data: postComment,
+        data: newComment,
         message: "The comment is successfully posted.",
       });
     }
     // ----------------------------------------------------------------------------------
   } catch (err) {
+    console.log("err", err);
     res.status(500).json({
       status: 500,
       message: "Something is wrong!",
