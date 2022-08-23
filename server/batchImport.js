@@ -1,6 +1,7 @@
 const { articles } = require("./allData/articles");
 const { categories } = require("./allData/categories");
 const { userData } = require("./allData/usersData");
+const { authors } = require("./allData/authors");
 const { MongoClient } = require("mongodb");
 require("dotenv").config();
 const cors = require("cors");
@@ -17,15 +18,20 @@ const batchImport = async (dbName) => {
     await client.connect();
 
     // Insert all articles-------------------
-    const correctArticles = articles.map((article) => {
-      article._id = article.id;
-      delete article.id;
-      return article;
-    });
-    await db.collection("articles").insertMany(correctArticles);
+    // const correctArticles = articles.map((article) => {
+    //   article._id = article.id;
+    //   delete article.id;
+    //   return article;
+    // });
+    // await db.collection("articles").insertMany(correctArticles);
     // Delete all articles-------------------
     // await db.collection("articles").deleteMany();
     // -----------------------------------------
+
+    // Insert all authors-------------------
+    // await db.collection("authors").insertOne(authors);
+    // -----------------------------------------
+
     // Insert all categories-------------------
     // await db.collection("categories").insertOne(categories);
     // -----------------------------------------
@@ -44,4 +50,4 @@ const batchImport = async (dbName) => {
   }
 };
 
-batchImport("insperu");
+// batchImport("insperu");
