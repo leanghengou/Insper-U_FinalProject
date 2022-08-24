@@ -1,15 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 import { createGlobalStyle } from "../styleVariable/GlobalStyle";
-import ArticleCard from "../components/ArticleCard";
 import Slider from "../components/Slider";
+import ArticleSections from "../components/ArticleSections";
+import BigArticleSections from "../components/BigArticleSection";
+import FeaturedSectionsOne from "../components/FeaturedSectionOne";
+import FeaturedSectionsTwo from "../components/FeaturedSectionTwo";
 
 const Homepage = () => {
   return (
     <Container>
       <Slider />
-      <h1>Articles</h1>
-      <ArticleCard />
+      <BigHeader>Articles</BigHeader>
+      <ArticleSections />
+      <FeaturedSectionsOne />
+      <BigArticleSections />
+      <FeaturedSectionsTwo />
+      <BigHeader>Articles</BigHeader>
+      <ArticleSections />
     </Container>
   );
 };
@@ -17,7 +25,7 @@ const Homepage = () => {
 const Container = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
 `;
@@ -27,13 +35,8 @@ const BigHeader = styled.h1`
   font-size: 40px;
   font-family: "Anton", sans-serif;
   font-style: normal;
-`;
-
-const BodyText = styled.p`
   margin-top: 50px;
   margin-bottom: 50px;
-  font-size: 16px;
-  line-height: 25px;
 `;
 
 export default Homepage;
