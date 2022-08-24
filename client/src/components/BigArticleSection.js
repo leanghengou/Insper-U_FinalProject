@@ -28,7 +28,6 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: 100px;
 `;
 
 const BigContainer = styled.div`

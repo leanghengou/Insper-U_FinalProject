@@ -23,7 +23,7 @@ const Article = () => {
         <ParagraphContainer>
           {article &&
             article.content.map((item) => {
-              return <Ptext>{item}</Ptext>;
+              return <BodyText>{item}</BodyText>;
             })}
         </ParagraphContainer>
       </div>
@@ -45,8 +45,8 @@ const ParagraphContainer = styled.div`
   text-align: left;
 `;
 
-const Ptext = styled.p`
-  margin-bottom: 10px;
+const BodyText = styled.p`
+  margin-bottom: 20px;
   font-size: 16px;
   line-height: 25px;
 `;

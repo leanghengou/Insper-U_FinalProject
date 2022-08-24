@@ -14,9 +14,10 @@ const Homepage = () => {
       <BigHeader>Articles</BigHeader>
       <ArticleSections />
       <FeaturedSectionsOne />
+      <BigHeader>Top Liked articles</BigHeader>
       <BigArticleSections />
       <FeaturedSectionsTwo />
-      <BigHeader>Articles</BigHeader>
+      <BigHeader>Read to improve yourself</BigHeader>
       <ArticleSections />
     </Container>
   );
@@ -31,12 +32,16 @@ const Container = styled.div`
 `;
 
 const BigHeader = styled.h1`
+  width: 100%;
   text-transform: uppercase;
   font-size: 40px;
   font-family: "Anton", sans-serif;
   font-style: normal;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  text-align: left;
+  margin-top: 70px;
+  margin-bottom: 40px;
+  padding-top: 20px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.5);
 `;
 
 export default Homepage;

@@ -33,9 +33,8 @@ const Container = styled.div`
   justify-content: space-evenly;
   flex-direction: column;
   align-items: flex-start;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   margin-top: 150px;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.5);
+  border-top: 0.5px solid rgba(0, 0, 0, 0.5);
   padding-top: 50px;
 `;
 
@@ -52,7 +51,7 @@ const BottomBar = styled.div`
   height: 200px;
   text-align: center;
   padding: 20px 0;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.5);
+  border-top: 0.5px solid rgba(0, 0, 0, 0.5);
 `;
 const NavHeader = styled.h3`
   font-size: 18px;
@@ -60,9 +59,9 @@ const NavHeader = styled.h3`
 `;
 const NavLink = styled.button`
   background-color: none;
-  color: white;
   background-color: transparent;
   line-height: 27px;
+  border: none;
 `;
 
 const NavContainer = styled.div`

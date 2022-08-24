@@ -17,12 +17,11 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 `;
 
 const NavLink = styled.button`
   background-color: none;
-  color: white;
+  border: none;
   background-color: transparent;
 `;
 export default Navigation;
