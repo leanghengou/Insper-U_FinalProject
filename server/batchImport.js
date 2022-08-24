@@ -18,12 +18,12 @@ const batchImport = async (dbName) => {
     await client.connect();
 
     // Insert all articles-------------------
-    // const correctArticles = articles.map((article) => {
-    //   article._id = article.id;
-    //   delete article.id;
-    //   return article;
-    // });
-    // await db.collection("articles").insertMany(correctArticles);
+    const correctArticles = articles.map((article) => {
+      article._id = article.id;
+      delete article.id;
+      return article;
+    });
+    await db.collection("articles").insertMany(correctArticles);
     // Delete all articles-------------------
     // await db.collection("articles").deleteMany();
     // -----------------------------------------
@@ -50,4 +50,4 @@ const batchImport = async (dbName) => {
   }
 };
 
-// batchImport("insperu");
+batchImport("insperu");
