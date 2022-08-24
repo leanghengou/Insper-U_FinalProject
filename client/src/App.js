@@ -1,4 +1,3 @@
-import "./App.css";
 import React, { useContext } from "react";
 import { CurrentUserContext } from "./CurrentUserContext";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -9,7 +8,7 @@ function App() {
   console.log(">>>>> ", allArticles && allArticles[0].image);
   return (
     <Router>
-      <div className="App">
+      <div>
         <Routes>
           <Route path="/article/:id" element={<Article />} />
         </Routes>
