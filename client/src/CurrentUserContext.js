@@ -3,10 +3,6 @@ import React, { useState, useEffect } from "react";
 export const CurrentUserContext = React.createContext(null);
 
 const CurrentUserProvider = ({ children }) => {
-  const initialUserValue = {
-    email: null,
-    password: null,
-  };
   const [currentUser, setCurrentUser] = useState(null);
   const [allArticles, setAllArticles] = useState(null);
   useEffect(() => {
