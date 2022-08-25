@@ -59,8 +59,13 @@ code {
 }
 
 body{
+	/* ----------------Light mood----------------- */
 	background-color: rgb(255, 255, 255);
 	color: black;
+/* ----------------Dark mood----------------- */
+	/* background-color: black;
+	color: rgb(255, 255, 255); */
+/* -------------------------------------------------- */
 	font-size: 16px;
 	line-height: 35px;
 	font-weight: 400;

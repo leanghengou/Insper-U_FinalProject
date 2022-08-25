@@ -3,7 +3,11 @@ import React, { useState, useEffect } from "react";
 export const CurrentUserContext = React.createContext(null);
 
 const CurrentUserProvider = ({ children }) => {
-  const contextMessage = "HENGNNGNGNGcontext is successfully set up!!!";
+  const initialUserValue = {
+    email: null,
+    password: null,
+  };
+  const [currentUser, setCurrentUser] = useState(null);
   const [allArticles, setAllArticles] = useState(null);
   useEffect(() => {
     fetch("/api/all-articles")
@@ -14,8 +18,9 @@ const CurrentUserProvider = ({ children }) => {
   return (
     <CurrentUserContext.Provider
       value={{
-        contextMessage,
         allArticles,
+        currentUser,
+        setCurrentUser,
       }}
     >
       {children}

@@ -5,15 +5,19 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Article from "./pages/Article";
 import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
+import CreateAccount from "./pages/CreateAccount";
 
 function App() {
   return (
     <Router>
+      <Navigation />
       <Container>
-        <Navigation />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/article/:id" element={<Article />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<CreateAccount />} />
         </Routes>
         <Footer />
       </Container>
@@ -29,5 +33,6 @@ const Container = styled.div`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 50px;
 `;
 export default App;
