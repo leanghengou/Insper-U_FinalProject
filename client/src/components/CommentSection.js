@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import CommentInputBox from "./CommentInputBox";
+import CommentsPosted from "./CommentsPosted";
 
-const CommentSection = () => {
+const CommentSection = ({ comments, articleId, currentUser }) => {
   return (
     <Container>
-      <CommentInputBox />
+      <CommentInputBox articleId={articleId} currentUser={currentUser} />
+      <CommentsPosted comments={comments} />
     </Container>
   );
 };

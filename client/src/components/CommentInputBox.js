@@ -1,9 +1,61 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
+import { CurrentUserContext } from "../CurrentUserContext";
 
-const CommentInputBox = () => {
+const CommentInputBox = ({ articleId, currentUser }) => {
+  const initialValue = {
+    firstName: () => {
+      if (currentUser.firstName) {
+        return currentUser.firstName;
+      } else {
+        return null;
+      }
+    },
+    lastName: () => {
+      if (currentUser.lastName) {
+        return currentUser.lastName;
+      } else {
+        return null;
+      }
+    },
+    comment: null,
+    userId: () => {
+      if (currentUser._id) {
+        return currentUser._id;
+      } else {
+        return null;
+      }
+    },
+    articleId: articleId,
+  };
+  const [commentUser, setCommentUser] = useState(initialValue);
   const [sendButton, setSendButton] = useState(false);
-  console.log(sendButton);
+  console.log("currentUser", currentUser);
+  const submitButton = (e) => {
+    if (
+      commentUser.firstName &&
+      commentUser.lastName &&
+      commentUser.articleId &&
+      commentUser.userId
+    ) {
+      fetch(`/api/post-comment`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(commentUser),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return null;
+    }
+  };
   return (
     <Container>
       <ProfileImage />
@@ -11,13 +63,16 @@ const CommentInputBox = () => {
         onChange={(e) => {
           if (e.target.value) {
             setSendButton(true);
+            setCommentUser({ ...commentUser, comment: e.target.value });
           } else {
             setSendButton(false);
           }
         }}
         placeholder="Write your comment here..."
       />
-      {sendButton ? <SubmitButton>Post comment</SubmitButton> : null}
+      {sendButton ? (
+        <SubmitButton onClick={submitButton}>Post comment</SubmitButton>
+      ) : null}
     </Container>
   );
 };

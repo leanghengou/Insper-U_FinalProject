@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { createGlobalStyle } from "../styleVariable/GlobalStyle";
 import Slider from "../components/Slider";
@@ -6,8 +6,11 @@ import ArticleSections from "../components/ArticleSections";
 import BigArticleSections from "../components/BigArticleSection";
 import FeaturedSectionsOne from "../components/FeaturedSectionOne";
 import FeaturedSectionsTwo from "../components/FeaturedSectionTwo";
+import { CurrentUserContext } from "../CurrentUserContext";
 
 const Homepage = () => {
+  const { currentUser } = useContext(CurrentUserContext);
+  console.log("Current user", currentUser);
   return (
     <Container>
       <Slider />
