@@ -2,10 +2,12 @@ import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CurrentUserContext } from "../CurrentUserContext";
 import styled from "styled-components";
+import CommentSection from "../components/CommentSection";
 
 const Article = () => {
   const { id } = useParams();
   const [article, setArticle] = useState();
+  const [comments, setComments] = useState(null);
   useEffect(() => {
     fetch(`/api/article/${id}`)
       .then((res) => res.json())
@@ -38,6 +40,7 @@ const Article = () => {
         </ArticleBox>
         <Sidebar></Sidebar>
       </ArticleSection>
+      <CommentSection />
     </Container>
   );
 };
