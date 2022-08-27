@@ -6,7 +6,7 @@ import { CurrentUserContext } from "../CurrentUserContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const { setCurrentUser } = useContext(CurrentUserContext);
   const [loginInfo, setLoginInfo] = useState({
     email: null,
     password: null,

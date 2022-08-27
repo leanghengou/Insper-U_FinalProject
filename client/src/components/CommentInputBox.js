@@ -1,36 +1,23 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { CurrentUserContext } from "../CurrentUserContext";
 
-const CommentInputBox = ({ articleId, currentUser }) => {
+const CommentInputBox = ({ articleId, currentUser, setComments }) => {
   const initialValue = {
-    firstName: () => {
-      if (currentUser.firstName) {
-        return currentUser.firstName;
-      } else {
-        return null;
-      }
-    },
-    lastName: () => {
-      if (currentUser.lastName) {
-        return currentUser.lastName;
-      } else {
-        return null;
-      }
-    },
+    firstName: currentUser.firstName,
+    lastName: currentUser.lastName,
     comment: null,
-    userId: () => {
-      if (currentUser._id) {
-        return currentUser._id;
-      } else {
-        return null;
-      }
-    },
+    userId: currentUser._id,
     articleId: articleId,
   };
   const [commentUser, setCommentUser] = useState(initialValue);
   const [sendButton, setSendButton] = useState(false);
-  console.log("currentUser", currentUser);
+
+  const refreshComment = () => {
+    fetch(`/api/get-comments/${articleId}`)
+      .then((res) => res.json())
+      .then((data) => setComments(data.data));
+  };
   const submitButton = (e) => {
     if (
       commentUser.firstName &&
@@ -47,15 +34,20 @@ const CommentInputBox = ({ articleId, currentUser }) => {
         body: JSON.stringify(commentUser),
       })
         .then((res) => {
+          console.log("Success!");
+          refreshComment();
           return res.json();
         })
         .catch((err) => {
+          console.log("Not success!");
           console.log(err);
         });
     } else {
       return null;
     }
   };
+
+  console.log("Comment user", commentUser.firstName);
   return (
     <Container>
       <ProfileImage />

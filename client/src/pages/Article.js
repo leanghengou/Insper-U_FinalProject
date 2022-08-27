@@ -7,7 +7,6 @@ import CommentSection from "../components/CommentSection";
 const Article = () => {
   const { currentUser } = useContext(CurrentUserContext);
   const { id } = useParams();
-  console.log(id, "useParam");
   const [article, setArticle] = useState();
   const [comments, setComments] = useState(null);
   useEffect(() => {
@@ -22,7 +21,6 @@ const Article = () => {
       .then((data) => setComments(data.data));
   }, [id]);
 
-  console.log("Comments", comments && comments);
   return (
     <Container>
       <ArticleImage imageSrc={article && article.image} />
@@ -53,6 +51,7 @@ const Article = () => {
         comments={comments}
         articleId={id}
         currentUser={currentUser}
+        setComments={setComments}
       />
     </Container>
   );
