@@ -7,6 +7,7 @@ import { CurrentUserContext } from "../CurrentUserContext";
 const Login = () => {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const [userLogin, setUserLogin] = useState(null);
   const [allUser, setAllUser] = useState(null);
   const [loginInfo, setLoginInfo] = useState({
     email: null,
@@ -19,33 +20,27 @@ const Login = () => {
       .then((data) => setAllUser(data.data));
   }, []);
 
-  console.log("user", currentUser);
-
   // ------------Condition if user pasword and email is correct.......
-  allUser &&
-    allUser.filter((user) => {
-      if (
-        user &&
-        user.email !== loginInfo.email &&
-        user &&
-        user.password !== loginInfo.password
-      ) {
-        setCurrentUser(null);
-      } else if (
-        user &&
-        user.email === loginInfo.email &&
-        user &&
-        user.password === loginInfo.password
-      ) {
-        setCurrentUser(user);
-      }
-    });
-  // ------------------------------------------------
   const loginHandler = (e) => {
-    if (currentUser) {
-      console.log(currentUser);
-      navigate("/");
-    }
+    allUser &&
+      allUser.filter((user) => {
+        if (
+          user &&
+          user.email !== loginInfo.email &&
+          user &&
+          user.password !== loginInfo.password
+        ) {
+          setCurrentUser(null);
+        } else if (
+          user &&
+          user.email === loginInfo.email &&
+          user &&
+          user.password === loginInfo.password
+        ) {
+          setCurrentUser(user);
+          navigate("/");
+        }
+      });
   };
 
   return (
