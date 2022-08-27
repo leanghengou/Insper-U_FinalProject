@@ -7,39 +7,30 @@ import { CurrentUserContext } from "../CurrentUserContext";
 const Login = () => {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-  const [userLogin, setUserLogin] = useState(null);
-  const [allUser, setAllUser] = useState(null);
   const [loginInfo, setLoginInfo] = useState({
     email: null,
     password: null,
   });
 
-  useEffect(() => {
-    fetch("/api/get-users")
-      .then((res) => res.json())
-      .then((data) => setAllUser(data.data));
-  }, []);
-
   // ------------Condition if user pasword and email is correct.......
   const loginHandler = (e) => {
-    allUser &&
-      allUser.filter((user) => {
-        if (
-          user &&
-          user.email !== loginInfo.email &&
-          user &&
-          user.password !== loginInfo.password
-        ) {
-          setCurrentUser(null);
-        } else if (
-          user &&
-          user.email === loginInfo.email &&
-          user &&
-          user.password === loginInfo.password
-        ) {
-          setCurrentUser(user);
-          navigate("/");
-        }
+    fetch(`/api/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(loginInfo),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setCurrentUser(data.data);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
