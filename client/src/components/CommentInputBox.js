@@ -47,7 +47,6 @@ const CommentInputBox = ({ articleId, currentUser, setComments }) => {
     }
   };
 
-  console.log("Comment user", commentUser.firstName);
   return (
     <Container>
       <ProfileImage />

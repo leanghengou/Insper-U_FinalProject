@@ -7,6 +7,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
+const { sentimentTest } = require("./sentimentTest");
 const postComment = async (req, res) => {
   console.log("hello");
   try {
@@ -30,9 +31,12 @@ const postComment = async (req, res) => {
       comment: req.body.comment,
       date: Date.now(),
     };
+    const sentimentAnswer = await sentimentTest(newComment.comment);
+
     // ----------------------------------------------------------------------------------
     // Checking if the new comment contain all the required info,
     // also if it contain something outside of required info, this should be stop
+
     const validateComment = Object.entries(req.body);
     if (
       !newComment.articleId ||
@@ -52,6 +56,11 @@ const postComment = async (req, res) => {
         status: 500,
         message:
           "User must be providing more information than the necessary requirments.",
+      });
+    } else if (sentimentAnswer.data.type === "negative") {
+      return res.status(500).json({
+        status: 500,
+        message: "Please be respectful to our community. :)",
       });
     } else {
       const updateArticleComment = [...articleComments, newComment.commentId];
@@ -74,6 +83,7 @@ const postComment = async (req, res) => {
     res.status(500).json({
       status: 500,
       message: "Something is wrong!",
+      error: err,
     });
   }
 };
