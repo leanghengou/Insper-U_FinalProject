@@ -17,12 +17,7 @@ const loginUser = async (req, res) => {
       .findOne({ email: email, password: password });
 
     delete specUser.password;
-    if (!specUser) {
-      res.status(404).json({
-        status: 404,
-        messsage: "User not found.",
-      });
-    } else {
+    if (specUser) {
       res.status(200).json({
         status: 200,
         data: specUser,

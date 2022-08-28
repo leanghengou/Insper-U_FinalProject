@@ -10,7 +10,6 @@ import { CurrentUserContext } from "../CurrentUserContext";
 
 const Homepage = () => {
   const { currentUser } = useContext(CurrentUserContext);
-  console.log("Current user", currentUser);
   return (
     <Container>
       <Slider />

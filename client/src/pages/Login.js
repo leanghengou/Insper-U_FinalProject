@@ -6,13 +6,25 @@ import { CurrentUserContext } from "../CurrentUserContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setCurrentUser } = useContext(CurrentUserContext);
+  const { setCurrentUser, currentUser } = useContext(CurrentUserContext);
+  const [verifyUser, setVerifyUser] = useState(null);
   const [loginInfo, setLoginInfo] = useState({
     email: null,
     password: null,
   });
-
+  console.log("current user_Login", currentUser);
   // ------------Condition if user pasword and email is correct.......
+  // const updateValue = (item) => {
+  //   if (item.status === 200) {
+  //     console.log("comfirm!!!!!!");
+  //     setCurrentUser(item.data);
+  //     navigate("/");
+  //   } else {
+  //     return null;
+  //   }
+  // };
+
+  // --------------------------
   const loginHandler = (e) => {
     fetch(`/api/login`, {
       method: "POST",
@@ -26,8 +38,16 @@ const Login = () => {
         return res.json();
       })
       .then((data) => {
-        setCurrentUser(data.data);
-        navigate("/");
+        // setCurrentUser(data.data);
+        // navigate("/");
+        setVerifyUser(data);
+        if (data && data.status === 200) {
+          console.log("First click done!");
+          setCurrentUser(data.data);
+          navigate("/");
+        } else {
+          return null;
+        }
       })
       .catch((err) => {
         console.log(err);
