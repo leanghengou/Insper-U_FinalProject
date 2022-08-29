@@ -12,17 +12,10 @@ const Login = () => {
     email: null,
     password: null,
   });
+
+  setCurrentUser(null);
+
   console.log("current user_Login", currentUser);
-  // ------------Condition if user pasword and email is correct.......
-  // const updateValue = (item) => {
-  //   if (item.status === 200) {
-  //     console.log("comfirm!!!!!!");
-  //     setCurrentUser(item.data);
-  //     navigate("/");
-  //   } else {
-  //     return null;
-  //   }
-  // };
 
   // --------------------------
   const loginHandler = (e) => {
@@ -38,11 +31,8 @@ const Login = () => {
         return res.json();
       })
       .then((data) => {
-        // setCurrentUser(data.data);
-        // navigate("/");
         setVerifyUser(data);
         if (data && data.status === 200) {
-          console.log("First click done!");
           setCurrentUser(data.data);
           navigate("/");
         } else {
