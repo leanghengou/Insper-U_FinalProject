@@ -52,6 +52,7 @@ const Article = () => {
         articleId={id}
         currentUser={currentUser}
         setComments={setComments}
+        articleComments={article && article.comments}
       />
     </Container>
   );

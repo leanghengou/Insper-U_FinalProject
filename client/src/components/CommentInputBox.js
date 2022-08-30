@@ -1,3 +1,4 @@
+import { set } from "date-fns";
 import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { CurrentUserContext } from "../CurrentUserContext";
@@ -6,12 +7,13 @@ const CommentInputBox = ({ articleId, currentUser, setComments }) => {
   const initialValue = {
     firstName: currentUser.firstName,
     lastName: currentUser.lastName,
-    comment: null,
+    comment: "",
     userId: currentUser._id,
     articleId: articleId,
   };
   const [commentUser, setCommentUser] = useState(initialValue);
   const [sendButton, setSendButton] = useState(false);
+  const [refeshInput, setRefreshInput] = useState(false);
 
   const refreshComment = () => {
     fetch(`/api/get-comments/${articleId}`)
@@ -35,6 +37,7 @@ const CommentInputBox = ({ articleId, currentUser, setComments }) => {
       })
         .then((res) => {
           console.log("Success!");
+          setCommentUser({ ...commentUser, comment: "" });
           refreshComment();
           return res.json();
         })
@@ -47,23 +50,31 @@ const CommentInputBox = ({ articleId, currentUser, setComments }) => {
     }
   };
 
+  const cancelHandler = (e) => {
+    setSendButton(false);
+    setCommentUser({ ...commentUser, comment: "" });
+  };
+
   return (
     <Container>
       <ProfileImage />
-      <InputBox
-        onChange={(e) => {
-          if (e.target.value) {
+      <InputBoxContainer>
+        <InputBox
+          value={commentUser.comment}
+          onChange={(e) => {
             setSendButton(true);
+            console.log("E", e.target.value, sendButton);
             setCommentUser({ ...commentUser, comment: e.target.value });
-          } else {
-            setSendButton(false);
-          }
-        }}
-        placeholder="Write your comment here..."
-      />
-      {sendButton ? (
-        <SubmitButton onClick={submitButton}>Post comment</SubmitButton>
-      ) : null}
+          }}
+          placeholder="Write your comment here..."
+        />
+        {sendButton ? (
+          <ButtonContainer>
+            <CancelButton onClick={cancelHandler}>Delete text</CancelButton>
+            <SubmitButton onClick={submitButton}>Post a comment</SubmitButton>
+          </ButtonContainer>
+        ) : null}
+      </InputBoxContainer>
     </Container>
   );
 };
@@ -72,38 +83,67 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   display: flex;
-  /* justify-content: space-between; */
   align-items: flex-start;
-  margin-top: 100px;
+`;
+
+const InputBoxContainer = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
 `;
 
 const InputBox = styled.input`
-  width: 50%;
+  width: auto;
   height: 50px;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #e9e9e9;
   outline: none;
   margin-left: 30px;
 `;
 
 const ProfileImage = styled.div`
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: aqua;
 `;
 
 const SubmitButton = styled.button`
-  width: 120px;
-  height: 50px;
-  background-color: aquamarine;
+  color: white;
+  font-weight: 600;
+  background-color: #ed9c00;
   border: none;
   border-radius: 5px;
-  margin-left: 40px;
-
+  padding: 15px 20px;
+  margin-top: 20px;
   &:hover {
     cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px;
+    background-color: black;
+    transition: 0.3s ease-in-out;
   }
 `;
 
+const CancelButton = styled.button`
+  color: white;
+  font-weight: 600;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  margin-right: 15px;
+  padding: 15px 20px;
+  margin-top: 20px;
+  &:hover {
+    cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px;
+    background-color: #ed0000;
+    transition: 0.3s ease-in-out;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  margin-right: 0px;
+  margin-left: auto;
+`;
 export default CommentInputBox;
