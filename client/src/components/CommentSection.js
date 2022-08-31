@@ -12,7 +12,7 @@ const CommentSection = ({
   return (
     <Container>
       <FlexBox>
-        <BigHeader>Share your though here...</BigHeader>
+        <BigHeader>Share your thought here...</BigHeader>
         <BodyText>
           {articleComments && articleComments.length + " "}
           {articleComments && articleComments.length >= 2

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import CommentInputBox from "./CommentInputBox";
+import { format, set } from "date-fns";
 
 const CommentsPosted = ({ comments }) => {
   return (
@@ -7,16 +8,23 @@ const CommentsPosted = ({ comments }) => {
       <div>
         {comments &&
           comments.map((comment, index) => {
+            const date = new Date(comment.date);
+            const month = format(date, "MMMM");
+            const day = format(date, "LL");
+            const year = format(date, "yyyy");
             return (
-              <CommentBox>
+              <CommentBox key={index}>
                 <ProfilePic />
                 <CommentContainer>
                   <CommentUserInfo>
-                    <BodyText key={index}>
+                    <UserInfo key={index}>
                       <Bolder>
                         {comment.firstName + " " + comment.lastName}
                       </Bolder>
-                    </BodyText>
+                      <DateComment>
+                        {month + " " + day + " " + year}
+                      </DateComment>
+                    </UserInfo>
                   </CommentUserInfo>
                   <CommentTextContainer>
                     <BodyText key={index}>{comment.comment}</BodyText>
@@ -46,13 +54,13 @@ const CommentBox = styled.div`
   padding: 20px 0;
   border-bottom: 1px solid #e9e9e9;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 `;
 const CommentContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-  padding: 20px 0;
+  /* padding: 20px 0; */
   width: 100%;
 `;
 const CommentUserInfo = styled.div`
@@ -61,6 +69,12 @@ const CommentUserInfo = styled.div`
 `;
 const CommentTextContainer = styled.div`
   max-width: 70%;
+`;
+
+const UserInfo = styled.p`
+  font-size: 16px;
+  line-height: 25px;
+  margin-bottom: 10px;
 `;
 
 const BodyText = styled.p`
@@ -73,9 +87,14 @@ const Bolder = styled.span`
 
 const ProfilePic = styled.div`
   width: 50px;
-  height: 50px;
+  height: 47px;
   background-color: aqua;
   border-radius: 50%;
+`;
+
+const DateComment = styled.span`
+  color: #6c6c6c;
+  margin-left: 10px;
 `;
 
 export default CommentsPosted;
