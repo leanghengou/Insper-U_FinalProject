@@ -1,20 +1,32 @@
 import styled from "styled-components";
 
-const ArticleCard = () => {
+const ArticleCard = ({ image, title, category, smallText, authors }) => {
+  console.log("small text", authors && authors);
   return (
     <Container>
-      <Image />
+      <Image image={image} />
       <ArticleInfo>
-        <Title>Is talent is natural or hardwork?</Title>
-        <ShortText>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-        </ShortText>
-        <CategoryTag>Social</CategoryTag>
+        <Title>
+          {title && title.length >= 50 ? title.slice(0, 50) + " ..." : title}
+        </Title>
+        <Credits authors={authors} />
+        <CategoryTag>
+          {category && category.charAt(0).toUpperCase() + category.slice(1)}
+        </CategoryTag>
       </ArticleInfo>
     </Container>
   );
 };
 
+const Credits = ({ authors }) => {
+  if (authors.length > 1) {
+    return (
+      <ShortText>{"By " + authors[0] + ", " + authors[1] + ", ..."}</ShortText>
+    );
+  } else if (authors.length <= 1) {
+    return <ShortText>{"By " + authors}</ShortText>;
+  }
+};
 const Container = styled.div`
   width: 300px;
   height: auto;
@@ -27,7 +39,10 @@ const Container = styled.div`
 const Image = styled.div`
   width: 100%;
   height: 190px;
-  background-color: aquamarine;
+  background-image: url(${(props) => props.image});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 20%;
 `;
 
 const ArticleInfo = styled.div`
@@ -37,15 +52,16 @@ const ArticleInfo = styled.div`
 
 const Title = styled.h3`
   margin-top: 10px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
-  line-height: 35px;
+  line-height: 28px;
 `;
 
 const ShortText = styled.p`
   color: #6c6c6c;
   font-size: 16px;
   line-height: 25px;
+  margin-top: 10px;
 `;
 
 const CategoryTag = styled.div`

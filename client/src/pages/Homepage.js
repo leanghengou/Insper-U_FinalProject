@@ -15,12 +15,12 @@ const Homepage = () => {
       <Slider />
       <BigHeader>Articles</BigHeader>
       <ArticleSections />
-      <FeaturedSectionsOne />
+      {/* <FeaturedSectionsOne />
       <BigHeader>Top Liked articles</BigHeader>
       <BigArticleSections />
       <FeaturedSectionsTwo />
       <BigHeader>Read to improve yourself</BigHeader>
-      <ArticleSections />
+      <ArticleSections /> */}
     </Container>
   );
 };
