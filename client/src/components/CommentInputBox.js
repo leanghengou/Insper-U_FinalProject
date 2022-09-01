@@ -5,10 +5,10 @@ import { CurrentUserContext } from "../CurrentUserContext";
 
 const CommentInputBox = ({ articleId, currentUser, setComments }) => {
   const initialValue = {
-    firstName: currentUser.firstName,
-    lastName: currentUser.lastName,
+    firstName: currentUser && currentUser.firstName,
+    lastName: currentUser && currentUser.lastName,
     comment: "",
-    userId: currentUser._id,
+    userId: currentUser && currentUser._id,
     articleId: articleId,
   };
   const [commentUser, setCommentUser] = useState(initialValue);

@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CurrentUserContext } from "../CurrentUserContext";
+import image from "../images/topofthemountain.jpg";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,8 +15,6 @@ const Login = () => {
   });
 
   setCurrentUser(null);
-
-  console.log("current user_Login", currentUser);
 
   // --------------------------
   const loginHandler = (e) => {
@@ -44,50 +43,136 @@ const Login = () => {
       });
   };
 
+  const CreatAccount = () => {
+    navigate("/register");
+  };
+
   return (
     <Container>
       <LoginForm>
-        <InputBox
-          onChange={(e) =>
-            setLoginInfo({ ...loginInfo, email: e.target.value })
-          }
-          placeholder="Email"
-        />
-        <InputBox
-          onChange={(e) =>
-            setLoginInfo({ ...loginInfo, password: e.target.value })
-          }
-          placeholder="Passwords"
-        />
-        <LoginButton onClick={loginHandler}>Login</LoginButton>
+        <FormContiner>
+          <TextContainer>
+            <BigHeader>Login</BigHeader>
+            <BodyText>
+              Special, that is our asset. Talent is a common word that everyone
+              knows and respects.
+            </BodyText>
+          </TextContainer>
+
+          <InputBox
+            onChange={(e) =>
+              setLoginInfo({ ...loginInfo, email: e.target.value })
+            }
+            placeholder="Email"
+          />
+          <InputBox
+            onChange={(e) =>
+              setLoginInfo({ ...loginInfo, password: e.target.value })
+            }
+            placeholder="Passwords"
+          />
+          <LoginButton onClick={loginHandler}>Login</LoginButton>
+          <CreateAccountButton onClick={CreatAccount}>
+            Create an account
+          </CreateAccountButton>
+        </FormContiner>
       </LoginForm>
+      <ImageBackground image={image} />
     </Container>
   );
 };
 
 const Container = styled.div`
   width: 100%;
-  height: auto;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+`;
+
+const TextContainer = styled.div`
+  width: 100%;
+  height: 120px;
+  font-size: 16px;
+  width: 55%;
+  height: 6%;
+  margin-bottom: 5%;
+  background-color: white;
+`;
+
+const BigHeader = styled.h1`
+  text-transform: uppercase;
+  font-size: 35px;
+  font-family: "Anton", sans-serif;
+  font-style: normal;
+  text-align: left;
+  padding-top: 30px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+`;
+const BodyText = styled.p`
+  font-size: 16px;
+  line-height: 25px;
+`;
+
+const ImageBackground = styled.div`
+  width: 50%;
+  height: 100%;
+  min-height: 100vh;
+  background-image: url(${(props) => props.image});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+`;
+
+const FormContiner = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 `;
 
 const InputBox = styled.input`
-  width: 400px;
-  height: 40px;
-  margin-bottom: 20px;
-  padding-left: 15px;
-  border: 1px solid black;
-  border-radius: 5px;
+  font-size: 14px;
+  width: 55%;
+  padding-left: 10px;
+  height: 6%;
+  margin-bottom: 15px;
+  border: 1px solid #c7c7c7;
+  border-radius: 3px;
 `;
 
 const LoginButton = styled.button`
-  width: 120px;
-  height: 40px;
-  background-color: aqua;
+  font-size: 16px;
+  font-weight: 600;
+  width: 57%;
+  height: 6%;
+  color: white;
   border: none;
-  border-radius: 5px;
+  background-color: #ed9c00;
+  border-radius: 3px;
+  margin-top: 20px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const CreateAccountButton = styled.button`
+  font-size: 16px;
+  font-weight: 600;
+  background-color: transparent;
+  width: 57%;
+  height: 6%;
+  border: 1px solid black;
+  border-radius: 3px;
   margin-top: 20px;
   &:hover {
     cursor: pointer;
@@ -95,8 +180,14 @@ const LoginButton = styled.button`
 `;
 
 const LoginForm = styled.div`
+  width: 50%;
+  height: 100%;
+  min-height: 100vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
+  background-color: white;
 `;
 
 export default Login;
