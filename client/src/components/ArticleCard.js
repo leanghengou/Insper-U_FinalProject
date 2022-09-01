@@ -10,23 +10,43 @@ const ArticleCard = ({ image, title, category, smallText, authors }) => {
           {title && title.length >= 50 ? title.slice(0, 50) + " ..." : title}
         </Title>
         <Credits authors={authors} />
-        <CategoryTag>
-          {category && category.charAt(0).toUpperCase() + category.slice(1)}
-        </CategoryTag>
+        <Category category={category} />
       </ArticleInfo>
     </Container>
   );
 };
 
 const Credits = ({ authors }) => {
-  if (authors.length > 1) {
+  if (authors && authors.length > 1) {
     return (
       <ShortText>{"By " + authors[0] + ", " + authors[1] + ", ..."}</ShortText>
     );
-  } else if (authors.length <= 1) {
+  } else if (authors && authors.length <= 1) {
     return <ShortText>{"By " + authors}</ShortText>;
   }
 };
+
+const Category = ({ category }) => {
+  if (category && category === "personal-development") {
+    const articleCateogry = "Personal development";
+    return <CategoryTag>{articleCateogry}</CategoryTag>;
+  }
+  if (category && category === "life-tip") {
+    const articleCateogry = "Life tips";
+    return <CategoryTag>{articleCateogry}</CategoryTag>;
+  }
+  if (category && category === "personal-story") {
+    const articleCateogry = "Personal story";
+    return <CategoryTag>{articleCateogry}</CategoryTag>;
+  } else {
+    return (
+      <CategoryTag>
+        {category && category.charAt(0).toUpperCase() + category.slice(1)}
+      </CategoryTag>
+    );
+  }
+};
+
 const Container = styled.div`
   width: 300px;
   height: auto;
