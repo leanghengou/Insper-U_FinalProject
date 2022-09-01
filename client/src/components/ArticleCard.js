@@ -1,9 +1,14 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-const ArticleCard = ({ image, title, category, smallText, authors }) => {
+const ArticleCard = ({ image, title, category, smallText, authors, id }) => {
+  const navigate = useNavigate();
   console.log("small text", authors && authors);
+  const checkHandler = (e) => {
+    navigate(`/article/${id}`);
+  };
   return (
-    <Container>
+    <Container onClick={checkHandler}>
       <Image image={image} />
       <ArticleInfo>
         <Title>
@@ -63,6 +68,9 @@ const Image = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center 20%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const ArticleInfo = styled.div`
@@ -75,6 +83,10 @@ const Title = styled.h3`
   font-size: 20px;
   font-weight: 500;
   line-height: 28px;
+  &:hover {
+    cursor: pointer;
+    color: #6c6c6c;
+  }
 `;
 
 const ShortText = styled.p`

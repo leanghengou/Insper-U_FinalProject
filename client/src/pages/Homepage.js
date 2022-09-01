@@ -7,9 +7,12 @@ import BigArticleSections from "../components/BigArticleSection";
 import FeaturedSectionsOne from "../components/FeaturedSectionOne";
 import FeaturedSectionsTwo from "../components/FeaturedSectionTwo";
 import { CurrentUserContext } from "../CurrentUserContext";
+import { useParams } from "react-router-dom";
 
 const Homepage = () => {
   const { currentUser } = useContext(CurrentUserContext);
+  const { id } = useParams();
+
   return (
     <Container>
       <Slider />
