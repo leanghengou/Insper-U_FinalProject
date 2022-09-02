@@ -6,12 +6,13 @@ import { CurrentUserContext } from "../CurrentUserContext";
 const Profile = () => {
   return (
     <Container>
-      <p>This is search page!</p>
+      <p>This is profile page!</p>
     </Container>
   );
 };
 
 const Container = styled.div`
+  margin-top: 150px;
   width: 100%;
   height: auto;
   display: flex;

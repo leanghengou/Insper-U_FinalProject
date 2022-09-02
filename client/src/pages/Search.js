@@ -12,6 +12,7 @@ const Search = () => {
 };
 
 const Container = styled.div`
+  margin-top: 150px;
   width: 100%;
   height: auto;
   display: flex;
