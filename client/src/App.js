@@ -9,6 +9,8 @@ import Login from "./pages/Login";
 import CreateAccount from "./pages/CreateAccount";
 import QuoteGenerate from "./pages/QuoteGenerate";
 import Contact from "./pages/Contact";
+import Profile from "./pages/Profile";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/register" element={<CreateAccount />} />
           <Route path="/quotes" element={<QuoteGenerate />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </Container>

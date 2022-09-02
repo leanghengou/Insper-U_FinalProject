@@ -39,6 +39,7 @@ const Container = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
+  margin-top: 120px;
 `;
 
 export default QuoteGenerate;
