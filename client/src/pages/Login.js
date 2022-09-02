@@ -58,19 +58,25 @@ const Login = () => {
               knows and respects.
             </BodyText>
           </TextContainer>
-
+          <LebelTag>
+            <BodyText>Email</BodyText>
+          </LebelTag>
           <InputBox
             onChange={(e) =>
               setLoginInfo({ ...loginInfo, email: e.target.value })
             }
-            placeholder="Email"
           />
+          <LebelTag>
+            <BodyText>Passwords</BodyText>
+          </LebelTag>
           <InputBox
             onChange={(e) =>
               setLoginInfo({ ...loginInfo, password: e.target.value })
             }
-            placeholder="Passwords"
+            type="password"
+            style={{ fontSize: "20px" }}
           />
+          <OrText>Don’t have an account?</OrText>
           <LoginButton onClick={loginHandler}>Login</LoginButton>
           <CreateAccountButton onClick={CreatAccount}>
             Create an account
@@ -101,9 +107,22 @@ const TextContainer = styled.div`
   height: 120px;
   font-size: 16px;
   width: 55%;
-  height: 6%;
-  margin-bottom: 5%;
+  height: auto;
+  margin-bottom: 40px;
   background-color: white;
+  padding-right: 10px;
+`;
+
+const LebelTag = styled.div`
+  width: 100%;
+  height: 120px;
+  font-size: 16px;
+  width: 55%;
+  height: auto;
+  background-color: white;
+  padding-right: 10px;
+  margin-bottom: 5px;
+  font-weight: 600;
 `;
 
 const BigHeader = styled.h1`
@@ -112,17 +131,21 @@ const BigHeader = styled.h1`
   font-family: "Anton", sans-serif;
   font-style: normal;
   text-align: left;
-  padding-top: 30px;
-  margin-block-start: 0em;
-  margin-block-end: 0em;
+  margin-bottom: 10px;
 `;
 const BodyText = styled.p`
   font-size: 16px;
   line-height: 25px;
 `;
 
+const OrText = styled.p`
+  font-size: 16px;
+  line-height: 25px;
+  margin: 20px 0;
+`;
+
 const ImageBackground = styled.div`
-  width: 50%;
+  width: 60%;
   height: 100%;
   min-height: 100vh;
   background-image: url(${(props) => props.image});
@@ -143,7 +166,7 @@ const FormContiner = styled.div`
 const InputBox = styled.input`
   font-size: 14px;
   width: 55%;
-  padding-left: 10px;
+  padding-left: 15px;
   height: 6%;
   margin-bottom: 15px;
   border: 1px solid #c7c7c7;
@@ -153,8 +176,8 @@ const InputBox = styled.input`
 const LoginButton = styled.button`
   font-size: 16px;
   font-weight: 600;
-  width: 57%;
-  height: 6%;
+  width: 58%;
+  height: 7%;
   color: white;
   border: none;
   background-color: #ed9c00;
@@ -162,6 +185,9 @@ const LoginButton = styled.button`
   margin-top: 20px;
   &:hover {
     cursor: pointer;
+    background-color: black;
+    color: white;
+    transition: 0.5s ease-in-out;
   }
 `;
 
@@ -169,18 +195,21 @@ const CreateAccountButton = styled.button`
   font-size: 16px;
   font-weight: 600;
   background-color: transparent;
-  width: 57%;
-  height: 6%;
+  width: 58%;
+  height: 7%;
   border: 1px solid black;
   border-radius: 3px;
   margin-top: 20px;
   &:hover {
     cursor: pointer;
+    background-color: black;
+    color: white;
+    transition: 0.5s ease-in-out;
   }
 `;
 
 const LoginForm = styled.div`
-  width: 50%;
+  width: 40%;
   height: 100%;
   min-height: 100vh;
   display: flex;
