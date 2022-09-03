@@ -75,7 +75,7 @@ const Navigation = () => {
             />
             <AccountButton
               onClick={() => {
-                navigate("/profile");
+                navigate(`/profile/${currentUser._id}`);
               }}
             />
             <LogoutButton onClick={logOutButton} />

@@ -164,7 +164,7 @@ const FormContiner = styled.div`
 `;
 
 const InputBox = styled.input`
-  font-size: 14px;
+  font-size: 16px;
   width: 55%;
   padding-left: 15px;
   height: 6%;

@@ -1,28 +1,55 @@
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ProfileFeed from "../components/ProfileFeed";
+import { CurrentUserContext } from "../CurrentUserContext";
 
 const Profile = () => {
+  const { currentUser } = useContext(CurrentUserContext);
+  const { id } = useParams();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch(`/api/get-spec-user/${id}`)
+      .then((res) => res.json())
+      .then((data) => setUser(data.data));
+  }, [id]);
+
+  console.log("user", user && user);
   return (
     <Container>
-      <UserInfoPart />
-      <BioBox />
+      <UserInfoPart user={user} currentUser={currentUser} />
+      {user && user.bio ? <BioBox bio={user.bio} /> : null}
       <ProfileFeed />
     </Container>
   );
 };
 // ---------------------------------------------------------------------------------------
-const UserInfoPart = () => {
+const UserInfoPart = ({ user, currentUser }) => {
   return (
     <UserInfoContainer>
       <UserInfoProfile>
         <UserImage />
         <UserInfo>
           <LocationBox>
-            <p>City : </p>
-            <p>Montreal</p>
+            <BodyText>{user && user.location}</BodyText>
           </LocationBox>
-          <Username>Cross Mevo (You)</Username>
-          <Nickname>Call me Maybe</Nickname>
+          <div>
+            {currentUser ? (
+              <Username>
+                {user && user._id === currentUser._id
+                  ? `${user.firstName + " " + user.lastName + " " + "(You)"}`
+                  : user && user.lastName}
+              </Username>
+            ) : (
+              <Username>
+                {user && user.firstName + " " + user.lastName}
+              </Username>
+            )}
+          </div>
+          {user && user.nickname ? (
+            <Nickname>{user && user.nickname}</Nickname>
+          ) : null}
         </UserInfo>
       </UserInfoProfile>
       <ButtonContainer>
@@ -32,19 +59,12 @@ const UserInfoPart = () => {
   );
 };
 
-const BioBox = () => {
+const BioBox = ({ bio }) => {
   return (
     <BioContainer>
       <BioTextContainer>
         <Subtitle>Bio</Subtitle>
-        <BioText>
-          Hard work refers to the practice, it is the construction of talent.
-          Talent wouldn’t exist in us if we didn’t do anything to achieve it.
-          Talent isn’t a gift, it’s the reward that we receive from practicing.
-          When we practice a lot, our skill and technique will be developed and
-          improve, with better skill and technique, we’ll surely be able to
-          perform better.
-        </BioText>
+        <BioText>{bio}</BioText>
       </BioTextContainer>
     </BioContainer>
   );
@@ -59,6 +79,11 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+`;
+
+const BodyText = styled.p`
+  font-size: 16px;
+  line-height: 25px;
 `;
 
 const UserInfoContainer = styled.div`
@@ -135,6 +160,7 @@ const BioContainer = styled.div`
   margin-top: 50px;
   padding: 30px 0;
   border-top: 1px solid #c7c7c7;
+  width: 100%;
 `;
 
 const BioTextContainer = styled.div`
