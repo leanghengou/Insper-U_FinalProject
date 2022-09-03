@@ -121,10 +121,9 @@ const ContainerLogin = styled.div`
 
 const LoginButton = styled.button`
   padding: 10px 25px;
-  border: 1px solid black;
+  border: 1px solid #e9e9e9;
   background-color: transparent;
   border-radius: 3px;
-  border: none;
   :hover& {
     cursor: pointer;
     background-color: black;

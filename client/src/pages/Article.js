@@ -29,7 +29,7 @@ const Article = () => {
           <BigHeader>{article && article.title}</BigHeader>
           <div>
             <AuthorText>
-              By: {article && article.authors.map((item) => item + ", ")}
+              By {article && article.authors.map((item) => item)}
             </AuthorText>
             <DateText>
               {article &&
@@ -102,7 +102,7 @@ const DateText = styled.p`
   line-height: 25px;
   color: #6c6c6c;
   width: 100%;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid #e9e9e9;
   padding-bottom: 20px;
 `;
 

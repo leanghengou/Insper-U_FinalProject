@@ -30,6 +30,7 @@ const Contact = () => {
         return res.json();
       })
       .then((data) => {
+        setMessageForm(initialUserValue);
         console.log(data.message);
       })
       .catch((err) => {
@@ -128,6 +129,7 @@ const MessageInputBox = styled.textarea`
   border: 1px solid #e9e9e9;
   border-radius: 3px;
   margin-right: 5%;
+  font-family: "Roboto", sans-serif;
 `;
 
 const TwoColumnContainer = styled.div`

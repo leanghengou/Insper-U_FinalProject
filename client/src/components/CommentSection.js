@@ -40,7 +40,7 @@ const Container = styled.div`
 `;
 
 const FlexBox = styled.div`
-  border-top: 0.5px solid #e9e9e9;
+  border-top: 1px solid #e9e9e9;
   width: 100%;
   height: auto;
   align-items: center;

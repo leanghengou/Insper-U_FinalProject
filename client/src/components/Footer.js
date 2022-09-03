@@ -34,7 +34,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-top: 150px;
-  border-top: 0.5px solid rgba(0, 0, 0, 0.5);
+  border-top: 1px solid #e9e9e9;
   padding-top: 50px;
 `;
 
@@ -51,7 +51,7 @@ const BottomBar = styled.div`
   height: 200px;
   text-align: center;
   padding: 20px 0;
-  border-top: 0.5px solid rgba(0, 0, 0, 0.5);
+  border-top: 1px solid #e9e9e9;
 `;
 const NavHeader = styled.h3`
   font-size: 18px;
