@@ -50,4 +50,4 @@ const batchImport = async (dbName) => {
   }
 };
 
-batchImport("insperu");
+// batchImport("insperu");

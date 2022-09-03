@@ -16,9 +16,19 @@ const contactUs = async (req, res) => {
       email: req.body.email,
       name: req.body.name,
       subject: req.body.subject,
+      date: req.body.date,
     };
+    const email = message.email;
+    const emailValidation = email.includes("@");
 
-    if (message.message && message.email && message.name && message.subject) {
+    if (
+      message.message &&
+      message.email &&
+      message.name &&
+      message.subject &&
+      emailValidation
+    ) {
+      console.log("emailValidation", emailValidation);
       res.status(200).json({
         status: 200,
         data: message,
@@ -28,7 +38,7 @@ const contactUs = async (req, res) => {
     } else {
       res.status(500).json({
         status: 500,
-        message: "Can't be sent. Not enough information.",
+        message: "Can't be sent. Not enough information or incorrect email...",
       });
     }
   } catch (err) {

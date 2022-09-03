@@ -40,7 +40,7 @@ express()
   .post("/api/post-comment", postComment)
   .patch("/api/like-article", likeArticle)
   .post("/api/login", loginUser)
-  .post("/contact", contactUs)
+  .post("/api/contact", contactUs)
 
   // Nothing to modify below this line
   // this is our catch all endpoint.
