@@ -33,9 +33,13 @@ const likeArticle = async (req, res) => {
       await db
         .collection("articles")
         .updateOne({ _id: articleId }, { $set: { likes: removeLike } });
+      const newLike = await db
+        .collection("articles")
+        .findOne({ _id: articleId });
       res.status(200).json({
         status: 200,
         message: "The article is successfully unliked.",
+        data: newLike.likes,
       });
     } else if (!validateRealUser) {
       res.status(500).json({
@@ -47,9 +51,13 @@ const likeArticle = async (req, res) => {
       await db
         .collection("articles")
         .updateOne({ _id: articleId }, { $set: { likes: newNumLikes } });
+      const newLike = await db
+        .collection("articles")
+        .findOne({ _id: articleId });
       res.status(200).json({
         status: 200,
         message: "Like is successful!",
+        data: newLike.likes,
       });
     }
   } catch (err) {

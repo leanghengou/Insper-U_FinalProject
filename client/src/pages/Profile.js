@@ -152,13 +152,18 @@ const EditButton = styled.button`
 `;
 
 const Subtitle = styled.h3`
+  text-transform: uppercase;
   font-size: 25px;
-  font-weight: 600;
+  font-family: "Anton", sans-serif;
+  font-style: normal;
+  text-align: left;
+  padding-top: 10px;
+  margin-block-start: 0em;
 `;
 
 const BioContainer = styled.div`
   margin-top: 50px;
-  padding: 30px 0;
+  padding: 20px 0;
   border-top: 1px solid #c7c7c7;
   width: 100%;
 `;
@@ -170,7 +175,7 @@ const BioTextContainer = styled.div`
 const BioText = styled.p`
   font-size: 16px;
   line-height: 25px;
-  font-style: italic;
+  /* font-style: italic; */
   font-weight: 400;
   margin-top: 20px;
 `;

@@ -20,40 +20,70 @@ const Article = () => {
       .then((res) => res.json())
       .then((data) => setComments(data.data));
   }, [id]);
+  // --------------------------------
+  // const [isLike, setIsLike] = useState();
+  // const likeHandler = (e) => {
+  //   fetch(`/api/like-article`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //     },
+  //     body: JSON.stringify(isLike),
+  //   })
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data.message);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
+  // ---------------------------------
   return (
     <Container>
-      <ArticleImage imageSrc={article && article.image} />
-      <ArticleSection>
-        <ArticleBox>
-          <BigHeader>{article && article.title}</BigHeader>
-          <div>
-            <AuthorText>
-              By {article && article.authors.map((item) => item)}
-            </AuthorText>
-            <DateText>
+      {article ? (
+        <>
+          <ArticleImage imageSrc={article && article.image} />
+          <ArticleSection>
+            <ArticleBox>
+              <BigHeader>{article && article.title}</BigHeader>
+              <div>
+                <AuthorText>
+                  By {article && article.authors.map((item) => item)}
+                </AuthorText>
+                <DateText>
+                  {article &&
+                    article.postDate.month +
+                      " " +
+                      article.postDate.day +
+                      " " +
+                      article.postDate.year}
+                </DateText>
+              </div>
               {article &&
-                article.postDate.month +
-                  " " +
-                  article.postDate.day +
-                  " " +
-                  article.postDate.year}
-            </DateText>
-          </div>
-          {article &&
-            article.content.map((item) => {
-              return <BodyText key={item}>{item}</BodyText>;
-            })}
-        </ArticleBox>
-        <Sidebar></Sidebar>
-      </ArticleSection>
-      <CommentSection
-        comments={comments}
-        articleId={id}
-        currentUser={currentUser}
-        setComments={setComments}
-        articleComments={article && article.comments}
-      />
+                article.content.map((item) => {
+                  return <BodyText key={item}>{item}</BodyText>;
+                })}
+            </ArticleBox>
+            <Sidebar></Sidebar>
+          </ArticleSection>
+          <CommentSection
+            comments={comments}
+            articleId={id}
+            currentUser={currentUser}
+            setComments={setComments}
+            articleComments={article && article.comments}
+            articleLikes={article && article.likes}
+            // likeHandler={likeHandler}
+          />
+        </>
+      ) : (
+        <div>Loading...</div>
+      )}
     </Container>
   );
 };
