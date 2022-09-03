@@ -1,13 +1,12 @@
-import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { CurrentUserContext } from "../CurrentUserContext";
+import ProfileFeed from "../components/ProfileFeed";
 
 const Profile = () => {
   return (
     <Container>
       <UserInfoPart />
       <BioBox />
+      <ProfileFeed />
     </Container>
   );
 };
