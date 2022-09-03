@@ -9,7 +9,6 @@ const options = {
 
 const { sentimentTest } = require("./sentimentTest");
 const postComment = async (req, res) => {
-  console.log("hello");
   try {
     const client = new MongoClient(MONGO_URI, options);
     const db = client.db("insperu");

@@ -14,6 +14,7 @@ const { likeArticle } = require("./handlerFunc.js/likeArticle");
 const { getComments } = require("./handlerFunc.js/getComments");
 const { getCommentByArticle } = require("./handlerFunc.js/getCommentByArticle");
 const { loginUser } = require("./handlerFunc.js/loginUser");
+const { contactUs } = require("./handlerFunc.js/contactUs");
 
 express()
   // Below are methods that are included in express(). We chain them for convenience.
@@ -39,6 +40,7 @@ express()
   .post("/api/post-comment", postComment)
   .patch("/api/like-article", likeArticle)
   .post("/api/login", loginUser)
+  .post("/contact", contactUs)
 
   // Nothing to modify below this line
   // this is our catch all endpoint.
