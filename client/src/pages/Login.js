@@ -187,7 +187,7 @@ const LoginButton = styled.button`
     cursor: pointer;
     background-color: black;
     color: white;
-    transition: 0.5s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
 `;
 
@@ -204,7 +204,7 @@ const CreateAccountButton = styled.button`
     cursor: pointer;
     background-color: black;
     color: white;
-    transition: 0.5s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
 `;
 

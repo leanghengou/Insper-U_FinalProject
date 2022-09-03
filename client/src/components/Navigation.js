@@ -4,11 +4,18 @@ import logo from "../images/logo-black-01.png";
 import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
+import { GrLogout } from "react-icons/gr";
 import { useContext } from "react";
+import { IoSearch, IoLogOutOutline } from "react-icons/io5";
+import { set } from "date-fns";
 
 const Navigation = () => {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
+  const logOutButton = (e) => {
+    setCurrentUser(null);
+    navigate("login");
+  };
   return (
     <NavContainer>
       <Container>
@@ -61,18 +68,17 @@ const Navigation = () => {
           </ContainerLogin>
         ) : (
           <ContainerTwo>
-            <BsSearch
+            <SearchButton
               onClick={() => {
                 navigate("search");
               }}
-              style={{ fontSize: "20px", marginRight: "30px" }}
             />
-            <AiOutlineUser
+            <AccountButton
               onClick={() => {
                 navigate("/profile");
               }}
-              style={{ fontSize: "25px" }}
             />
+            <LogoutButton onClick={logOutButton} />
           </ContainerTwo>
         )}
       </Container>
@@ -96,7 +102,7 @@ const Container = styled.div`
 const ContainerTwo = styled.div`
   display: flex;
   position: fixed;
-  margin-left: 86.7%;
+  margin-left: 80%;
   align-items: center;
 `;
 
@@ -123,7 +129,7 @@ const LoginButton = styled.button`
     cursor: pointer;
     background-color: black;
     color: white;
-    transition: 0.5s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
 `;
 
@@ -139,7 +145,7 @@ const RegisterButton = styled.button`
     cursor: pointer;
     background-color: black;
     color: white;
-    transition: 0.5s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
 `;
 
@@ -175,7 +181,6 @@ const NavLink = styled.button`
 `;
 
 const LogoBackground = styled.div`
-  /* background-color: black; */
   height: 100%;
   width: 100px;
   padding: 0 30px;
@@ -186,17 +191,41 @@ const LogoBackground = styled.div`
   margin-left: 8.58%;
   border-right: 1px solid #e9e9e9;
   border-left: 1px solid #e9e9e9;
-  /* margin-right: 7px; */
-  /* background-image: url(${(props) => props.image});
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center; */
-  /* position: absolute; */
   left: 0%;
   :hover& {
     cursor: pointer;
     background-color: #ed9c00;
     transition: 0.5s ease-in-out;
+  }
+`;
+
+const LogoutButton = styled(IoLogOutOutline)`
+  font-size: 25px;
+  margin-left: 35px;
+  &:hover {
+    cursor: pointer;
+    color: #ed9c00;
+    transition: 0.3s ease-in-out;
+  }
+`;
+
+const SearchButton = styled(IoSearch)`
+  font-size: 20px;
+  margin-left: 35px;
+  &:hover {
+    cursor: pointer;
+    color: #ed9c00;
+    transition: 0.3s ease-in-out;
+  }
+`;
+
+const AccountButton = styled(AiOutlineUser)`
+  font-size: 25px;
+  margin-left: 35px;
+  &:hover {
+    cursor: pointer;
+    color: #ed9c00;
+    transition: 0.3s ease-in-out;
   }
 `;
 export default Navigation;

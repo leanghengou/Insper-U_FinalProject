@@ -93,9 +93,10 @@ const InputBoxContainer = styled.div`
   flex-direction: column;
 `;
 
-const InputBox = styled.input`
+const InputBox = styled.textarea`
+  font-family: "Roboto", sans-serif;
   width: auto;
-  height: 50px;
+  height: 45px;
   border: none;
   border-bottom: 1px solid #e9e9e9;
   outline: none;
@@ -112,32 +113,32 @@ const ProfileImage = styled.div`
 const SubmitButton = styled.button`
   color: white;
   font-weight: 600;
-  background-color: #ed9c00;
+  background-color: black;
   border: none;
   border-radius: 5px;
   padding: 15px 20px;
   margin-top: 20px;
   &:hover {
     cursor: pointer;
-    box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px;
-    background-color: black;
+    /* box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px; */
+    background-color: #ed9c00;
     transition: 0.3s ease-in-out;
   }
 `;
 
 const CancelButton = styled.button`
-  color: white;
   font-weight: 600;
-  background-color: black;
-  border: none;
+  background-color: transparent;
+  border: 2px solid #e9e9e9;
   border-radius: 5px;
   margin-right: 15px;
   padding: 15px 20px;
   margin-top: 20px;
   &:hover {
     cursor: pointer;
-    box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px;
-    background-color: #ed0000;
+    background-color: #ee3828;
+    border: 2px solid #ee3828;
+    color: white;
     transition: 0.3s ease-in-out;
   }
 `;

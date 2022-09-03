@@ -39,6 +39,10 @@ const Contact = () => {
   return (
     <Container>
       <BigHeader>Have any question?</BigHeader>
+      <BodyText>
+        If you have any question to ask, or if you wish to disccus something
+        with us, we always feel free to participate.
+      </BodyText>
       <TwoColumnContainer>
         <SmallInputContainer>
           <LabelTitle>Name</LabelTitle>
@@ -93,7 +97,7 @@ const Contact = () => {
 };
 
 const Container = styled.div`
-  margin-top: 150px;
+  margin-top: 100px;
   width: 100%;
   height: auto;
   display: flex;
@@ -108,7 +112,7 @@ const BigHeader = styled.h1`
   font-style: normal;
   text-align: left;
   margin-bottom: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
 `;
 
 const InputBox = styled.input`
@@ -118,8 +122,9 @@ const InputBox = styled.input`
   margin-right: 5%;
   margin-bottom: 30px;
 `;
-const MessageInputBox = styled.input`
+const MessageInputBox = styled.textarea`
   padding: 15px 20px;
+  height: 150px;
   border: 1px solid #e9e9e9;
   border-radius: 3px;
   margin-right: 5%;
@@ -145,6 +150,11 @@ const LabelTitle = styled.p`
   line-height: 25px;
   font-weight: 600;
   margin-bottom: 10px;
+`;
+const BodyText = styled.p`
+  font-size: 16px;
+  line-height: 25px;
+  margin-bottom: 50px;
 `;
 
 const SendButton = styled.button`
