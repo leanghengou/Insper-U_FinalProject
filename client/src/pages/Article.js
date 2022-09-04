@@ -1,11 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CurrentUserContext } from "../CurrentUserContext";
 import styled from "styled-components";
 import CommentSection from "../components/CommentSection";
 
 const Article = () => {
   const { currentUser } = useContext(CurrentUserContext);
+  const nagivate = useNavigate();
+  if (!currentUser) {
+    nagivate("/login");
+  }
   const { id } = useParams();
   const [article, setArticle] = useState();
   const [comments, setComments] = useState(null);

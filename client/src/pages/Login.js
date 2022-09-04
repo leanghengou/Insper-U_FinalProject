@@ -76,8 +76,8 @@ const Login = () => {
             type="password"
             style={{ fontSize: "20px" }}
           />
-          <OrText>Don’t have an account?</OrText>
           <LoginButton onClick={loginHandler}>Login</LoginButton>
+          <OrText>Don’t have an account?</OrText>
           <CreateAccountButton onClick={CreatAccount}>
             Create an account
           </CreateAccountButton>
@@ -199,7 +199,7 @@ const CreateAccountButton = styled.button`
   height: 7%;
   border: 1px solid black;
   border-radius: 3px;
-  margin-top: 20px;
+  /* margin-top: 5px; */
   &:hover {
     cursor: pointer;
     background-color: black;

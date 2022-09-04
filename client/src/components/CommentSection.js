@@ -22,7 +22,6 @@ const CommentSection = ({
     setNumLikes(articleLikes && articleLikes);
   }, [articleId]);
 
-  console.log("NUM LIKE ", numLikes, articleLikes);
   const [isLikedValidate, setIsLikeValidate] = useState(
     articleLikes && articleLikes.some((id) => id === currentUser._id)
   );
@@ -67,12 +66,14 @@ const CommentSection = ({
             </BodyText>
           </CommentLike>
         </FlexBox>
-        <LikeButton isLikedValidate={isLikedValidate}>
-          <BiHeart
-            onClick={likeHandler}
-            style={{ fontSize: "30px", marginTop: "5px" }}
-          />
-        </LikeButton>
+        {currentUser ? (
+          <LikeButton isLikedValidate={isLikedValidate}>
+            <BiHeart
+              onClick={likeHandler}
+              style={{ fontSize: "30px", marginTop: "5px" }}
+            />
+          </LikeButton>
+        ) : null}
       </CommentInfoContainer>
       <CommentInputBox
         articleId={articleId}

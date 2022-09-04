@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import ProfileFeed from "../components/ProfileFeed";
 import { CurrentUserContext } from "../CurrentUserContext";
@@ -8,6 +8,11 @@ const Profile = () => {
   const { currentUser } = useContext(CurrentUserContext);
   const { id } = useParams();
   const [user, setUser] = useState(null);
+
+  const navigate = useNavigate("");
+  if (!currentUser) {
+    navigate("/login");
+  }
 
   useEffect(() => {
     fetch(`/api/get-spec-user/${id}`)
