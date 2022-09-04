@@ -11,6 +11,7 @@ import QuoteGenerate from "./pages/QuoteGenerate";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 import Search from "./pages/Search";
+import UploadImages from "./pages/UploadImage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/search" element={<Search />} />
           <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/upload" element={<UploadImages />} />
         </Routes>
         <Footer />
       </Container>

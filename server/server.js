@@ -2,6 +2,7 @@
 
 // import the needed node_modules.
 const express = require("express");
+const fileUpload = require("express-fileupload");
 const morgan = require("morgan");
 const { getAllArticles } = require("./handlerFunc.js/getAllArticles");
 const { getSpecArticle } = require("./handlerFunc.js/getSpecArticle");
@@ -26,7 +27,6 @@ express()
 
   // Any requests for static files will go into the public folder
   .use(express.static("public"))
-
   // Nothing to modify above this line
   // ---------------------------------
   .get("/api/categories", getCategories)
