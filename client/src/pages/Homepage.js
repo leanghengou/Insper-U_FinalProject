@@ -16,7 +16,9 @@ const Homepage = () => {
   return (
     <Container>
       <Slider />
-      <BigHeader>Articles</BigHeader>
+      <BigHeader>
+        <YellowColor>Unpopular</YellowColor> social topics
+      </BigHeader>
       <ArticleSections />
       {/* <FeaturedSectionsOne />
       <BigHeader>Top Liked articles</BigHeader>
@@ -47,6 +49,10 @@ const BigHeader = styled.h1`
   margin-bottom: 40px;
   padding-top: 20px;
   border-top: 0.5px solid rgba(255, 255, 255, 0.5);
+`;
+
+const YellowColor = styled.span`
+  color: #ed9c00;
 `;
 
 export default Homepage;
