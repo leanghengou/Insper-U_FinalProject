@@ -45,6 +45,7 @@ const ProfileFeed = ({ recentLike, recentComment }) => {
             } else {
               category = category.charAt(0).toUpperCase() + category.slice(1);
             }
+
             return (
               <LinkContainer>
                 <ArticleName
@@ -63,13 +64,18 @@ const ProfileFeed = ({ recentLike, recentComment }) => {
         <Subtitle>Recent comments</Subtitle>
         {commentFeed &&
           commentFeed.reverse().map((comment) => {
+            const commentText = comment.comment.slice(0, 120);
             return (
               <LinkContainer>
                 <ArticleName
                   onClick={(e) => {
                     navigate(`/article/${comment.articleId}`);
                   }}
-                >{` "${comment.comment}" `}</ArticleName>
+                >
+                  {comment.comment.length > 120
+                    ? `"${commentText}..."`
+                    : `"${comment.comment}"`}
+                </ArticleName>
                 <ArticleCategory>{comment.articleTitle}</ArticleCategory>
               </LinkContainer>
             );

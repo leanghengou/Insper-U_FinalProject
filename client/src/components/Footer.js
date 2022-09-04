@@ -33,7 +33,7 @@ const Container = styled.div`
   justify-content: space-evenly;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 150px;
+  margin-top: 100px;
   border-top: 1px solid #e9e9e9;
   padding-top: 50px;
 `;
