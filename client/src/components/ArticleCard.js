@@ -8,16 +8,18 @@ const ArticleCard = ({ image, title, category, smallText, authors, id }) => {
     navigate(`/article/${id}`);
   };
   return (
-    <Container onClick={checkHandler}>
-      <Image image={image} />
-      <ArticleInfo>
-        <Title>
-          {title && title.length >= 50 ? title.slice(0, 50) + " ..." : title}
-        </Title>
-        <Credits authors={authors} />
-        <Category category={category} />
-      </ArticleInfo>
-    </Container>
+    <div>
+      <Container onClick={checkHandler}>
+        <Image image={image} />
+        <ArticleInfo>
+          <Title>
+            {title && title.length >= 50 ? title.slice(0, 50) + " ..." : title}
+          </Title>
+          <Credits authors={authors} />
+        </ArticleInfo>
+      </Container>
+      <Category category={category} />
+    </div>
   );
 };
 
@@ -45,9 +47,11 @@ const Category = ({ category }) => {
     return <CategoryTag>{articleCateogry}</CategoryTag>;
   } else {
     return (
-      <CategoryTag>
-        {category && category.charAt(0).toUpperCase() + category.slice(1)}
-      </CategoryTag>
+      <div>
+        <CategoryTag>
+          {category && category.charAt(0).toUpperCase() + category.slice(1)}
+        </CategoryTag>
+      </div>
     );
   }
 };
@@ -97,8 +101,10 @@ const ShortText = styled.p`
 `;
 
 const CategoryTag = styled.div`
+  font-size: 13px;
   text-align: center;
-  max-width: 30%;
+  padding: 0 15px;
+  max-width: 130px;
   color: white;
   background-color: #ed9c00;
   border-radius: 50px;

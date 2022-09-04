@@ -8,11 +8,25 @@ const Profile = () => {
   const { currentUser } = useContext(CurrentUserContext);
   const { id } = useParams();
   const [user, setUser] = useState(null);
+  const [recentComment, setRecentComment] = useState(null);
+  const [recentLike, setRecentLike] = useState(null);
 
   const navigate = useNavigate("");
   if (!currentUser) {
     navigate("/login");
   }
+
+  useEffect(() => {
+    fetch(`/api/user-comment-article/${id}`)
+      .then((res) => res.json())
+      .then((data) => setRecentComment(data.data));
+  }, [id]);
+
+  useEffect(() => {
+    fetch(`/api/user-like-article/${id}`)
+      .then((res) => res.json())
+      .then((data) => setRecentLike(data.data));
+  }, [id]);
 
   useEffect(() => {
     fetch(`/api/get-spec-user/${id}`)
@@ -25,7 +39,7 @@ const Profile = () => {
     <Container>
       <UserInfoPart user={user} currentUser={currentUser} />
       {user && user.bio ? <BioBox bio={user.bio} /> : null}
-      <ProfileFeed />
+      <ProfileFeed recentComment={recentComment} recentLike={recentLike} />
     </Container>
   );
 };
