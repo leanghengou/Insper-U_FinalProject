@@ -25,7 +25,7 @@ const batchImport = async (dbName) => {
     // });
     // await db.collection("articles").insertMany(correctArticles);
     // Delete all articles-------------------
-    // await db.collection("articles").deleteMany();
+    // await db.collection("comments").deleteMany();
     // -----------------------------------------
 
     // Insert all authors-------------------
@@ -50,4 +50,4 @@ const batchImport = async (dbName) => {
   }
 };
 
-// batchImport("insperu");
+batchImport("insperu");

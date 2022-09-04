@@ -14,15 +14,10 @@ const userCommentArticles = async (req, res) => {
     const allUsers = await db.collection("users").find().toArray();
     const allComment = await db.collection("comments").find().toArray();
     const idParam = req.params.userId;
-    // const commentArticles = allArticles.filter((article) => {
-    //   return article.comments.includes(idParam);
-    // });
 
     const userComments = allComment.filter((comment) => {
       return comment.userId === idParam;
     });
-
-    // const updateUserComments = userComments
 
     const validateUser = allUsers.some((userId) => userId._id === idParam);
     if (validateUser) {

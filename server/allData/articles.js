@@ -221,7 +221,7 @@ const articles = [
   },
   {
     id: uuidv4(),
-    title: "Livingin city and staying in small village",
+    title: "Living in city and staying in small village",
     image:
       "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/City_vv_h9xhgl.jpg",
     postDate: {
@@ -300,9 +300,11 @@ const articles = [
   {
     id: uuidv4(),
     title: "Fear of the unknown",
+    image:
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/fear_pbyrw6.png",
     postDate: {
       month: "March",
-      day: "23",
+      day: "18",
       year: "2021",
     },
     authors: ["Phang Lee Khemrinn"],
