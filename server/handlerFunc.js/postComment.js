@@ -29,6 +29,7 @@ const postComment = async (req, res) => {
       lastName: req.body.lastName,
       comment: req.body.comment,
       date: Date.now(),
+      articleTitle: req.body.articleTitle,
     };
     const sentimentAnswer = await sentimentTest(newComment.comment);
 
@@ -44,13 +45,14 @@ const postComment = async (req, res) => {
       !newComment.firstName ||
       !newComment.lastName ||
       !newComment.comment ||
-      !newComment.date
+      !newComment.date ||
+      !newComment.articleTitle
     ) {
       res.status(500).json({
         status: 500,
         message: "User must be providing wrong information.",
       });
-    } else if (validateComment.length > 5) {
+    } else if (validateComment.length > 6) {
       res.status(500).json({
         status: 500,
         message:

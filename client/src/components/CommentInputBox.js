@@ -3,13 +3,19 @@ import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { CurrentUserContext } from "../CurrentUserContext";
 
-const CommentInputBox = ({ articleId, currentUser, setComments }) => {
+const CommentInputBox = ({
+  articleId,
+  currentUser,
+  setComments,
+  articleTitle,
+}) => {
   const initialValue = {
     firstName: currentUser && currentUser.firstName,
     lastName: currentUser && currentUser.lastName,
     comment: "",
     userId: currentUser && currentUser._id,
     articleId: articleId,
+    articleTitle: articleTitle,
   };
   const [commentUser, setCommentUser] = useState(initialValue);
   const [sendButton, setSendButton] = useState(false);
@@ -25,7 +31,8 @@ const CommentInputBox = ({ articleId, currentUser, setComments }) => {
       commentUser.firstName &&
       commentUser.lastName &&
       commentUser.articleId &&
-      commentUser.userId
+      commentUser.userId &&
+      commentUser.articleTitle
     ) {
       fetch(`/api/post-comment`, {
         method: "POST",

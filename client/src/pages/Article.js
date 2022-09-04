@@ -83,6 +83,7 @@ const Article = () => {
             setComments={setComments}
             articleComments={article && article.comments}
             articleLikes={article && article.likes}
+            articleTitle={article && article.title}
             // likeHandler={likeHandler}
           />
         </>
