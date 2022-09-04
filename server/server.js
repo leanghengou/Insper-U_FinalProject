@@ -16,6 +16,7 @@ const { getComments } = require("./handlerFunc.js/getComments");
 const { getCommentByArticle } = require("./handlerFunc.js/getCommentByArticle");
 const { loginUser } = require("./handlerFunc.js/loginUser");
 const { contactUs } = require("./handlerFunc.js/contactUs");
+const { userLikeArticles } = require("./handlerFunc.js/userLikeArticles");
 
 express()
   // Below are methods that are included in express(). We chain them for convenience.
@@ -36,6 +37,7 @@ express()
   .get("/api/get-spec-user/:userId", getSpecUser)
   .get("/api/get-comments", getComments)
   .get("/api/get-comments/:articleId", getCommentByArticle)
+  .get("/api/user-like-article/:userId", userLikeArticles)
   .post("/api/create-user", createUser)
   .post("/api/post-comment", postComment)
   .patch("/api/like-article", likeArticle)
