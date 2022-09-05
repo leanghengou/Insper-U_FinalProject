@@ -22,7 +22,7 @@ const Container = styled.div`
   height: auto;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-top: 200px;
   /* border-top: 1px solid #e9e9e9;
   padding-top: 50px; */
@@ -52,7 +52,6 @@ const BigHeader = styled.h1`
   font-size: 40px;
   font-family: "Anton", sans-serif;
   font-style: normal;
-  margin-top: 50px;
   margin-bottom: 50px;
 `;
 

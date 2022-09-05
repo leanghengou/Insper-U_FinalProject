@@ -30,7 +30,7 @@ const ProfileFeed = ({ recentLike, recentComment }) => {
   return (
     <Container>
       <BoxContainer>
-        <Subtitle>Recent like</Subtitle>
+        <Subtitle>Liked articles</Subtitle>
         {likeFeed &&
           likeFeed.reverse().map((article) => {
             let category = article && article.category[0];

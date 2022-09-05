@@ -7,6 +7,7 @@ import BigArticleSections from "../components/BigArticleSection";
 import FeaturedSectionsOne from "../components/FeaturedSectionOne";
 import FeaturedSectionsTwo from "../components/FeaturedSectionTwo";
 import FeaturedSectionsThree from "../components/FeaturedSectionThree";
+import ArticleSectionsTwo from "../components/ArticleSectionsTwo";
 import { CurrentUserContext } from "../CurrentUserContext";
 import { useParams } from "react-router-dom";
 
@@ -24,10 +25,10 @@ const Homepage = () => {
       <FeaturedSectionsOne />
       <FeaturedSectionsTwo />
       <FeaturedSectionsThree />
-      <BigHeader>Top Liked articles</BigHeader>
+      <BigHeader>Featured articles</BigHeader>
       <BigArticleSections />
-      {/* <BigHeader>Read to improve yourself</BigHeader>
-      <ArticleSections /> */}
+      <BigHeader>Don't forget to read...</BigHeader>
+      <ArticleSectionsTwo />
     </Container>
   );
 };
