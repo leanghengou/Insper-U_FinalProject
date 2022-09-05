@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const ArticleCard = ({ image, title, category, smallText, authors, id }) => {
   const navigate = useNavigate();
-  console.log("small text", authors && authors);
   const checkHandler = (e) => {
     navigate(`/article/${id}`);
   };

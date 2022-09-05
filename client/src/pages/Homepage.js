@@ -20,8 +20,8 @@ const Homepage = () => {
         <YellowColor>Unpopular</YellowColor> social topics
       </BigHeader>
       <ArticleSections />
-      {/* <FeaturedSectionsOne />
-      <BigHeader>Top Liked articles</BigHeader>
+      <FeaturedSectionsOne />
+      {/* <BigHeader>Top Liked articles</BigHeader>
       <BigArticleSections />
       <FeaturedSectionsTwo />
       <BigHeader>Read to improve yourself</BigHeader>
