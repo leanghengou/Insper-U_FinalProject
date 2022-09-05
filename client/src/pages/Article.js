@@ -26,26 +26,6 @@ const Article = () => {
       .then((data) => setComments(data.data));
   }, [id]);
   // --------------------------------
-  // const [isLike, setIsLike] = useState();
-  // const likeHandler = (e) => {
-  //   fetch(`/api/like-article`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //     body: JSON.stringify(isLike),
-  //   })
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       console.log(data.message);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 
   // ---------------------------------
   return (
@@ -69,12 +49,26 @@ const Article = () => {
                       article.postDate.year}
                 </DateText>
               </div>
-              {article &&
-                article.content.map((item) => {
-                  return <BodyText key={item}>{item}</BodyText>;
-                })}
+              <TextContainer>
+                {article &&
+                  article.content.map((item) => {
+                    return <BodyText key={item}>{item}</BodyText>;
+                  })}
+              </TextContainer>
             </ArticleBox>
-            <Sidebar></Sidebar>
+            <Sidebar>
+              <Subtitle>Related articles</Subtitle>
+              <ArticleName>
+                Are cultural dimensions mentioned in the book practically
+                accurate?
+              </ArticleName>
+              <ArticleCategory>Personal development</ArticleCategory>
+              <ArticleName>
+                Are cultural dimensions mentioned in the book practically
+                accurate?
+              </ArticleName>
+              <ArticleCategory>Personal development</ArticleCategory>
+            </Sidebar>
           </ArticleSection>
           <CommentSection
             comments={comments}
@@ -110,14 +104,18 @@ const ArticleBox = styled.div`
 `;
 
 const Sidebar = styled.div`
-  width: 30%;
+  width: 27%;
   height: auto;
   display: flex;
   flex-direction: column;
+  margin-top: 70px;
+  border-left: 1px solid #e9e9e9;
+  padding-left: 3%;
 `;
 const ArticleSection = styled.div`
   display: flex;
   text-align: left;
+  justify-content: space-between;
 `;
 
 const BodyText = styled.p`
@@ -162,6 +160,39 @@ const ArticleImage = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+`;
+
+const Subtitle = styled.h1`
+  text-transform: uppercase;
+  font-size: 25px;
+  font-family: "Anton", sans-serif;
+  font-style: normal;
+  text-align: left;
+  padding-top: 30px;
+  margin-block-start: 0em;
+  margin-block-end: 1em;
+`;
+
+const ArticleName = styled.p`
+  font-size: 16px;
+  line-height: 25px;
+  font-weight: 600;
+  &:hover {
+    cursor: pointer;
+    color: #ed9c00;
+    transition: 0.3s ease-in-out;
+  }
+`;
+
+const ArticleCategory = styled.p`
+  font-size: 16px;
+  line-height: 25px;
+  color: #6c6c6c;
+  margin-bottom: 20px;
+`;
+
+const TextContainer = styled.div`
+  width: 95%;
 `;
 
 export default Article;

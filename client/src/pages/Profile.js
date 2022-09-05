@@ -34,7 +34,6 @@ const Profile = () => {
       .then((data) => setUser(data.data));
   }, [id]);
 
-  console.log("user", user && user);
   return (
     <Container>
       <UserInfoPart user={user} currentUser={currentUser} />

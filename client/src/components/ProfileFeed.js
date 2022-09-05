@@ -1,32 +1,32 @@
+import { min } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const ProfileFeed = ({ recentLike, recentComment }) => {
   const navigate = useNavigate("");
 
-  // -------------------------------
-  // if (category && category === "personal-development") {
-  //   const articleCateogry = "Personal development";
-  //   return <CategoryTag>{articleCateogry}</CategoryTag>;
-  // }
-  // if (category && category === "life-tip") {
-  //   const articleCateogry = "Life tips";
-  // }
-  // if (category && category === "personal-story") {
-  //   const articleCateogry = "Personal story";
-  // } else {
-  //   return (
-  //     <div>
-  //       <CategoryTag>
-  //         {category && category.charAt(0).toUpperCase() + category.slice(1)}
-  //       </CategoryTag>
-  //     </div>
-  //   );
-  // }
-  // -------------------------------
+  const floorFunction = (recentComment, num) => {
+    let minus = recentComment - num;
+    if (minus <= 0) {
+      minus = 0;
+    }
+    return minus;
+  };
+  const likeFeed =
+    recentLike &&
+    recentLike.slice(
+      floorFunction(recentLike && recentLike.length, 5),
+      recentLike.length
+    );
+  const commentFeed =
+    recentComment &&
+    recentComment.slice(
+      floorFunction(recentComment && recentComment.length, 5),
+      recentComment.length
+    );
 
-  const likeFeed = recentLike && recentLike.slice(0, 6);
-  const commentFeed = recentComment && recentComment.slice(0, 6);
+  console.log(recentComment && recentComment);
+
   return (
     <Container>
       <BoxContainer>
