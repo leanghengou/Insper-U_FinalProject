@@ -87,6 +87,7 @@ const Navigation = () => {
 };
 
 const Container = styled.div`
+  z-index: 99;
   width: 100%;
   height: 75px;
   display: flex;

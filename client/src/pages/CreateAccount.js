@@ -192,7 +192,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 2;
+  z-index: 999999999;
   position: absolute;
   top: 0px;
   right: 0px;

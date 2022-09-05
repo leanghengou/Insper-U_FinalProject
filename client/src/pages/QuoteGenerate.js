@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { createGlobalStyle } from "../styleVariable/GlobalStyle";
 import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineArrowDown } from "react-icons/ai";
+import FeaturedQuoteBlock from "../components/FeaturedQuoteBlock";
 
 const QuoteGenerate = () => {
   const { currentUser } = useContext(CurrentUserContext);
@@ -31,6 +32,7 @@ const QuoteGenerate = () => {
       <QuoteButton onClick={randomHandle}>
         {!quote ? "Get inspired" : "Next"}
       </QuoteButton>
+      <FeaturedQuoteBlock />
     </Container>
   );
 };
@@ -96,6 +98,7 @@ const QuoteButton = styled.button`
   background-color: black;
   color: white;
   border-radius: 3px;
+  margin-bottom: 170px;
   :hover& {
     cursor: pointer;
     background-color: #ed9c00;
@@ -107,25 +110,31 @@ const QuoteButton = styled.button`
 
 const animationArrow = keyframes`
 0% {
+  z-index: -100;
   transform: translateY(0%);
 }
 25%{
+  z-index: -100;
   transform: translateY(20%);
 }
 
 50%{
+  z-index: -100;
   transform: translateY(40%);
 }
 
 75%{
+  z-index: -100;
   transform: translateY(20%);
 }
 100%{
+  z-index: -100;
   transform: translateY(0%);
 }
 `;
 
 const PointingAnimation = styled(AiOutlineArrowDown)`
+  z-index: -100;
   font-weight: 400;
   margin: 0 auto;
   animation: ${animationArrow} 2s infinite linear;
