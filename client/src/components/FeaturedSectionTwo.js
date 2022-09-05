@@ -64,6 +64,8 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 100px;
+  border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
 `;
 
 const QuoteContainer = styled.div`
