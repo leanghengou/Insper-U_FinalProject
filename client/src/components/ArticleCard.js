@@ -89,6 +89,7 @@ const Title = styled.h3`
   &:hover {
     cursor: pointer;
     color: #6c6c6c;
+    text-decoration: underline;
   }
 `;
 

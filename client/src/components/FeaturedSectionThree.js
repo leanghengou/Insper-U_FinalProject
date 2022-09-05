@@ -26,6 +26,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 50px;
+  margin-bottom: 50px;
 `;
 
 const TextGroup = styled.div`
@@ -67,6 +68,7 @@ const Image = styled.div`
   background-position: center 20%;
   animation: ${rotating} 35s infinite linear;
   margin-top: 30px;
+  z-index: -2;
 `;
 
 const ClickButton = styled.button`

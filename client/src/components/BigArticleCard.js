@@ -1,19 +1,59 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-const BigArticleCard = () => {
+const BigArticleCard = ({ image, title, category, smallText, authors, id }) => {
+  const navigate = useNavigate();
+  const checkHandler = (e) => {
+    navigate(`/article/${id}`);
+  };
   return (
     <Container>
-      <Image />
+      <Image onClick={checkHandler} image={image} />
       <ArticleInfo>
-        <Title>Is talent is natural or hardwork?</Title>
+        <Title onClick={checkHandler}>{title && title}</Title>
+        <Credits authors={authors} />
         <ShortText>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua...
+          {smallText && smallText.length >= 200
+            ? smallText.slice(0, 200) + "..."
+            : smallText}
         </ShortText>
-        <CategoryTag>Life tips</CategoryTag>
+        <Category category={category} />
       </ArticleInfo>
     </Container>
   );
+};
+
+const Credits = ({ authors }) => {
+  if (authors && authors.length > 1) {
+    return (
+      <ShortText>{"By " + authors[0] + ", " + authors[1] + ", ..."}</ShortText>
+    );
+  } else if (authors && authors.length <= 1) {
+    return <ShortText>{"By " + authors}</ShortText>;
+  }
+};
+
+const Category = ({ category }) => {
+  if (category && category === "personal-development") {
+    const articleCateogry = "Personal development";
+    return <CategoryTag>{articleCateogry}</CategoryTag>;
+  }
+  if (category && category === "life-tip") {
+    const articleCateogry = "Life tips";
+    return <CategoryTag>{articleCateogry}</CategoryTag>;
+  }
+  if (category && category === "personal-story") {
+    const articleCateogry = "Personal story";
+    return <CategoryTag>{articleCateogry}</CategoryTag>;
+  } else {
+    return (
+      <div>
+        <CategoryTag>
+          {category && category.charAt(0).toUpperCase() + category.slice(1)}
+        </CategoryTag>
+      </div>
+    );
+  }
 };
 
 const Container = styled.div`
@@ -27,8 +67,14 @@ const Container = styled.div`
 
 const Image = styled.div`
   width: 100%;
-  height: 320px;
-  background-color: aquamarine;
+  height: 400px;
+  background-image: url(${(props) => props.image});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 50%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const ArticleInfo = styled.div`
@@ -37,10 +83,15 @@ const ArticleInfo = styled.div`
 `;
 
 const Title = styled.h3`
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 25px;
   font-weight: 500;
   line-height: 35px;
+  &:hover {
+    cursor: pointer;
+    color: #6c6c6c;
+    text-decoration: underline;
+  }
 `;
 
 const ShortText = styled.p`

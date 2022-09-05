@@ -13,7 +13,6 @@ const FeaturedSectionsTwo = () => {
       })
       .then(function (data) {
         setQuotes(data);
-        console.log(data);
       });
   }, []);
 
@@ -27,7 +26,6 @@ const FeaturedSectionsTwo = () => {
   // ------------------
   const quote = quotes[changeIndex];
 
-  console.log(quote);
   // --------------
   return (
     <Container>

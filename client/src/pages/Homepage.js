@@ -24,9 +24,9 @@ const Homepage = () => {
       <FeaturedSectionsOne />
       <FeaturedSectionsTwo />
       <FeaturedSectionsThree />
-      {/* <BigHeader>Top Liked articles</BigHeader>
+      <BigHeader>Top Liked articles</BigHeader>
       <BigArticleSections />
-      <BigHeader>Read to improve yourself</BigHeader>
+      {/* <BigHeader>Read to improve yourself</BigHeader>
       <ArticleSections /> */}
     </Container>
   );

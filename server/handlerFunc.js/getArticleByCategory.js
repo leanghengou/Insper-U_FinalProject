@@ -13,7 +13,7 @@ const getArticleByCategory = async (req, res) => {
     const allArticles = await db.collection("articles").find().toArray();
     const idParam = req.params.category;
     const categoryArticle = allArticles.filter((article) => {
-      return article.category[0] === idParam;
+      return article.category.includes(idParam);
     });
 
     const validateCategory = allArticles.some(
