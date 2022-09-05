@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import ProfileFeed from "../components/ProfileFeed";
 import { CurrentUserContext } from "../CurrentUserContext";
+import defaultProfileImage from "../images/defaultProfileImage.jpg";
 
 const Profile = () => {
   const { currentUser } = useContext(CurrentUserContext);
@@ -36,18 +37,22 @@ const Profile = () => {
 
   return (
     <Container>
-      <UserInfoPart user={user} currentUser={currentUser} />
+      <UserInfoPart
+        defaultProfileImage={defaultProfileImage}
+        user={user}
+        currentUser={currentUser}
+      />
       {user && user.bio ? <BioBox bio={user.bio} /> : null}
       <ProfileFeed recentComment={recentComment} recentLike={recentLike} />
     </Container>
   );
 };
 // ---------------------------------------------------------------------------------------
-const UserInfoPart = ({ user, currentUser }) => {
+const UserInfoPart = ({ user, currentUser, defaultProfileImage }) => {
   return (
     <UserInfoContainer>
       <UserInfoProfile>
-        <UserImage />
+        <UserImage defaultProfileImage={defaultProfileImage} />
         <UserInfo>
           <LocationBox>
             <BodyText>{user && user.location}</BodyText>
@@ -70,9 +75,14 @@ const UserInfoPart = ({ user, currentUser }) => {
           ) : null}
         </UserInfo>
       </UserInfoProfile>
-      <ButtonContainer>
-        <EditButton>Edit profile</EditButton>
-      </ButtonContainer>
+
+      {currentUser ? (
+        <ButtonContainer>
+          {user && user._id === currentUser._id ? (
+            <EditButton>Edit profile</EditButton>
+          ) : null}
+        </ButtonContainer>
+      ) : null}
     </UserInfoContainer>
   );
 };
@@ -128,7 +138,10 @@ const UserImage = styled.div`
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background-color: aqua;
+  background-image: url(${(props) => props.defaultProfileImage});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 20%;
 `;
 
 const LocationBox = styled.div`
@@ -140,6 +153,7 @@ const Username = styled.h3`
   font-size: 25px;
   line-height: 35px;
   font-weight: 600;
+  margin-top: 10px;
 `;
 
 const Nickname = styled.p`

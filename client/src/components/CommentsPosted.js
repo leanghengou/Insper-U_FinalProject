@@ -2,6 +2,7 @@ import styled from "styled-components";
 import CommentInputBox from "./CommentInputBox";
 import { format, set } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import defaultProfileImage from "../images/defaultProfileImage.jpg";
 
 const CommentsPosted = ({ comments }) => {
   const nagivate = useNavigate();
@@ -20,7 +21,10 @@ const CommentsPosted = ({ comments }) => {
             };
             return (
               <CommentBox key={index}>
-                <ProfilePic onClick={profileHandler} />
+                <ProfilePic
+                  defaultProfileImage={defaultProfileImage}
+                  onClick={profileHandler}
+                />
                 <CommentContainer>
                   <CommentUserInfo>
                     <UserInfo key={index}>
@@ -97,7 +101,10 @@ const Bolder = styled.span`
 const ProfilePic = styled.div`
   width: 50px;
   height: 47px;
-  background-color: aqua;
+  background-image: url(${(props) => props.defaultProfileImage});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 20%;
   border-radius: 50%;
 `;
 

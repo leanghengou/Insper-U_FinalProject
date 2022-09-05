@@ -2,6 +2,7 @@ import { set } from "date-fns";
 import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { CurrentUserContext } from "../CurrentUserContext";
+import defaultProfileImage from "../images/defaultProfileImage.jpg";
 
 const CommentInputBox = ({
   articleId,
@@ -64,7 +65,7 @@ const CommentInputBox = ({
 
   return (
     <Container>
-      <ProfileImage />
+      <ProfileImage defaultProfileImage={defaultProfileImage} />
       <InputBoxContainer>
         <InputBox
           value={commentUser.comment}
@@ -114,7 +115,10 @@ const ProfileImage = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: aqua;
+  background-image: url(${(props) => props.defaultProfileImage});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 20%;
 `;
 
 const SubmitButton = styled.button`
