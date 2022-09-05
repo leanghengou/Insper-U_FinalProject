@@ -1,8 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import image from "../images/quoteFeaturedBlock.jpg";
+import { CurrentUserContext } from "../CurrentUserContext";
+import { useNavigate } from "react-router-dom";
 
 const FeaturedQuoteBlock = () => {
+  const navigate = useNavigate();
+  const { allArticles } = useContext(CurrentUserContext);
+
+  const navigateHandler = (e) => {
+    navigate(`/`);
+  };
   return (
     <FullContainer>
       <Container image={image} />
@@ -12,7 +20,7 @@ const FeaturedQuoteBlock = () => {
           Special, that is our asset. Talent is a common word that everyone
           knows and respects.
         </BodyText>
-        <ClickButton>Click here</ClickButton>
+        <ClickButton onClick={navigateHandler}>Click here</ClickButton>
       </TextContainer>
     </FullContainer>
   );

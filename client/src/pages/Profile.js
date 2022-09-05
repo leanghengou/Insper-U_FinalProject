@@ -57,7 +57,7 @@ const UserInfoPart = ({ user, currentUser }) => {
               <Username>
                 {user && user._id === currentUser._id
                   ? `${user.firstName + " " + user.lastName + " " + "(You)"}`
-                  : user && user.lastName}
+                  : `${user && user.firstName + " " + user.lastName}`}
               </Username>
             ) : (
               <Username>

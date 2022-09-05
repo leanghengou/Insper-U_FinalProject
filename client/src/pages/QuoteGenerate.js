@@ -17,7 +17,6 @@ const QuoteGenerate = () => {
       })
       .then(function (data) {
         setQuotes(data);
-        console.log(data);
       });
   }, []);
 
@@ -40,7 +39,12 @@ const QuoteGenerate = () => {
 const QuoteBox = ({ quote }) => {
   return (
     <QuoteContainer>
-      <QuoteText>{quote && quote ? quote.text : <NoQuote />}</QuoteText>
+      {quote && quote.text ? (
+        <QuoteText>{quote && quote.text}</QuoteText>
+      ) : (
+        <NoQuote />
+      )}
+      {/* <QuoteText>{quote && quote ? quote.text : <NoQuote />}</QuoteText> */}
       <QuoteAuthors>{quote && quote ? quote.author : null}</QuoteAuthors>
     </QuoteContainer>
   );

@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import CommentInputBox from "./CommentInputBox";
 import { format, set } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
 const CommentsPosted = ({ comments }) => {
+  const nagivate = useNavigate();
+
   return (
     <Container>
       <div>
@@ -12,9 +15,12 @@ const CommentsPosted = ({ comments }) => {
             const month = format(date, "MMMM");
             const day = format(date, "LL");
             const year = format(date, "yyyy");
+            const profileHandler = (e) => {
+              nagivate(`/profile/${comment && comment.userId}`);
+            };
             return (
               <CommentBox key={index}>
-                <ProfilePic />
+                <ProfilePic onClick={profileHandler} />
                 <CommentContainer>
                   <CommentUserInfo>
                     <UserInfo key={index}>
