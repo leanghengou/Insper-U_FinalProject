@@ -13,10 +13,19 @@ const userLikeArticles = async (req, res) => {
     const allArticles = await db.collection("articles").find().toArray();
     const allUsers = await db.collection("users").find().toArray();
     const idParam = req.params.userId;
+
+    // ------Temporary Solution----------------------
     const likedArtcles = allArticles.filter((article) => {
       return article.likes.includes(idParam);
     });
+    // ----------------------------
+    // const likedArtcles = allArticles.map((article) => {
+    //   if (article.likes.includes(idParam)) {
+    //     return article.title;
+    //   }
+    // });
 
+    // ---------------------------------
     const validateUser = allUsers.some((userId) => userId._id === idParam);
 
     if (validateUser) {

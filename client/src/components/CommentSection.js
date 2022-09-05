@@ -139,7 +139,7 @@ const LikeButton = styled.button`
   width: 50px;
   border-radius: 50%;
   background-color: ${({ isLikedValidate }) => {
-    return isLikedValidate && "#f84a55";
+    return isLikedValidate ? "black" : "#f84a55";
   }};
   border: none;
   color: white;

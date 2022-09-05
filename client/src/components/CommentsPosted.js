@@ -55,6 +55,9 @@ const CommentBox = styled.div`
   border-bottom: 1px solid #e9e9e9;
   display: flex;
   /* align-items: center; */
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 const CommentContainer = styled.div`
   display: flex;

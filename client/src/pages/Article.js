@@ -3,14 +3,19 @@ import { useParams, useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../CurrentUserContext";
 import styled from "styled-components";
 import CommentSection from "../components/CommentSection";
+import YouMayInterested from "../components/YouMayInterested";
 
 const Article = () => {
   const { currentUser } = useContext(CurrentUserContext);
   const nagivate = useNavigate();
+
   if (!currentUser) {
     nagivate("/login");
   }
+
   const { id } = useParams();
+
+  const [categoryArticles, setCategoryArticles] = useState(null);
 
   const [article, setArticle] = useState();
   const [comments, setComments] = useState(null);
@@ -25,9 +30,15 @@ const Article = () => {
       .then((res) => res.json())
       .then((data) => setComments(data.data));
   }, [id]);
-  // --------------------------------
+  // ----------------------------------
 
+  useEffect(() => {
+    fetch(`/api/get-article-category/economic`)
+      .then((res) => res.json())
+      .then((data) => setCategoryArticles(data.data));
+  }, []);
   // ---------------------------------
+
   return (
     <Container>
       {article ? (
@@ -57,17 +68,29 @@ const Article = () => {
               </TextContainer>
             </ArticleBox>
             <Sidebar>
-              <Subtitle>Related articles</Subtitle>
-              <ArticleName>
-                Are cultural dimensions mentioned in the book practically
-                accurate?
-              </ArticleName>
-              <ArticleCategory>Personal development</ArticleCategory>
-              <ArticleName>
-                Are cultural dimensions mentioned in the book practically
-                accurate?
-              </ArticleName>
-              <ArticleCategory>Personal development</ArticleCategory>
+              <Subtitle>{`Read about ` + `economic`}</Subtitle>
+              {categoryArticles &&
+                categoryArticles.map((article) => {
+                  let category = article && article.category[0];
+                  if (category === "personal-development") {
+                    category = "Personal development";
+                  }
+                  if (category === "life-tip") {
+                    category = "Life tips";
+                  }
+                  if (category === "Personal story") {
+                    category = "Personal story";
+                  } else {
+                    category =
+                      category.charAt(0).toUpperCase() + category.slice(1);
+                  }
+                  return (
+                    <div>
+                      <ArticleName>{article && article.title}</ArticleName>
+                      <ArticleCategory>{category}</ArticleCategory>
+                    </div>
+                  );
+                })}
             </Sidebar>
           </ArticleSection>
           <CommentSection
@@ -78,8 +101,8 @@ const Article = () => {
             articleComments={article && article.comments}
             articleLikes={article && article.likes}
             articleTitle={article && article.title}
-            // likeHandler={likeHandler}
           />
+          <YouMayInterested />
         </>
       ) : (
         <div>Loading...</div>

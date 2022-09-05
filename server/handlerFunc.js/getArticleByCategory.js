@@ -16,8 +16,8 @@ const getArticleByCategory = async (req, res) => {
       return article.category.includes(idParam);
     });
 
-    const validateCategory = allArticles.some(
-      (article) => article.category[0] === idParam
+    const validateCategory = allArticles.some((article) =>
+      article.category.includes(idParam)
     );
 
     if (validateCategory) {
