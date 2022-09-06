@@ -4,9 +4,16 @@ import styled from "styled-components";
 import ProfileFeed from "../components/ProfileFeed";
 import { CurrentUserContext } from "../CurrentUserContext";
 import defaultProfileImage from "../images/defaultProfileImage.jpg";
+import LoadingState from "./LoadingState";
+import {
+  BsStarHalf,
+  BsStar,
+  BsStarFill,
+  BsFillGeoAltFill,
+} from "react-icons/bs";
 
 const Profile = () => {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, loading, setLoading } = useContext(CurrentUserContext);
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const [recentComment, setRecentComment] = useState(null);
@@ -18,9 +25,13 @@ const Profile = () => {
   }
 
   useEffect(() => {
+    setLoading(true);
     fetch(`/api/user-comment-article/${id}`)
       .then((res) => res.json())
-      .then((data) => setRecentComment(data.data));
+      .then((data) => {
+        setRecentComment(data.data);
+        setLoading(false);
+      });
   }, [id]);
 
   useEffect(() => {
@@ -35,17 +46,21 @@ const Profile = () => {
       .then((data) => setUser(data.data));
   }, [id]);
 
-  return (
-    <Container>
-      <UserInfoPart
-        defaultProfileImage={defaultProfileImage}
-        user={user}
-        currentUser={currentUser}
-      />
-      {user && user.bio ? <BioBox bio={user.bio} /> : null}
-      <ProfileFeed recentComment={recentComment} recentLike={recentLike} />
-    </Container>
-  );
+  if (loading) {
+    return <LoadingState />;
+  } else {
+    return (
+      <Container>
+        <UserInfoPart
+          defaultProfileImage={defaultProfileImage}
+          user={user}
+          currentUser={currentUser}
+        />
+        {user && user.bio ? <BioBox bio={user.bio} /> : null}
+        <ProfileFeed recentComment={recentComment} recentLike={recentLike} />
+      </Container>
+    );
+  }
 };
 // ---------------------------------------------------------------------------------------
 const UserInfoPart = ({ user, currentUser, defaultProfileImage }) => {
@@ -55,6 +70,7 @@ const UserInfoPart = ({ user, currentUser, defaultProfileImage }) => {
         <UserImage defaultProfileImage={defaultProfileImage} />
         <UserInfo>
           <LocationBox>
+            <BsFillGeoAltFill style={{ marginRight: "8px" }} />
             <BodyText>{user && user.location}</BodyText>
           </LocationBox>
           <div>
@@ -72,7 +88,8 @@ const UserInfoPart = ({ user, currentUser, defaultProfileImage }) => {
           </div>
           {user && user.nickname ? (
             <Nickname>{user && user.nickname}</Nickname>
-          ) : null}
+          ) : null}{" "}
+          {user && user.status === "admin" ? <AdminStatus /> : null}
         </UserInfo>
       </UserInfoProfile>
 
@@ -98,6 +115,16 @@ const BioBox = ({ bio }) => {
   );
 };
 
+const AdminStatus = () => {
+  return (
+    <AdminBadge>
+      <BsStarHalf
+        style={{ marginRight: "8px", fontSize: "20px", marginBottom: "5px" }}
+      />
+      <p>Admin</p>
+    </AdminBadge>
+  );
+};
 // ---------------------------------------------------------------------------------------
 const Container = styled.div`
   margin-top: 100px;
@@ -210,6 +237,28 @@ const BioText = styled.p`
   /* font-style: italic; */
   font-weight: 400;
   margin-top: 20px;
+`;
+
+const AdminBadge = styled.div`
+  height: 35px;
+  width: 120px;
+  background: rgb(237, 203, 0);
+  background: linear-gradient(
+    323deg,
+    rgba(237, 203, 0, 1) 13%,
+    rgba(237, 156, 0, 1) 49%
+  );
+  border: 3px solid #ad7303;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  letter-spacing: 2px;
+  font-weight: 600;
 `;
 
 export default Profile;
