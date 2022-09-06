@@ -8,6 +8,7 @@ import FeaturedSectionsOne from "../components/FeaturedSectionOne";
 import FeaturedSectionsTwo from "../components/FeaturedSectionTwo";
 import FeaturedSectionsThree from "../components/FeaturedSectionThree";
 import ArticleSectionsTwo from "../components/ArticleSectionsTwo";
+import FeaturedQuoteBlock from "../components/FeaturedQuoteBlock";
 import { CurrentUserContext } from "../CurrentUserContext";
 import { useParams } from "react-router-dom";
 
@@ -29,6 +30,7 @@ const Homepage = () => {
       <BigArticleSections />
       <BigHeader>Don't forget to read...</BigHeader>
       <ArticleSectionsTwo />
+      {/* <FeaturedQuoteBlock /> */}
     </Container>
   );
 };
