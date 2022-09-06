@@ -8,6 +8,7 @@ const CurrentUserProvider = ({ children }) => {
   const [allArticles, setAllArticles] = useState(null);
   const [allCategories, setAllCategories] = useState(null);
   const categoriesLength = allCategories && allCategories.length;
+  const [loading, setLoading] = useState(false);
   const [changeIndex, setChangeIndex] = useState();
   useEffect(() => {
     setChangeIndex(Math.floor(Math.random() * categoriesLength));
@@ -35,6 +36,8 @@ const CurrentUserProvider = ({ children }) => {
         setCurrentUser,
         allCategories,
         randomCategory,
+        loading,
+        setLoading,
       }}
     >
       {children}

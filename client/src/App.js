@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import UploadImages from "./pages/UploadImage";
+import LoadingState from "./pages/LoadingState";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/upload" element={<UploadImages />} />
+          <Route path="/loading" element={<LoadingState />} />
         </Routes>
         <Footer />
       </Container>

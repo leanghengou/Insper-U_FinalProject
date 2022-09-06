@@ -4,9 +4,10 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import styled from "styled-components";
 import CommentSection from "../components/CommentSection";
 import YouMayInterested from "../components/YouMayInterested";
+import LoadingState from "../pages/LoadingState";
 
 const Article = () => {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, setLoading, loading } = useContext(CurrentUserContext);
   const nagivate = useNavigate();
 
   if (!currentUser) {
@@ -20,95 +21,108 @@ const Article = () => {
   const [article, setArticle] = useState();
   const [comments, setComments] = useState(null);
   useEffect(() => {
+    setLoading(true);
     fetch(`/api/article/${id}`)
       .then((res) => res.json())
-      .then((data) => setArticle(data.data));
+      .then((data) => {
+        setArticle(data.data);
+        setLoading(false);
+      });
   }, [id]);
 
   useEffect(() => {
     fetch(`/api/get-comments/${id}`)
       .then((res) => res.json())
-      .then((data) => setComments(data.data));
+      .then((data) => {
+        setComments(data.data);
+      });
   }, [id]);
   // ----------------------------------
 
   useEffect(() => {
     fetch(`/api/get-article-category/economic`)
       .then((res) => res.json())
-      .then((data) => setCategoryArticles(data.data));
+      .then((data) => {
+        setCategoryArticles(data.data);
+      });
   }, []);
   // ---------------------------------
-
-  return (
-    <Container>
-      {article ? (
-        <>
-          <ArticleImage imageSrc={article && article.image} />
-          <ArticleSection>
-            <ArticleBox>
-              <BigHeader>{article && article.title}</BigHeader>
-              <div>
-                <AuthorText>
-                  By {article && article.authors.map((item) => item)}
-                </AuthorText>
-                <DateText>
+  if (loading) {
+    return <LoadingState />;
+  } else {
+    // -------------------------
+    return (
+      <Container>
+        {article ? (
+          <>
+            <ArticleImage imageSrc={article && article.image} />
+            <ArticleSection>
+              <ArticleBox>
+                <BigHeader>{article && article.title}</BigHeader>
+                <div>
+                  <AuthorText>
+                    By {article && article.authors.map((item) => item)}
+                  </AuthorText>
+                  <DateText>
+                    {article &&
+                      article.postDate.month +
+                        " " +
+                        article.postDate.day +
+                        " " +
+                        article.postDate.year}
+                  </DateText>
+                </div>
+                <TextContainer>
                   {article &&
-                    article.postDate.month +
-                      " " +
-                      article.postDate.day +
-                      " " +
-                      article.postDate.year}
-                </DateText>
-              </div>
-              <TextContainer>
-                {article &&
-                  article.content.map((item) => {
-                    return <BodyText key={item}>{item}</BodyText>;
+                    article.content.map((item) => {
+                      return <BodyText key={item}>{item}</BodyText>;
+                    })}
+                </TextContainer>
+              </ArticleBox>
+              <Sidebar>
+                <Subtitle>{`Read about ` + `economic`}</Subtitle>
+                {categoryArticles &&
+                  categoryArticles.map((article) => {
+                    let category = article && article.category[0];
+                    if (category === "personal-development") {
+                      category = "Personal development";
+                    }
+                    if (category === "life-tip") {
+                      category = "Life tips";
+                    }
+                    if (category === "Personal story") {
+                      category = "Personal story";
+                    } else {
+                      category =
+                        category.charAt(0).toUpperCase() + category.slice(1);
+                    }
+                    return (
+                      <div>
+                        <ArticleName>{article && article.title}</ArticleName>
+                        <ArticleCategory>{category}</ArticleCategory>
+                      </div>
+                    );
                   })}
-              </TextContainer>
-            </ArticleBox>
-            <Sidebar>
-              <Subtitle>{`Read about ` + `economic`}</Subtitle>
-              {categoryArticles &&
-                categoryArticles.map((article) => {
-                  let category = article && article.category[0];
-                  if (category === "personal-development") {
-                    category = "Personal development";
-                  }
-                  if (category === "life-tip") {
-                    category = "Life tips";
-                  }
-                  if (category === "Personal story") {
-                    category = "Personal story";
-                  } else {
-                    category =
-                      category.charAt(0).toUpperCase() + category.slice(1);
-                  }
-                  return (
-                    <div>
-                      <ArticleName>{article && article.title}</ArticleName>
-                      <ArticleCategory>{category}</ArticleCategory>
-                    </div>
-                  );
-                })}
-            </Sidebar>
-          </ArticleSection>
-          <CommentSection
-            comments={comments}
-            articleId={id}
-            currentUser={currentUser}
-            setComments={setComments}
-            articleComments={article && article.comments}
-            articleLikes={article && article.likes}
-            articleTitle={article && article.title}
-          />
-          <YouMayInterested />
-        </>
-      ) : (
-        <div>Loading...</div>
-      )}
-    </Container>
-  );
+              </Sidebar>
+            </ArticleSection>
+            <CommentSection
+              comments={comments}
+              articleId={id}
+              currentUser={currentUser}
+              setComments={setComments}
+              articleComments={article && article.comments}
+              articleLikes={article && article.likes}
+              articleTitle={article && article.title}
+            />
+            <YouMayInterested />
+          </>
+        ) : (
+          <div>Loading...</div>
+        )}
+      </Container>
+    );
+    // ---------------------------------
+  }
 };
 
 const Container = styled.div`
