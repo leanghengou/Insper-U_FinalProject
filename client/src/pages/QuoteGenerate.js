@@ -4,19 +4,22 @@ import { createGlobalStyle } from "../styleVariable/GlobalStyle";
 import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import FeaturedQuoteBlock from "../components/FeaturedQuoteBlock";
+import LoadingState from "./LoadingState";
 
 const QuoteGenerate = () => {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, loading, setLoading } = useContext(CurrentUserContext);
   const [quotes, setQuotes] = useState([]);
   const [changeIndex, setChangeIndex] = useState();
 
   useEffect(() => {
+    setLoading(true);
     fetch("https://type.fit/api/quotes")
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
         setQuotes(data);
+        setLoading(false);
       });
   }, []);
 
@@ -25,15 +28,19 @@ const QuoteGenerate = () => {
   };
   const quote = quotes[changeIndex];
 
-  return (
-    <Container>
-      <QuoteBox quote={quote} />
-      <QuoteButton onClick={randomHandle}>
-        {!quote ? "Get inspired" : "Next"}
-      </QuoteButton>
-      <FeaturedQuoteBlock />
-    </Container>
-  );
+  if (loading) {
+    return <LoadingState />;
+  } else {
+    return (
+      <Container>
+        <QuoteBox quote={quote} />
+        <QuoteButton onClick={randomHandle}>
+          {!quote ? "Get inspired" : "Next"}
+        </QuoteButton>
+        <FeaturedQuoteBlock />
+      </Container>
+    );
+  }
 };
 
 const QuoteBox = ({ quote }) => {
