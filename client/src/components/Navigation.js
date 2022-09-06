@@ -40,7 +40,13 @@ const Navigation = () => {
         >
           Get inspired
         </NavLink>
-        <NavLink>Articles</NavLink>
+        <NavLink
+          onClick={() => {
+            navigate("/articles");
+          }}
+        >
+          Articles
+        </NavLink>
         <NavLink>About</NavLink>
         <NavLink
           onClick={() => {
@@ -70,7 +76,7 @@ const Navigation = () => {
           <ContainerTwo>
             <SearchButton
               onClick={() => {
-                navigate("search");
+                navigate("/search");
               }}
             />
             <AccountButton

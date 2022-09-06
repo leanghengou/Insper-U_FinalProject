@@ -13,6 +13,7 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import UploadImages from "./pages/UploadImage";
 import LoadingState from "./pages/LoadingState";
+import AllArticles from "./pages/AllArticles";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
       <Navigation />
       <Container>
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/article/:id" element={<Article />} />
+          <Route path="/" element={<Homepage />} />{" "}
+          <Route path="articles" element={<AllArticles />} />
+          <Route path="/article/:id" element={<Article />} />{" "}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<CreateAccount />} />
           <Route path="/quotes" element={<QuoteGenerate />} />
