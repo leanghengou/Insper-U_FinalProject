@@ -1,13 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import ArticleCard from "./ArticleCard";
-import { CurrentUserContext } from "../CurrentUserContext";
-const ArticleSectionsTwo = () => {
-  const { allArticles } = useContext(CurrentUserContext);
-  const [socialArticles, setSocialArticles] = useState(null);
-
+const ArticleSectionsTwo = ({ allArticles }) => {
   const articles = allArticles && allArticles.slice(12, 16);
-
   return (
     <Container>
       {articles &&

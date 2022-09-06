@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import { createGlobalStyle } from "../styleVariable/GlobalStyle";
 import Slider from "../components/Slider";
@@ -9,30 +9,68 @@ import FeaturedSectionsTwo from "../components/FeaturedSectionTwo";
 import FeaturedSectionsThree from "../components/FeaturedSectionThree";
 import ArticleSectionsTwo from "../components/ArticleSectionsTwo";
 import FeaturedQuoteBlock from "../components/FeaturedQuoteBlock";
+import LoadingState from "../pages/LoadingState";
 import { CurrentUserContext } from "../CurrentUserContext";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Homepage = () => {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { allArticles, loading, setLoading } = useContext(CurrentUserContext);
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  return (
-    <Container>
-      <Slider />
-      <BigHeader>
-        <YellowColor>Unpopular</YellowColor> social topics
-      </BigHeader>
-      <ArticleSections />
-      <FeaturedSectionsOne />
-      <FeaturedSectionsTwo />
-      <FeaturedSectionsThree />
-      <BigHeader>Featured articles</BigHeader>
-      <BigArticleSections />
-      <BigHeader>Don't forget to read...</BigHeader>
-      <ArticleSectionsTwo />
-      {/* <FeaturedQuoteBlock /> */}
-    </Container>
-  );
+  const [technologyArticles, setTechnologyArticles] = useState(null);
+
+  const [socialArticles, setSocialArticles] = useState(null);
+  useEffect(() => {
+    fetch(`/api/get-article-category/social`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSocialArticles(data.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/get-article-category/personal-development`)
+      .then((res) => res.json())
+      .then((data) => {
+        setTechnologyArticles(data.data);
+        setLoading(false);
+      });
+  }, []);
+
+  const [issueArticles, setIssueArticles] = useState(null);
+  useEffect(() => {
+    fetch(`/api/get-article-category/issue`)
+      .then((res) => res.json())
+      .then((data) => setIssueArticles(data.data));
+  }, []);
+
+  if (loading) {
+    return <LoadingState />;
+  } else {
+    // ------------------------------------------
+    return (
+      <Container>
+        <Slider />
+        <BigHeader>
+          <YellowColor>Unpopular</YellowColor> social topics
+        </BigHeader>
+        <ArticleSections socialArticles={socialArticles && socialArticles} />
+        <FeaturedSectionsOne />
+        <FeaturedSectionsTwo />
+        <FeaturedSectionsThree />
+        <BigHeader>Featured articles</BigHeader>
+        <BigArticleSections
+          technologyArticles={technologyArticles && technologyArticles}
+          issueArticles={issueArticles && issueArticles}
+        />
+        <BigHeader>Don't forget to read...</BigHeader>
+        <ArticleSectionsTwo allArticles={allArticles && allArticles} />
+        {/* <FeaturedQuoteBlock /> */}
+      </Container>
+    );
+  }
 };
 
 const Container = styled.div`

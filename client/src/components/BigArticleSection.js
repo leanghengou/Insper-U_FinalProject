@@ -1,45 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import BigArticleCard from "./BigArticleCard";
 import ArticleCard from "./ArticleCard";
 
-// -------------------
-
-// const quote = quotes[changeIndex];
-// -----------------------
-
-const BigArticleSections = () => {
+const BigArticleSections = ({ issueArticles, technologyArticles }) => {
   const [changeIndex, setChangeIndex] = useState();
-  const [technologyArticles, setTechnologyArticles] = useState(null);
-  useEffect(() => {
-    fetch(`/api/get-article-category/issue`)
-      .then((res) => res.json())
-      .then((data) => setTechnologyArticles(data.data));
-  }, []);
-
-  const MaxNumber = technologyArticles && technologyArticles.length;
-
   useEffect(() => {
     const interval = setInterval(() => {
       setChangeIndex(Math.floor(Math.random() * MaxNumber));
     }, 3000);
     return () => clearInterval(interval);
   }, [changeIndex]);
+  const MaxNumber = technologyArticles && technologyArticles.length;
   const featuredArticles =
     technologyArticles && technologyArticles[changeIndex];
-
-  console.log(
-    "FEATUED ARTICLE",
-    technologyArticles && technologyArticles.length
-  );
-
-  const [issueArticles, setIssueArticles] = useState(null);
-  useEffect(() => {
-    fetch(`/api/get-article-category/issue`)
-      .then((res) => res.json())
-      .then((data) => setIssueArticles(data.data));
-  }, []);
-
   const groupOne = issueArticles && issueArticles.slice(0, 2);
   const groupTwo = issueArticles && issueArticles.slice(2, 4);
 

@@ -103,11 +103,12 @@ const ShortText = styled.p`
 
 const CategoryTag = styled.div`
   text-align: center;
-  max-width: 17%;
+  max-width: 35%;
   color: white;
   background-color: #ed9c00;
   border-radius: 50px;
   margin-top: 25px;
+  font-size: 14px;
 `;
 
 export default BigArticleCard;
