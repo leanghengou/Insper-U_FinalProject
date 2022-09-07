@@ -8,10 +8,10 @@ import LoadingState from "../pages/LoadingState";
 
 const Article = () => {
   const { currentUser, setLoading, loading } = useContext(CurrentUserContext);
-  const nagivate = useNavigate();
+  const navigate = useNavigate();
 
   if (!currentUser) {
-    nagivate("/login");
+    navigate("/login");
   }
 
   const { id } = useParams();
@@ -80,9 +80,10 @@ const Article = () => {
                 </TextContainer>
               </ArticleBox>
               <Sidebar>
-                <Subtitle>{`Read about ` + `economic`}</Subtitle>
+                <Subtitle>{`Read about related articles`}</Subtitle>
                 {categoryArticles &&
                   categoryArticles.map((article) => {
+                    console.log("ARTICLLEEE", article);
                     let category = article && article.category[0];
                     if (category === "personal-development") {
                       category = "Personal development";
@@ -98,7 +99,13 @@ const Article = () => {
                     }
                     return (
                       <div>
-                        <ArticleName>{article && article.title}</ArticleName>
+                        <ArticleName
+                          onClick={() => {
+                            navigate(`/article/${article && article._id}`);
+                          }}
+                        >
+                          {article && article.title}
+                        </ArticleName>
                         <ArticleCategory>{category}</ArticleCategory>
                       </div>
                     );
