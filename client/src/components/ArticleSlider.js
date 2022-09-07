@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { createGlobalStyle } from "../styleVariable/GlobalStyle";
-import { Slide } from "@material-ui/core";
-import sliderOne from "../images/slider-one.jpg";
-import sliderTwo from "../images/topofthemountain.jpg";
-import slierThree from "../images/registerbackground.png";
+import styled, { keyframes } from "styled-components";
+import sliderOne from "../images/articleSlider.png";
 
-const Slider = () => {
-  const sliders = [sliderOne, sliderTwo, slierThree];
-
+const ArticleSlider = () => {
   return (
-    <Container sliders={sliders[0]}>
+    <Container image={sliderOne}>
       <TextContainer>
-        <BigHeader>Inspired</BigHeader>
+        <BigHeader>Keep reading, keep growing</BigHeader>
         <BodyText>
           Special, that is our asset. Talent is a common word that everyone
           knows and respects.
@@ -25,17 +19,16 @@ const Slider = () => {
 
 const Container = styled.div`
   width: 100%;
-  height: 600px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url(${(props) => props.sliders});
+  background-image: url(${(props) => props.image});
   background-repeat: no-repeat;
   background-size: cover;
 `;
 const TextContainer = styled.div`
-  margin-left: 5%;
-  width: 30%;
+  width: 45%;
 `;
 
 const BigHeader = styled.h1`
@@ -43,6 +36,7 @@ const BigHeader = styled.h1`
   font-size: 50px;
   font-family: "Anton", sans-serif;
   font-style: normal;
+  line-height: 65px;
 `;
 
 const BodyText = styled.p`
@@ -69,4 +63,4 @@ const ClickButton = styled.button`
   }
 `;
 
-export default Slider;
+export default ArticleSlider;

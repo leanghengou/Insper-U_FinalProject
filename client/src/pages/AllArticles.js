@@ -4,6 +4,7 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import styled from "styled-components";
 import LoadingState from "../pages/LoadingState";
 import ArticleCard from "../components/ArticleCard";
+import ArticleSlider from "../components/ArticleSlider";
 
 const AllArticles = () => {
   const { currentUser, setLoading, loading } = useContext(CurrentUserContext);
@@ -31,29 +32,41 @@ const AllArticles = () => {
   } else {
     // -------------------------
     return (
-      <Container>
-        {articles &&
-          articles.map((article) => {
-            return (
-              <ArticleCardContainer>
-                <ArticleCard
-                  title={article && article.title}
-                  category={article && article.category[0]}
-                  smallText={article && article.content[0]}
-                  authors={article && article.authors}
-                  image={article && article.image}
-                  id={article && article._id}
-                />
-              </ArticleCardContainer>
-            );
-          })}
-      </Container>
+      <FullContainer>
+        <ArticleSlider />
+        <ArticlersContainer>
+          {articles &&
+            articles.map((article) => {
+              return (
+                <ArticleCardContainer>
+                  <ArticleCard
+                    title={article && article.title}
+                    category={article && article.category[0]}
+                    smallText={article && article.content[0]}
+                    authors={article && article.authors}
+                    image={article && article.image}
+                    id={article && article._id}
+                  />
+                </ArticleCardContainer>
+              );
+            })}
+        </ArticlersContainer>
+      </FullContainer>
     );
     // ---------------------------------
   }
 };
 
-const Container = styled.div`
+const FullContainer = styled.div`
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const ArticlersContainer = styled.div`
+  border-top: 1px solid #e9e9e9;
+  padding-top: 50px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -62,7 +75,7 @@ const Container = styled.div`
 
 const ArticleCardContainer = styled.div`
   margin-right: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 70px;
 `;
 
 export default AllArticles;
