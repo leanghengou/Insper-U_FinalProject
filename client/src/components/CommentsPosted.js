@@ -28,7 +28,7 @@ const CommentsPosted = ({ comments }) => {
                 <CommentContainer>
                   <CommentUserInfo>
                     <UserInfo key={index}>
-                      <Bolder>
+                      <Bolder onClick={profileHandler}>
                         {comment.firstName + " " + comment.lastName}
                       </Bolder>
                       <DateComment>
@@ -96,6 +96,10 @@ const BodyText = styled.p`
 `;
 const Bolder = styled.span`
   font-weight: 600;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 `;
 
 const ProfilePic = styled.div`
@@ -106,6 +110,9 @@ const ProfilePic = styled.div`
   background-size: cover;
   background-position: center 20%;
   border-radius: 50%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const DateComment = styled.span`
