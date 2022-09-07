@@ -9,6 +9,7 @@ import LoadingState from "../pages/LoadingState";
 const Article = () => {
   const { currentUser, setLoading, loading } = useContext(CurrentUserContext);
   const navigate = useNavigate();
+  const [currentCategory, setCurrentCategory] = useState();
 
   if (!currentUser) {
     navigate("/login");
@@ -25,6 +26,7 @@ const Article = () => {
     fetch(`/api/article/${id}`)
       .then((res) => res.json())
       .then((data) => {
+        setCurrentCategory(data.data.category[0]);
         setArticle(data.data);
         setLoading(false);
       });
@@ -40,12 +42,16 @@ const Article = () => {
   // ----------------------------------
 
   useEffect(() => {
-    fetch(`/api/get-article-category/economic`)
-      .then((res) => res.json())
-      .then((data) => {
-        setCategoryArticles(data.data);
-      });
-  }, []);
+    if (currentCategory) {
+      fetch(`/api/get-article-category/${currentCategory && currentCategory}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log({ data });
+          setCategoryArticles(data.data);
+        });
+    }
+  }, [currentCategory]);
+
   // ---------------------------------
   if (loading) {
     return <LoadingState />;
@@ -83,7 +89,6 @@ const Article = () => {
                 <Subtitle>{`Read about related articles`}</Subtitle>
                 {categoryArticles &&
                   categoryArticles.map((article) => {
-                    console.log("ARTICLLEEE", article);
                     let category = article && article.category[0];
                     if (category === "personal-development") {
                       category = "Personal development";
@@ -138,6 +143,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 70px;
 `;
 
 const ArticleBox = styled.div`
