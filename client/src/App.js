@@ -14,6 +14,8 @@ import Search from "./pages/Search";
 import UploadImages from "./pages/UploadImage";
 import LoadingState from "./pages/LoadingState";
 import AllArticles from "./pages/AllArticles";
+import Error404 from "./pages/Error404";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/upload" element={<UploadImages />} />
           <Route path="/loading" element={<LoadingState />} />
+          <Route path="*" element={<Error404 />} />
+          <Route path="/error" element={<ErrorPage />} />
         </Routes>
         <Footer />
       </Container>
