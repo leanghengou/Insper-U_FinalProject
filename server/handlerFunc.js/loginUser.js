@@ -6,8 +6,8 @@ const options = {
   useUnifiedTopology: true,
 };
 const loginUser = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
   try {
-    const client = new MongoClient(MONGO_URI, options);
     const db = client.db("insperu");
     await client.connect();
     const email = req.body.email;
@@ -29,6 +29,8 @@ const loginUser = async (req, res) => {
       status: 500,
       message: "Something is wrong!",
     });
+  } finally {
+    client.close();
   }
 };
 

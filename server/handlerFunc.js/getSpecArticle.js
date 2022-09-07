@@ -6,9 +6,10 @@ const options = {
   useUnifiedTopology: true,
 };
 const getSpecArticle = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
   try {
     const idParam = req.params.articleId;
-    const client = new MongoClient(MONGO_URI, options);
+
     const db = client.db("insperu");
     await client.connect();
     const article = await db.collection("articles").findOne({ _id: idParam });
@@ -28,6 +29,8 @@ const getSpecArticle = async (req, res) => {
       status: 500,
       message: "Something is wrong!",
     });
+  } finally {
+    client.close();
   }
 };
 

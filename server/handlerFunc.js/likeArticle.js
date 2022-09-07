@@ -6,10 +6,10 @@ const options = {
   useUnifiedTopology: true,
 };
 const likeArticle = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
   try {
     const articleId = req.body.articleId;
     const userId = req.body.userId;
-    const client = new MongoClient(MONGO_URI, options);
     const db = client.db("insperu");
     await client.connect();
     // Get article-------------
@@ -65,6 +65,8 @@ const likeArticle = async (req, res) => {
       status: 500,
       message: "Something is wrong!",
     });
+  } finally {
+    client.close();
   }
 };
 

@@ -6,8 +6,8 @@ const options = {
   useUnifiedTopology: true,
 };
 const getArticleByCategory = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
   try {
-    const client = new MongoClient(MONGO_URI, options);
     const db = client.db("insperu");
     await client.connect();
     const allArticles = await db.collection("articles").find().toArray();
@@ -37,6 +37,8 @@ const getArticleByCategory = async (req, res) => {
       status: 500,
       message: "Something is wrong!",
     });
+  } finally {
+    client.close();
   }
 };
 

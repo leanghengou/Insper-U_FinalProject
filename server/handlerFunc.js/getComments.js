@@ -6,8 +6,8 @@ const options = {
   useUnifiedTopology: true,
 };
 const getComments = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
   try {
-    const client = new MongoClient(MONGO_URI, options);
     const db = client.db("insperu");
     await client.connect();
     const allComments = await db.collection("comments").find().toArray();
@@ -21,6 +21,8 @@ const getComments = async (req, res) => {
       status: 500,
       message: "Something is wrong!",
     });
+  } finally {
+    client.close();
   }
 };
 

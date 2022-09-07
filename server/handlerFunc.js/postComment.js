@@ -9,8 +9,8 @@ const options = {
 
 const { sentimentTest } = require("./sentimentTest");
 const postComment = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
   try {
-    const client = new MongoClient(MONGO_URI, options);
     const db = client.db("insperu");
     await client.connect();
     const articleId = req.body.articleId;
@@ -86,6 +86,8 @@ const postComment = async (req, res) => {
       message: "Something is wrong!",
       error: err,
     });
+  } finally {
+    client.close();
   }
 };
 

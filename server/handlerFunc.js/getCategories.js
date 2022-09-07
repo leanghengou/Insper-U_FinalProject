@@ -6,8 +6,8 @@ const options = {
   useUnifiedTopology: true,
 };
 const getCategories = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
   try {
-    const client = new MongoClient(MONGO_URI, options);
     const db = client.db("insperu");
     await client.connect();
     const categories = await db.collection("categories").find().toArray();
@@ -21,6 +21,8 @@ const getCategories = async (req, res) => {
       status: 500,
       message: "Something is wrong!",
     });
+  } finally {
+    client.close();
   }
 };
 
