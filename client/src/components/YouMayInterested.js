@@ -66,7 +66,6 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   display: flex;
-  /* justify-content: space-between; */
   align-items: flex-start;
 `;
 

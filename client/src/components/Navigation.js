@@ -3,11 +3,8 @@ import { useNavigate } from "react-router-dom";
 import logo from "../images/logo-black-01.png";
 import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineUser } from "react-icons/ai";
-import { BsSearch } from "react-icons/bs";
-import { GrLogout } from "react-icons/gr";
 import { useContext } from "react";
 import { IoSearch, IoLogOutOutline } from "react-icons/io5";
-import { set } from "date-fns";
 
 const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -97,7 +94,6 @@ const Container = styled.div`
   width: 100%;
   height: 75px;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   position: fixed;

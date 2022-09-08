@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import image from "../images/quoteFeaturedBlock.jpg";
-import { CurrentUserContext } from "../CurrentUserContext";
 import { useNavigate } from "react-router-dom";
 
 const FeaturedQuoteBlock = () => {
   const navigate = useNavigate();
-  const { allArticles } = useContext(CurrentUserContext);
 
   const navigateHandler = (e) => {
     navigate(`/`);
@@ -35,7 +33,6 @@ const Container = styled.div`
   background-image: url(${(props) => props.image});
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-position: center 20%; */
 `;
 const TextContainer = styled.div`
   width: 70%;

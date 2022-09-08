@@ -1,7 +1,6 @@
-import { set } from "date-fns";
-import { useContext, useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import { CurrentUserContext } from "../CurrentUserContext";
+
 import defaultProfileImage from "../images/defaultProfileImage.jpg";
 
 const CommentInputBox = ({
@@ -44,13 +43,11 @@ const CommentInputBox = ({
         body: JSON.stringify(commentUser),
       })
         .then((res) => {
-          console.log("Success!");
           setCommentUser({ ...commentUser, comment: "" });
           refreshComment();
           return res.json();
         })
         .catch((err) => {
-          console.log("Not success!");
           console.log(err);
         });
     } else {
@@ -71,7 +68,7 @@ const CommentInputBox = ({
           value={commentUser.comment}
           onChange={(e) => {
             setSendButton(true);
-            console.log("E", e.target.value, sendButton);
+
             setCommentUser({ ...commentUser, comment: e.target.value });
           }}
           placeholder="Write your comment here..."
@@ -131,7 +128,6 @@ const SubmitButton = styled.button`
   margin-top: 20px;
   &:hover {
     cursor: pointer;
-    /* box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px; */
     background-color: #ed9c00;
     transition: 0.3s ease-in-out;
   }

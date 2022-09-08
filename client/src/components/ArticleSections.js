@@ -1,14 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import ArticleCard from "./ArticleCard";
 const ArticleSections = ({ socialArticles }) => {
-  // const [socialArticles, setSocialArticles] = useState(null);
-  // useEffect(() => {
-  //   fetch(`/api/get-article-category/social`)
-  //     .then((res) => res.json())
-  //     .then((data) => setSocialArticles(data.data));
-  // }, []);
-
   const articles = socialArticles && socialArticles.slice(0, 4);
 
   return (

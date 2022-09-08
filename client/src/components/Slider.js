@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { createGlobalStyle } from "../styleVariable/GlobalStyle";
-import { Slide } from "@material-ui/core";
 import sliderOne from "../images/slider-one.jpg";
 import sliderTwo from "../images/topofthemountain.jpg";
 import slierThree from "../images/registerbackground.png";

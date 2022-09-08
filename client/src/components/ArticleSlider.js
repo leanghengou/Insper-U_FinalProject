@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import styled, { keyframes } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 import sliderOne from "../images/articleSlider.png";
 
 const ArticleSlider = () => {

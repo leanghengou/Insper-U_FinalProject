@@ -24,8 +24,6 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 200px;
-  /* border-top: 1px solid #e9e9e9;
-  padding-top: 50px; */
 `;
 
 const Image = styled.div`

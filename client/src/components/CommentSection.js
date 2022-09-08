@@ -15,7 +15,7 @@ const CommentSection = ({
   articleTitle,
 }) => {
   const [isLike, setIsLike] = useState();
-  // console.log("article like", articleLikes, currentUser._id);
+
   const [numLikes, setNumLikes] = useState(0);
 
   useEffect(() => {

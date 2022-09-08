@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import CommentInputBox from "./CommentInputBox";
-import { format, set } from "date-fns";
+import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import defaultProfileImage from "../images/defaultProfileImage.jpg";
 
@@ -64,7 +63,6 @@ const CommentBox = styled.div`
   padding: 20px 0;
   border-bottom: 1px solid #e9e9e9;
   display: flex;
-  /* align-items: center; */
   &:last-child {
     border-bottom: none;
   }
@@ -73,7 +71,6 @@ const CommentContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-  /* padding: 20px 0; */
   width: 100%;
 `;
 const CommentUserInfo = styled.div`
