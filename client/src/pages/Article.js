@@ -46,7 +46,6 @@ const Article = () => {
       fetch(`/api/get-article-category/${currentCategory && currentCategory}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log({ data });
           setCategoryArticles(data.data);
         });
     }
@@ -88,7 +87,7 @@ const Article = () => {
               <Sidebar>
                 <Subtitle>{`Read about related articles`}</Subtitle>
                 {categoryArticles &&
-                  categoryArticles.map((article) => {
+                  categoryArticles.map((article, index) => {
                     let category = article && article.category[0];
                     if (category === "personal-development") {
                       category = "Personal development";
@@ -103,7 +102,7 @@ const Article = () => {
                         category.charAt(0).toUpperCase() + category.slice(1);
                     }
                     return (
-                      <div>
+                      <div key={index}>
                         <ArticleName
                           onClick={() => {
                             navigate(`/article/${article && article._id}`);

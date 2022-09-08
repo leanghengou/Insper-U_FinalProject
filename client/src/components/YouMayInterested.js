@@ -33,9 +33,9 @@ const YouMayInterested = () => {
       <BigHeader>You may also like</BigHeader>
       <Container>
         {articles &&
-          articles.map((article) => {
+          articles.map((article, index) => {
             return (
-              <div style={{ marginRight: "27px" }}>
+              <div key={index} style={{ marginRight: "27px" }}>
                 <ArticleCard
                   title={article && article.title}
                   category={article && article.category[0]}
