@@ -18,15 +18,13 @@ const ProfileFeed = ({ recentLike, recentComment }) => {
       floorFunction(recentLike && recentLike.length, 5),
       recentLike.length
     );
-  const commentFeed =
+  const commentObject =
     recentComment &&
     recentComment.slice(
       floorFunction(recentComment && recentComment.length, 5),
       recentComment.length
     );
-
-  console.log(recentComment && recentComment);
-
+  const commentFeed = commentObject && commentObject.reverse();
   return (
     <Container>
       <BoxContainer>
@@ -107,7 +105,7 @@ const CommentsBox = ({ commentFeed, navigate }) => {
     <BoxContainer>
       <Subtitle>Recent comments</Subtitle>
       {commentFeed &&
-        commentFeed.reverse().map((comment) => {
+        commentFeed.map((comment) => {
           const commentText = comment.comment.slice(0, 120);
           return (
             <LinkContainer>
