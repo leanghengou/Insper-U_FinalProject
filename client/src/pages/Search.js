@@ -1,7 +1,4 @@
-import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { CurrentUserContext } from "../CurrentUserContext";
 
 const Search = () => {
   return (

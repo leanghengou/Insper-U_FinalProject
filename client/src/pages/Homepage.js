@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
-import { createGlobalStyle } from "../styleVariable/GlobalStyle";
 import Slider from "../components/Slider";
 import ArticleSections from "../components/ArticleSections";
 import BigArticleSections from "../components/BigArticleSection";
@@ -8,7 +7,6 @@ import FeaturedSectionsOne from "../components/FeaturedSectionOne";
 import FeaturedSectionsTwo from "../components/FeaturedSectionTwo";
 import FeaturedSectionsThree from "../components/FeaturedSectionThree";
 import ArticleSectionsTwo from "../components/ArticleSectionsTwo";
-import FeaturedQuoteBlock from "../components/FeaturedQuoteBlock";
 import LoadingState from "../pages/LoadingState";
 import { CurrentUserContext } from "../CurrentUserContext";
 import { useNavigate, useParams } from "react-router-dom";
@@ -67,7 +65,6 @@ const Homepage = () => {
         />
         <BigHeader>Don't forget to read...</BigHeader>
         <ArticleSectionsTwo allArticles={allArticles && allArticles} />
-        {/* <FeaturedQuoteBlock /> */}
       </Container>
     );
   }

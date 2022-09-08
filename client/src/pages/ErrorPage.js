@@ -1,5 +1,4 @@
-import styled, { keyframes } from "styled-components";
-import { GiYinYang } from "react-icons/gi";
+import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import backgroundImage from "../images/errorPage500.png";
 

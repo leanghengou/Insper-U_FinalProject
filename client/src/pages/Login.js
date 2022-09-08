@@ -1,5 +1,4 @@
-import { set } from "date-fns";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CurrentUserContext } from "../CurrentUserContext";
@@ -7,7 +6,7 @@ import image from "../images/topofthemountain.jpg";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setCurrentUser, currentUser } = useContext(CurrentUserContext);
+  const { setCurrentUser } = useContext(CurrentUserContext);
   const [verifyUser, setVerifyUser] = useState(null);
   const [loginInfo, setLoginInfo] = useState({
     email: null,

@@ -1,8 +1,7 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../CurrentUserContext";
-import { set } from "date-fns";
 import backgroundImage from "../images/registerbackground.png";
 
 const CreateAccount = () => {
@@ -20,17 +19,6 @@ const CreateAccount = () => {
   };
   const [newPassword, setNewPassword] = useState(null);
   const [registerUser, setRegisterUser] = useState(initialUserValue);
-  // useEffect(() => {
-  //   fetch("/api/get-users")
-  //     .then((res) => res.json())
-  //     .then((data) => setAllUser(data.data));
-  // }, []);
-  // allUser &&
-  //   allUser.filter((user) => {
-  //     if (user.email === registerUser.email) {
-  //       setNewUserId(user._id);
-  //     }
-  //   });
 
   const registerButton = (e) => {
     if (

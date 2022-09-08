@@ -5,12 +5,7 @@ import ProfileFeed from "../components/ProfileFeed";
 import { CurrentUserContext } from "../CurrentUserContext";
 import defaultProfileImage from "../images/defaultProfileImage.jpg";
 import LoadingState from "./LoadingState";
-import {
-  BsStarHalf,
-  BsStar,
-  BsStarFill,
-  BsFillGeoAltFill,
-} from "react-icons/bs";
+import { BsStarHalf, BsFillGeoAltFill } from "react-icons/bs";
 
 const Profile = () => {
   const { currentUser, loading, setLoading } = useContext(CurrentUserContext);

@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { createGlobalStyle } from "../styleVariable/GlobalStyle";
 import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import FeaturedQuoteBlock from "../components/FeaturedQuoteBlock";
 import LoadingState from "./LoadingState";
 
 const QuoteGenerate = () => {
-  const { currentUser, loading, setLoading } = useContext(CurrentUserContext);
+  const { loading, setLoading } = useContext(CurrentUserContext);
   const [quotes, setQuotes] = useState([]);
   const [changeIndex, setChangeIndex] = useState();
 
