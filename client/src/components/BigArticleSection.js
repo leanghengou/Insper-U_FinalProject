@@ -32,9 +32,10 @@ const BigArticleSections = ({ issueArticles, technologyArticles }) => {
       <MidContainer>
         <SmallContainer>
           {groupOne &&
-            groupOne.map((article) => {
+            groupOne.map((article, index) => {
               return (
                 <ArticleCard
+                  key={index}
                   title={article && article.title}
                   image={article && article.image}
                   category={article && article.category[0]}
@@ -47,9 +48,10 @@ const BigArticleSections = ({ issueArticles, technologyArticles }) => {
         </SmallContainer>
         <SmallContainer>
           {groupTwo &&
-            groupTwo.map((article) => {
+            groupTwo.map((article, index) => {
               return (
                 <ArticleCard
+                  key={index}
                   title={article && article.title}
                   image={article && article.image}
                   category={article && article.category[0]}

@@ -1,8 +1,5 @@
-import { useContext, useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { CurrentUserContext } from "../CurrentUserContext";
-import { format, set } from "date-fns";
 
 const Contact = () => {
   const sentTime = Date.now();
@@ -15,7 +12,6 @@ const Contact = () => {
     date: date,
   };
   const [messageForm, setMessageForm] = useState(initialUserValue);
-  console.log("NAME MESSAGE FORM", messageForm);
   const sendMessageHandler = (e) => {
     e.preventDefault();
     fetch(`/api/contact`, {
@@ -31,7 +27,6 @@ const Contact = () => {
       })
       .then((data) => {
         setMessageForm(initialUserValue);
-        console.log(data.message);
       })
       .catch((err) => {
         console.log("Error: ", err);

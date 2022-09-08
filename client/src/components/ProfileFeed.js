@@ -61,7 +61,7 @@ const LikeBox = ({ likeFeed, navigate }) => {
     <BoxContainer>
       <Subtitle>Liked articles</Subtitle>
       {likeFeed &&
-        likeFeed.reverse().map((article) => {
+        likeFeed.reverse().map((article, index) => {
           let category = article && article.category[0];
           if (category === "personal-development") {
             category = "Personal development";
@@ -76,7 +76,7 @@ const LikeBox = ({ likeFeed, navigate }) => {
           }
 
           return (
-            <LinkContainer>
+            <LinkContainer key={index}>
               <ArticleName
                 onClick={(e) => {
                   navigate(`/article/${article._id}`);
@@ -105,10 +105,10 @@ const CommentsBox = ({ commentFeed, navigate }) => {
     <BoxContainer>
       <Subtitle>Recent comments</Subtitle>
       {commentFeed &&
-        commentFeed.map((comment) => {
+        commentFeed.map((comment, index) => {
           const commentText = comment.comment.slice(0, 120);
           return (
-            <LinkContainer>
+            <LinkContainer key={index}>
               <ArticleName
                 onClick={(e) => {
                   navigate(`/article/${comment.articleId}`);

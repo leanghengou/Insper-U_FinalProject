@@ -6,9 +6,10 @@ const ArticleSectionsTwo = ({ allArticles }) => {
   return (
     <Container>
       {articles &&
-        articles.map((article) => {
+        articles.map((article, index) => {
           return (
             <ArticleCard
+              key={index}
               title={article && article.title}
               category={article && article.category[0]}
               smallText={article && article.content[0]}

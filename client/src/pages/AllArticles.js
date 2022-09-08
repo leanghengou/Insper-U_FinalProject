@@ -36,9 +36,9 @@ const AllArticles = () => {
         <ArticleSlider />
         <ArticlersContainer>
           {articles &&
-            articles.map((article) => {
+            articles.map((article, index) => {
               return (
-                <ArticleCardContainer>
+                <ArticleCardContainer key={index}>
                   <ArticleCard
                     title={article && article.title}
                     category={article && article.category[0]}
