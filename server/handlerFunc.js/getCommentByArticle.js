@@ -15,9 +15,10 @@ const getCommentByArticle = async (req, res) => {
       .collection("comments")
       .find({ articleId: idParam })
       .toArray();
+    const commentsReverse = comments.reverse();
     res.status(200).json({
       status: 200,
-      data: comments,
+      data: commentsReverse,
       message: "The request is success.",
     });
   } catch (err) {

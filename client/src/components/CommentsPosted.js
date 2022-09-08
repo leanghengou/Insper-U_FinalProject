@@ -5,7 +5,6 @@ import defaultProfileImage from "../images/defaultProfileImage.jpg";
 
 const CommentsPosted = ({ comments }) => {
   const nagivate = useNavigate();
-
   return (
     <Container>
       <div>

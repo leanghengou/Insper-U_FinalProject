@@ -38,7 +38,7 @@ const Article = () => {
       .then((data) => {
         setComments(data.data);
       });
-  }, [id]);
+  }, [comments && comments]);
   // ----------------------------------
 
   useEffect(() => {
