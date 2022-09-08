@@ -10,9 +10,9 @@ const CommentsPosted = ({ comments }) => {
       <div>
         {comments &&
           comments.map((comment, index) => {
-            const date = new Date(comment.date);
+            const date = new Date(comment && comment.date);
             const month = format(date, "MMMM");
-            const day = format(date, "LL");
+            const day = format(date, "dd");
             const year = format(date, "yyyy");
             const profileHandler = (e) => {
               nagivate(`/profile/${comment && comment.userId}`);
