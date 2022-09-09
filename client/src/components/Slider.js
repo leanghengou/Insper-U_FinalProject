@@ -32,7 +32,6 @@ const Container = styled.div`
   background-size: cover;
 `;
 const TextContainer = styled.div`
-  margin-left: 5%;
   width: 30%;
 `;
 

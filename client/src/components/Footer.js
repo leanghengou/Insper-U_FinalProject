@@ -1,24 +1,51 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { CurrentUserContext } from "../CurrentUserContext";
 
 const Footer = () => {
+  const { currentUser } = useContext(CurrentUserContext);
+  const navigate = useNavigate();
   return (
     <Container>
       <MidContainer>
         <NavContainer>
           <NavHeader>Navigation</NavHeader>
-          <NavLink>Get inspired</NavLink>
-          <NavLink>Articles</NavLink>
+          <NavLink
+            onClick={() => {
+              navigate("/quotes");
+            }}
+          >
+            Get inspired
+          </NavLink>
+          <NavLink
+            onClick={() => {
+              navigate("/articles");
+            }}
+          >
+            Articles
+          </NavLink>
         </NavContainer>
         <NavContainer>
           <NavHeader>Information</NavHeader>
           <NavLink>About</NavLink>
-          <NavLink>Contact</NavLink>
+          <NavLink
+            onClick={() => {
+              navigate("/contact");
+            }}
+          >
+            Contact
+          </NavLink>
         </NavContainer>
         <NavContainer>
           <NavHeader>My account</NavHeader>
-          <NavLink>Login</NavLink>
-          <NavLink>Register</NavLink>
-          <NavLink>Account</NavLink>
+          <NavLink
+            onClick={() => {
+              navigate(`/profile/${currentUser._id}`);
+            }}
+          >
+            Profile
+          </NavLink>
         </NavContainer>
       </MidContainer>
       <BottomBar>Insper-U | 2022</BottomBar>
@@ -35,7 +62,7 @@ const Container = styled.div`
   align-items: flex-start;
   margin-top: 100px;
   border-top: 1px solid #e9e9e9;
-  padding-top: 50px;
+  padding-top: 30px;
 `;
 
 const MidContainer = styled.div`
@@ -62,6 +89,11 @@ const NavLink = styled.button`
   background-color: transparent;
   line-height: 27px;
   border: none;
+  &:hover {
+    cursor: pointer;
+    color: #ed9c00;
+    transition: 0.3s ease-in-out;
+  }
 `;
 
 const NavContainer = styled.div`
