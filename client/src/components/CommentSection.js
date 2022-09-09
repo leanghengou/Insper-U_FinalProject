@@ -57,7 +57,7 @@ const CommentSection = ({
           <CommentLike>
             <BodyText style={{ fontWeight: "500" }}>
               {numLikes.length + " "}
-              {numLikes >= 2 ? "likes" : "like"}
+              {numLikes.length >= 2 ? "likes" : "like"}
             </BodyText>
             <BodyText style={{ marginLeft: "20px", fontWeight: "500" }}>
               {articleComments && articleComments.length + " "}
