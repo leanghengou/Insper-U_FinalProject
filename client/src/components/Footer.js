@@ -28,7 +28,6 @@ const Footer = () => {
         </NavContainer>
         <NavContainer>
           <NavHeader>Information</NavHeader>
-          <NavLink>About</NavLink>
           <NavLink
             onClick={() => {
               navigate("/contact");

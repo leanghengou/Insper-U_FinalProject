@@ -44,7 +44,6 @@ const Navigation = () => {
         >
           Articles
         </NavLink>
-        <NavLink>About</NavLink>
         <NavLink
           onClick={() => {
             navigate("/contact");
