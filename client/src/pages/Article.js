@@ -85,7 +85,7 @@ const Article = () => {
                 </TextContainer>
               </ArticleBox>
               <Sidebar>
-                <Subtitle>{`Read about related articles`}</Subtitle>
+                <Subtitle>{`Related articles`}</Subtitle>
                 {categoryArticles &&
                   categoryArticles.map((article, index) => {
                     let category = article && article.category[0];
@@ -147,9 +147,12 @@ const Container = styled.div`
 
 const ArticleBox = styled.div`
   width: 70%;
+  margin-top: 100px;
   height: auto;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid #e9e9e9;
+  padding-bottom: 70px;
 `;
 
 const Sidebar = styled.div`
@@ -158,13 +161,13 @@ const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 70px;
-  border-left: 1px solid #e9e9e9;
   padding-left: 3%;
 `;
 const ArticleSection = styled.div`
   display: flex;
   text-align: left;
   justify-content: space-between;
+  border-bottom: 1px solid #e9e9e9;
 `;
 
 const BodyText = styled.p`
@@ -196,9 +199,7 @@ const BigHeader = styled.h1`
   font-family: "Anton", sans-serif;
   font-style: normal;
   text-align: left;
-  margin-top: 70px;
   margin-bottom: 20px;
-  padding-top: 20px;
   line-height: 60px;
 `;
 

@@ -7,11 +7,7 @@ const ArticleSlider = () => {
     <Container image={sliderOne}>
       <TextContainer>
         <BigHeader>Keep reading, keep growing</BigHeader>
-        <BodyText>
-          Special, that is our asset. Talent is a common word that everyone
-          knows and respects.
-        </BodyText>
-        <ClickButton>Click here</ClickButton>
+        <BodyText>Be inspired by the essays from interesting people.</BodyText>
       </TextContainer>
     </Container>
   );
@@ -44,23 +40,6 @@ const BodyText = styled.p`
   margin-bottom: 50px;
   font-size: 16px;
   line-height: 25px;
-`;
-
-const ClickButton = styled.button`
-  padding: 15px 45px;
-  border-radius: 3px;
-  background-color: black;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-  border: none;
-  &:hover {
-    border: none;
-    cursor: pointer;
-    background-color: #ed9c00;
-    color: white;
-    transition: 0.3s ease-in-out;
-  }
 `;
 
 export default ArticleSlider;

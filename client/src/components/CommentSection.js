@@ -130,8 +130,6 @@ const CommentInfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #e9e9e9;
-  margin-top: 50px;
 `;
 
 const LikeButton = styled.button`
