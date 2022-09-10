@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import image from "../images/quoteFeaturedBlock.jpg";
 import { useNavigate } from "react-router-dom";
+import { CurrentUserContext } from "../CurrentUserContext";
 
 const FeaturedQuoteBlock = () => {
   const navigate = useNavigate();
-
+  // const { allArticles, loading, setLoading } = useContext(CurrentUserContext);
   const navigateHandler = (e) => {
     navigate(`/`);
   };
+
   return (
     <FullContainer>
       <Container image={image} />
       <TextContainer>
         <BigHeader>Read random article</BigHeader>
         <BodyText>
-          Special, that is our asset. Talent is a common word that everyone
-          knows and respects.
+          Not sure where to start, or what to try? Pick a random article!
         </BodyText>
-        <ClickButton onClick={navigateHandler}>Click here</ClickButton>
+        <ClickButton onClick={navigateHandler}>Read</ClickButton>
       </TextContainer>
     </FullContainer>
   );

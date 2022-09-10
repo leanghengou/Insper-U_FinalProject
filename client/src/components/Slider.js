@@ -10,11 +10,8 @@ const Slider = () => {
   return (
     <Container sliders={sliders[0]}>
       <TextContainer>
-        <BigHeader>Inspired</BigHeader>
-        <BodyText>
-          Special, that is our asset. Talent is a common word that everyone
-          knows and respects.
-        </BodyText>
+        <BigHeader>Get Inspired</BigHeader>
+        <BodyText>Be inspired by the essays from amazing people.</BodyText>
         <ClickButton>Click here</ClickButton>
       </TextContainer>
     </Container>

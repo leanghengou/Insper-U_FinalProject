@@ -35,7 +35,7 @@ const FeaturedSectionsTwo = () => {
         </BigHeader>
         <BodyText>
           Explore hundred of meaningful quotes from extraordinary individuals in
-          history. Click the button to explore.
+          history. Click the below button to explore.
         </BodyText>
         <ClickButton
           onClick={() => {
