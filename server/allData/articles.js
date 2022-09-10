@@ -225,7 +225,7 @@ const articles = [
     image:
       "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/City_vv_h9xhgl.jpg",
     postDate: {
-      month: "february",
+      month: "February",
       day: "11",
       year: "2019",
     },
@@ -250,7 +250,7 @@ const articles = [
     id: uuidv4(),
     title: "Cliques and their impacts on students",
     image:
-      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/City_vv_h9xhgl.jpg",
+      "https://res.cloudinary.com/dgqfcwu7y/image/upload/v1660956988/InsperU/Cluque-01_lmgkpd.jpg",
     postDate: {
       month: "May",
       day: "15",
