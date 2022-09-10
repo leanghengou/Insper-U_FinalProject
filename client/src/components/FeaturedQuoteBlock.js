@@ -1,29 +1,61 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import styled, { keyframes } from "styled-components";
 import image from "../images/quoteFeaturedBlock.jpg";
 import { useNavigate } from "react-router-dom";
-import { CurrentUserContext } from "../CurrentUserContext";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const FeaturedQuoteBlock = () => {
   const navigate = useNavigate();
-  // const { allArticles, loading, setLoading } = useContext(CurrentUserContext);
+  const [articleIds, setArticleIds] = useState(undefined);
+  useEffect(() => {
+    fetch(`/api/get-article-ids`)
+      .then((res) => res.json())
+      .then((data) => {
+        setArticleIds(data.data);
+      });
+  }, []);
+  const articleLength = articleIds && articleIds.length;
+  const randomIndex = Math.floor(Math.random() * articleLength);
   const navigateHandler = (e) => {
-    navigate(`/`);
+    navigate(`/article/${articleIds[randomIndex]}`);
   };
-
-  return (
-    <FullContainer>
-      <Container image={image} />
-      <TextContainer>
-        <BigHeader>Read random article</BigHeader>
-        <BodyText>
-          Not sure where to start, or what to try? Pick a random article!
-        </BodyText>
-        <ClickButton onClick={navigateHandler}>Read</ClickButton>
-      </TextContainer>
-    </FullContainer>
-  );
+  if (!articleIds) {
+    return <LoadingBox />;
+  } else {
+    return (
+      <FullContainer>
+        <Container image={image} />
+        <TextContainer>
+          <BigHeader>Read random article</BigHeader>
+          <BodyText>
+            Not sure where to start, or what to try? Pick a random article!
+          </BodyText>
+          <ClickButton onClick={navigateHandler}>Read</ClickButton>
+        </TextContainer>
+      </FullContainer>
+    );
+  }
 };
+
+const LoadingBox = () => {
+  return <LoadingObject />;
+};
+
+const rotating = keyframes`
+ from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+`;
+
+const LoadingObject = styled(AiOutlineLoading3Quarters)`
+  font-weight: 200;
+  margin: 0 auto;
+  animation: ${rotating} 2s infinite linear;
+  font-size: 50px;
+`;
 
 const Container = styled.div`
   width: 700px;
