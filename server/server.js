@@ -21,6 +21,7 @@ const { userCommentArticles } = require("./handlerFunc.js/userCommentArticles");
 const {
   getArticleByCategory,
 } = require("./handlerFunc.js/getArticleByCategory");
+const { getAllArticleIds } = require("./handlerFunc.js/getAllArticleIds");
 
 express()
   // Below are methods that are included in express(). We chain them for convenience.
@@ -44,6 +45,7 @@ express()
   .get("/api/user-like-article/:userId", userLikeArticles)
   .get("/api/user-comment-article/:userId", userCommentArticles)
   .get("/api/get-article-category/:category", getArticleByCategory)
+  .get("/api/get-article-ids", getAllArticleIds)
   .post("/api/create-user", createUser)
   .post("/api/post-comment", postComment)
   .patch("/api/like-article", likeArticle)
