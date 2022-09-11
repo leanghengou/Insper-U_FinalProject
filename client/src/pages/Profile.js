@@ -14,19 +14,17 @@ const Profile = () => {
   const [recentComment, setRecentComment] = useState(null);
   const [recentLike, setRecentLike] = useState(null);
   const [recentQuotes, setRecentQuotes] = useState(null);
+  const navigate = useNavigate();
 
-  const navigate = useNavigate("");
   if (!currentUser) {
     navigate("/login");
   }
 
   useEffect(() => {
-    setLoading(true);
     fetch(`/api/user-comment-article/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setRecentComment(data.data);
-        setLoading(false);
       });
   }, [id]);
 
@@ -37,15 +35,21 @@ const Profile = () => {
   }, [id]);
 
   useEffect(() => {
+    setLoading(true);
     fetch(`/api/get-spec-user/${id}`)
       .then((res) => res.json())
-      .then((data) => setUser(data.data));
+      .then((data) => {
+        setUser(data.data);
+        setLoading(false);
+      });
   }, [id]);
 
   useEffect(() => {
     fetch(`/api/user-liked-quotes/${id}`)
       .then((res) => res.json())
-      .then((data) => setRecentQuotes(data.data));
+      .then((data) => {
+        setRecentQuotes(data.data);
+      });
   }, [id]);
 
   if (loading) {
@@ -57,6 +61,7 @@ const Profile = () => {
           defaultProfileImage={defaultProfileImage}
           user={user}
           currentUser={currentUser}
+          navigate={navigate}
         />
         {user && user.bio ? <BioBox bio={user.bio} /> : null}
         <ProfileFeed
@@ -69,7 +74,7 @@ const Profile = () => {
   }
 };
 // ---------------------------------------------------------------------------------------
-const UserInfoPart = ({ user, currentUser, defaultProfileImage }) => {
+const UserInfoPart = ({ user, currentUser, defaultProfileImage, navigate }) => {
   return (
     <UserInfoContainer>
       <UserInfoProfile>
@@ -102,7 +107,13 @@ const UserInfoPart = ({ user, currentUser, defaultProfileImage }) => {
       {currentUser ? (
         <ButtonContainer>
           {user && user._id === currentUser._id ? (
-            <EditButton>Edit profile</EditButton>
+            <EditButton
+              onClick={() => {
+                navigate("/edit-user");
+              }}
+            >
+              Edit profile
+            </EditButton>
           ) : null}
         </ButtonContainer>
       ) : null}

@@ -16,6 +16,7 @@ import LoadingState from "./pages/LoadingState";
 import AllArticles from "./pages/AllArticles";
 import Error404 from "./pages/Error404";
 import ErrorPage from "./pages/ErrorPage";
+import UpdateUser from "./pages/UpdateUser";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/loading" element={<LoadingState />} />
           <Route path="*" element={<Error404 />} />
           <Route path="/error" element={<ErrorPage />} />
+          <Route path="/edit-user" element={<UpdateUser />} />
         </Routes>
         <Footer />
       </Container>
