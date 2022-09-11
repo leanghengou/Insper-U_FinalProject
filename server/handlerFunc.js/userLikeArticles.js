@@ -14,7 +14,6 @@ const userLikeArticles = async (req, res) => {
     const allUsers = await db.collection("users").find().toArray();
     const idParam = req.params.userId;
 
-    // ------Temporary Solution----------------------
     const likedArtcles = allArticles.filter((article) => {
       return article.likes.includes(idParam);
     });
