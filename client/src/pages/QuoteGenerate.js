@@ -4,7 +4,7 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import FeaturedQuoteBlock from "../components/FeaturedQuoteBlock";
 import LoadingState from "./LoadingState";
-import { da } from "date-fns/locale";
+import { BiHeart } from "react-icons/bi";
 
 const QuoteGenerate = () => {
   const { loading, setLoading, currentUser } = useContext(CurrentUserContext);
@@ -71,7 +71,7 @@ const QuoteGenerate = () => {
         <QuoteBox quote={quote} />
 
         <LikeButton isLiked={isLiked} onClick={likeQuoteHandler}>
-          Like
+          <BiHeart style={{ fontSize: "30px", marginTop: "5px" }} />
         </LikeButton>
         <QuoteButton onClick={randomHandle}>
           {!quote ? "Get inspired" : "Next"}
@@ -120,7 +120,7 @@ const QuoteContainer = styled.div`
   width: 60%;
   height: 200px;
   max-height: 200px;
-  margin: 50px 0;
+  margin-top: 50px;
 `;
 
 const QuoteText = styled.p`
@@ -206,6 +206,8 @@ const LikeButton = styled.button`
     background-color: black;
     transition: 0.3s ease-in-out;
   }
+  margin-bottom: 40px;
+  margin-top: 15px;
 `;
 
 export default QuoteGenerate;

@@ -41,7 +41,6 @@ const CommentSection = ({
         return res.json();
       })
       .then((data) => {
-        console.log("Now this data is updating: ", isLikedValidate);
         console.log(data);
         setNumLikes(data.data);
       })

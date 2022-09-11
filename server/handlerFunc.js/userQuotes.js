@@ -24,7 +24,12 @@ const userQuotes = async (req, res) => {
       .find({ userId: quote.userId, quote: quote.quote })
       .toArray();
 
-    if (existedQuotes.length === 0) {
+    if (existedQuotes.length >= 1) {
+      await db
+        .collection("quotes")
+        .deleteMany({ userId: quote.userId, quote: quote.quote });
+      await db.collection("quotes").insertOne(quote);
+    } else {
       await db.collection("quotes").insertOne(quote);
     }
     res
