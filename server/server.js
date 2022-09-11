@@ -23,6 +23,7 @@ const {
 } = require("./handlerFunc.js/getArticleByCategory");
 const { getAllArticleIds } = require("./handlerFunc.js/getAllArticleIds");
 const { userQuotes } = require("./handlerFunc.js/userQuotes");
+const { userLikedQuotes } = require("./handlerFunc.js/userLikedQuotes");
 
 express()
   // Below are methods that are included in express(). We chain them for convenience.
@@ -53,6 +54,7 @@ express()
   .post("/api/login", loginUser)
   .post("/api/contact", contactUs)
   .post("/api/quote-like", userQuotes)
+  .get("/api/user-liked-quotes/:userId", userLikedQuotes)
 
   // Nothing to modify below this line
   // this is our catch all endpoint.
