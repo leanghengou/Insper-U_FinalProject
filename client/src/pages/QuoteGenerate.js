@@ -69,10 +69,12 @@ const QuoteGenerate = () => {
     return (
       <Container>
         <QuoteBox quote={quote} />
+        {currentUser ? (
+          <LikeButton isLiked={isLiked} onClick={likeQuoteHandler}>
+            <BiHeart style={{ fontSize: "30px", marginTop: "5px" }} />
+          </LikeButton>
+        ) : null}
 
-        <LikeButton isLiked={isLiked} onClick={likeQuoteHandler}>
-          <BiHeart style={{ fontSize: "30px", marginTop: "5px" }} />
-        </LikeButton>
         <QuoteButton onClick={randomHandle}>
           {!quote ? "Get inspired" : "Next"}
         </QuoteButton>

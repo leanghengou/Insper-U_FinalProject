@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const ProfileFeed = ({ recentLike, recentComment }) => {
+const ProfileFeed = ({ recentLike, recentComment, recentQuotes }) => {
   const navigate = useNavigate("");
 
   const floorFunction = (recentComment, num) => {
@@ -23,67 +23,106 @@ const ProfileFeed = ({ recentLike, recentComment }) => {
       floorFunction(recentComment && recentComment.length, 5),
       recentComment.length
     );
+
+  const quotesSlice =
+    recentQuotes &&
+    recentQuotes.slice(
+      floorFunction(recentQuotes && recentQuotes.length, 5),
+      recentQuotes.length
+    );
+
   const commentFeed = commentObject && commentObject.reverse();
+  const quotesObject = quotesSlice && quotesSlice.reverse();
+
   return (
     <Container>
-      <BoxContainer>
-        {likeFeed && likeFeed.length <= 0 ? (
-          <EmptyLike />
+      <HalfContainer>
+        {quotesObject && quotesObject.length <= 0 ? (
+          <EmptyQuotes />
         ) : (
-          <LikeBox likeFeed={likeFeed && likeFeed} navigate={navigate} />
+          <QuoteBox quotesObject={quotesObject && quotesObject} />
         )}
-      </BoxContainer>
-      {commentFeed && commentFeed.length <= 0 ? (
-        <EmptyComment />
-      ) : (
-        <CommentsBox
-          commentFeed={commentFeed && commentFeed}
-          navigate={navigate}
-        />
-      )}
+      </HalfContainer>
+      <HalfContainer>
+        {commentFeed && commentFeed.length <= 0 ? (
+          <EmptyComment />
+        ) : (
+          <CommentsBox
+            commentFeed={commentFeed && commentFeed}
+            navigate={navigate}
+          />
+        )}
+      </HalfContainer>
     </Container>
   );
 };
 // -------------------------------------------------------
 
-const EmptyLike = () => {
+// const EmptyLike = () => {
+//   return (
+//     <BoxContainer>
+//       <Subtitle>Liked articles</Subtitle>
+//       <EmptyText>User haven't liked on any article yet.</EmptyText>
+//     </BoxContainer>
+//   );
+// };
+
+// const LikeBox = ({ likeFeed, navigate }) => {
+//   return (
+//     <BoxContainer>
+//       <Subtitle>Liked articles</Subtitle>
+//       {likeFeed &&
+//         likeFeed.reverse().map((article, index) => {
+//           let category = article && article.category[0];
+//           if (category === "personal-development") {
+//             category = "Personal development";
+//           }
+//           if (category === "life-tip") {
+//             category = "Life tips";
+//           }
+//           if (category === "Personal story") {
+//             category = "Personal story";
+//           } else {
+//             category = category.charAt(0).toUpperCase() + category.slice(1);
+//           }
+
+//           return (
+//             <LinkContainer key={index}>
+//               <ArticleName
+//                 onClick={(e) => {
+//                   navigate(`/article/${article._id}`);
+//                 }}
+//               >
+//                 {article.title}
+//               </ArticleName>
+//               <ArticleCategory>{category}</ArticleCategory>
+//             </LinkContainer>
+//           );
+//         })}
+//     </BoxContainer>
+//   );
+// };
+// // ------------------------------------------------------
+
+const EmptyQuotes = () => {
   return (
     <BoxContainer>
-      <Subtitle>Liked articles</Subtitle>
-      <EmptyText>User haven't liked on any article yet.</EmptyText>
+      <Subtitle>Favorite Quotes</Subtitle>
+      <EmptyText>User doesn't have favorite quote yet.</EmptyText>
     </BoxContainer>
   );
 };
 
-const LikeBox = ({ likeFeed, navigate }) => {
+const QuoteBox = ({ quotesObject }) => {
   return (
     <BoxContainer>
-      <Subtitle>Liked articles</Subtitle>
-      {likeFeed &&
-        likeFeed.reverse().map((article, index) => {
-          let category = article && article.category[0];
-          if (category === "personal-development") {
-            category = "Personal development";
-          }
-          if (category === "life-tip") {
-            category = "Life tips";
-          }
-          if (category === "Personal story") {
-            category = "Personal story";
-          } else {
-            category = category.charAt(0).toUpperCase() + category.slice(1);
-          }
-
+      <Subtitle>Favorite Quotes</Subtitle>
+      {quotesObject &&
+        quotesObject.map((quote, index) => {
           return (
             <LinkContainer key={index}>
-              <ArticleName
-                onClick={(e) => {
-                  navigate(`/article/${article._id}`);
-                }}
-              >
-                {article.title}
-              </ArticleName>
-              <ArticleCategory>{category}</ArticleCategory>
+              <QuoteSpeech>{`"${quote.quote}"`}</QuoteSpeech>
+              <ArticleCategory>{quote.author}</ArticleCategory>
             </LinkContainer>
           );
         })}
@@ -108,7 +147,7 @@ const CommentsBox = ({ commentFeed, navigate }) => {
           const commentText = comment.comment.slice(0, 120);
           return (
             <LinkContainer key={index}>
-              <ArticleName
+              <CommentBodyText
                 onClick={(e) => {
                   navigate(`/article/${comment.articleId}`);
                 }}
@@ -116,7 +155,7 @@ const CommentsBox = ({ commentFeed, navigate }) => {
                 {comment.comment.length > 120
                   ? `"${commentText}..."`
                   : `"${comment.comment}"`}
-              </ArticleName>
+              </CommentBodyText>
               <ArticleCategory>{comment.articleTitle}</ArticleCategory>
             </LinkContainer>
           );
@@ -135,7 +174,7 @@ const Container = styled.div`
 `;
 
 const BoxContainer = styled.div`
-  width: 45%;
+  width: 75%;
   display: flex;
   flex-direction: column;
 `;
@@ -151,10 +190,22 @@ const Subtitle = styled.h1`
   margin-block-end: 1em;
 `;
 
-const ArticleName = styled.p`
+const CommentBodyText = styled.p`
   font-size: 16px;
   line-height: 25px;
   font-weight: 600;
+  &:hover {
+    cursor: pointer;
+    color: #ed9c00;
+    transition: 0.3s ease-in-out;
+  }
+`;
+
+const QuoteSpeech = styled.p`
+  font-size: 16px;
+  line-height: 25px;
+  font-weight: 600;
+  font-style: italic;
   &:hover {
     cursor: pointer;
     color: #ed9c00;
@@ -178,5 +229,11 @@ const EmptyText = styled.p`
   font-size: 16px;
   line-height: 25px;
   color: #6c6c6c;
+`;
+
+const HalfContainer = styled.div`
+  width: 50%;
+  display: flex;
+  flex-direction: column;
 `;
 export default ProfileFeed;

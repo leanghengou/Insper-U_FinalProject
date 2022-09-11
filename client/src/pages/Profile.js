@@ -13,6 +13,7 @@ const Profile = () => {
   const [user, setUser] = useState(null);
   const [recentComment, setRecentComment] = useState(null);
   const [recentLike, setRecentLike] = useState(null);
+  const [recentQuotes, setRecentQuotes] = useState(null);
 
   const navigate = useNavigate("");
   if (!currentUser) {
@@ -41,6 +42,12 @@ const Profile = () => {
       .then((data) => setUser(data.data));
   }, [id]);
 
+  useEffect(() => {
+    fetch(`/api/user-liked-quotes/${id}`)
+      .then((res) => res.json())
+      .then((data) => setRecentQuotes(data.data));
+  }, [id]);
+
   if (loading) {
     return <LoadingState />;
   } else {
@@ -52,7 +59,11 @@ const Profile = () => {
           currentUser={currentUser}
         />
         {user && user.bio ? <BioBox bio={user.bio} /> : null}
-        <ProfileFeed recentComment={recentComment} recentLike={recentLike} />
+        <ProfileFeed
+          recentQuotes={recentQuotes}
+          recentComment={recentComment}
+          recentLike={recentLike}
+        />
       </Container>
     );
   }

@@ -17,7 +17,6 @@ const userLikedQuotes = async (req, res) => {
     const userQuotes = allQuotes.filter((quote) => {
       return quote.userId === idParam;
     });
-
     const validateUser = allUsers.some((userId) => userId._id === idParam);
     if (validateUser) {
       res.status(200).json({
