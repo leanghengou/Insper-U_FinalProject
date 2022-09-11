@@ -4,11 +4,14 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import FeaturedQuoteBlock from "../components/FeaturedQuoteBlock";
 import LoadingState from "./LoadingState";
+import { da } from "date-fns/locale";
 
 const QuoteGenerate = () => {
-  const { loading, setLoading } = useContext(CurrentUserContext);
+  const { loading, setLoading, currentUser } = useContext(CurrentUserContext);
   const [quotes, setQuotes] = useState([]);
   const [changeIndex, setChangeIndex] = useState();
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeLoding, setLikeLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -24,8 +27,41 @@ const QuoteGenerate = () => {
 
   const randomHandle = () => {
     setChangeIndex(Math.floor(Math.random() * quotes.length));
+    setIsLiked(false);
   };
   const quote = quotes[changeIndex];
+
+  const likeQuoteHandler = (e) => {
+    if (!quote || isLiked || likeLoding) {
+      return;
+    }
+    setLikeLoading(true);
+    const payLoad = {
+      userId: currentUser._id,
+      quote: quote.text,
+      author: quote.author,
+    };
+
+    fetch(`/api/quote-like`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payLoad),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data.message);
+        setIsLiked(true);
+        setLikeLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   if (loading) {
     return <LoadingState />;
@@ -33,6 +69,10 @@ const QuoteGenerate = () => {
     return (
       <Container>
         <QuoteBox quote={quote} />
+
+        <LikeButton isLiked={isLiked} onClick={likeQuoteHandler}>
+          Like
+        </LikeButton>
         <QuoteButton onClick={randomHandle}>
           {!quote ? "Get inspired" : "Next"}
         </QuoteButton>
@@ -149,6 +189,23 @@ const PointingAnimation = styled(AiOutlineArrowDown)`
   margin: 0 auto;
   animation: ${animationArrow} 2s infinite linear;
   font-size: 50px;
+`;
+
+const LikeButton = styled.button`
+  height: 49px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: ${({ isLiked }) => {
+    return isLiked ? "black" : "#f84a55";
+  }};
+  border: none;
+  color: white;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+    background-color: black;
+    transition: 0.3s ease-in-out;
+  }
 `;
 
 export default QuoteGenerate;
