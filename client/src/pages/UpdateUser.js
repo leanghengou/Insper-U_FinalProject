@@ -2,8 +2,6 @@ import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../CurrentUserContext";
-import LoadingState from "./LoadingState";
-import { da } from "date-fns/locale";
 
 const UpdateUser = () => {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -20,9 +18,6 @@ const UpdateUser = () => {
     bio: currentUser.bio,
   };
   const [updateInfo, setUpdateInfo] = useState(initialUserValue);
-
-  // console.log("UPDATE INFO", updateInfo);
-
   const registerButton = (e) => {
     if (
       updateInfo.firstName ||
@@ -44,7 +39,7 @@ const UpdateUser = () => {
         })
         .then((data) => {
           setCurrentUser(data.data);
-          console.log(data.message);
+          navigate(`/profile/${currentUser._id}`);
         })
         .catch((err) => {
           console.log(err);
@@ -56,6 +51,13 @@ const UpdateUser = () => {
 
   return (
     <Container>
+      <TextContainer>
+        <BigHeader>Update account</BigHeader>
+        <BodyText>
+          Update your profile by changing the current user info down below.
+          Press <Bold>"Update account"</Bold> when you are finish.
+        </BodyText>
+      </TextContainer>
       <FormBox>
         <FormContainer>
           <LoginForm>
@@ -136,13 +138,13 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
   background-color: white;
   margin-top: 100px;
+  justify-content: space-between;
 `;
 
 const FormBox = styled.div`
-  width: 70%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -243,26 +245,12 @@ const BodyText = styled.p`
 `;
 
 const TextContainer = styled.div`
-  width: 70%;
-  margin-top: 80px;
-  margin-left: 100px;
-  color: white;
+  width: 30%;
+  margin-bottom: 50px;
 `;
 
-const LoginButton = styled.button`
-  padding: 15px 45px;
-  border: 1px solid white;
-  border-radius: 3px;
-  margin-top: 30px;
-  background-color: transparent;
-  color: white;
+const Bold = styled.span`
   font-weight: 600;
-  font-size: 16px;
-  &:hover {
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    transition: 0.3s ease-in-out;
-  }
 `;
+
 export default UpdateUser;
