@@ -41,7 +41,7 @@ const updateUser = async (req, res) => {
         .updateOne({ _id: req.body._id }, { $set: userUpdate });
       await db
         .collection("comments")
-        .updateOne({ userId: req.body._id }, { $set: upComment });
+        .updateMany({ userId: req.body._id }, { $set: upComment });
       res.status(200).json({
         status: 200,
         data: userUpdate,
