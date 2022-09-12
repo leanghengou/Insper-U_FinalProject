@@ -108,6 +108,9 @@ const ClickButton = styled.button`
     color: white;
     transition: 0.3s ease-in-out;
   }
+  &:active {
+    background-color: black;
+  }
 `;
 
 export default FeaturedQuoteBlock;

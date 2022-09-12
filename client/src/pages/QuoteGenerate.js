@@ -151,12 +151,16 @@ const QuoteButton = styled.button`
   color: white;
   border-radius: 3px;
   margin-bottom: 170px;
+  font-weight: 600;
   :hover& {
     cursor: pointer;
     background-color: #ed9c00;
     color: white;
     border: #ed9c00 2px solid;
     transition: 0.5s ease-in-out;
+  }
+  &:active {
+    background-color: black;
   }
 `;
 

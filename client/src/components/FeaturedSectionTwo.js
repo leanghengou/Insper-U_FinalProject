@@ -114,6 +114,9 @@ const ClickButton = styled.button`
     color: white;
     transition: 0.3s ease-in-out;
   }
+  &:active {
+    background-color: black;
+  }
 `;
 
 const TextContainer = styled.div`

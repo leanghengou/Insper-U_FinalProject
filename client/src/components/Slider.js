@@ -3,16 +3,24 @@ import styled from "styled-components";
 import sliderOne from "../images/slider-one.jpg";
 import sliderTwo from "../images/topofthemountain.jpg";
 import slierThree from "../images/registerbackground.png";
+import { useNavigate } from "react-router-dom";
 
 const Slider = () => {
   const sliders = [sliderOne, sliderTwo, slierThree];
+  const nagivate = useNavigate();
 
   return (
     <Container sliders={sliders[0]}>
       <TextContainer>
         <BigHeader>Get Inspired</BigHeader>
         <BodyText>Be inspired by the essays from amazing people.</BodyText>
-        <ClickButton>Click here</ClickButton>
+        <ClickButton
+          onClick={() => {
+            nagivate("/articles");
+          }}
+        >
+          Click here
+        </ClickButton>
       </TextContainer>
     </Container>
   );
@@ -60,6 +68,9 @@ const ClickButton = styled.button`
     background-color: #ed9c00;
     color: white;
     transition: 0.3s ease-in-out;
+  }
+  &:active {
+    background-color: black;
   }
 `;
 

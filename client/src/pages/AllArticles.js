@@ -65,7 +65,7 @@ const AllArticles = () => {
 const Filter = () => {
   return (
     <FilterContainer>
-      <BigHeader>Filter</BigHeader>
+      <FilterHeader>Filter</FilterHeader>
     </FilterContainer>
   );
 };
@@ -106,13 +106,13 @@ const ArticleCardContainer = styled.div`
   margin-bottom: 70px;
 `;
 
-const BigHeader = styled.h1`
+const FilterHeader = styled.h1`
   text-transform: uppercase;
-  font-size: 35px;
+  font-size: 25px;
   font-family: "Anton", sans-serif;
   font-style: normal;
   text-align: left;
-  padding-top: 30px;
+  /* padding-top: 30px; */
   margin-block-start: 0em;
   margin-block-end: 0em;
 `;

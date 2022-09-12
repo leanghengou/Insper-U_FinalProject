@@ -12,7 +12,6 @@ const FeaturedSectionsOne = () => {
           There are interesting stories that you might never heard of! Check out
           real stories from students.
         </BodyText>
-        <ClickButton>Check out</ClickButton>
       </TextGroup>
       <Image image={image} />
     </Container>

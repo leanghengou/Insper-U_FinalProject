@@ -156,7 +156,7 @@ const NavLink = styled.button`
   background-color: transparent;
   padding: 28px 28px;
 
-  :hover& {
+  &:hover {
     cursor: pointer;
     background-color: aqua;
 
@@ -168,7 +168,7 @@ const NavLink = styled.button`
     );
     border-bottom: 3px black solid;
   }
-  :focus& {
+  &:focus {
     background-color: aqua;
 
     background: rgb(247, 247, 247);
