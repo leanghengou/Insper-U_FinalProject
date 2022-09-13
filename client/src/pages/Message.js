@@ -4,19 +4,28 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import { format } from "date-fns";
 import LoadingState from "../pages/LoadingState";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const Message = () => {
-  const { setLoading, loading } = useContext(CurrentUserContext);
+  const { setLoading, loading, currentUser } = useContext(CurrentUserContext);
+  const navigate = useNavigate();
+
+  if (currentUser.status !== "admin") {
+    navigate("/login");
+  }
   const [allMessages, setAllMessage] = useState(null);
   const [message, setMessage] = useState(null);
   const [selectedMessageId, setSelectedMessageId] = useState(null);
   const [messageReady, setMessageReading] = useState(false);
+  const [emptyMessage, setEmptyMessage] = useState(false);
   useEffect(() => {
     setLoading(true);
     fetch(`/api/get-message`)
       .then((res) => res.json())
       .then((data) => {
+        setEmptyMessage(data.status);
         setAllMessage(data.data);
+
         setLoading(false);
       });
   }, []);
@@ -36,38 +45,53 @@ const Message = () => {
 
   if (loading) {
     return <LoadingState />;
+  }
+  if (emptyMessage && emptyMessage === 404) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "120px" }}>
+        <BodyText>There is no message yet.</BodyText>
+      </div>
+    );
   } else {
     return (
-      <Container>
-        <BoxContainer>
-          {allMessages &&
-            allMessages.map((message, index) => {
-              const date = new Date(message && message.date);
-              const month = format(date, "MMMM");
-              const day = format(date, "dd");
-              const year = format(date, "yyyy");
-              return (
-                <MessageBoxContainer
-                  onClick={() => {
-                    setSelectedMessageId(message && message._id);
-                  }}
-                  key={index}
-                >
-                  <MessageBox>
-                    <DateText>{month + " " + day + " " + year}</DateText>
-                    <TitleMessage>
-                      {message && message.subject.length >= 50
-                        ? message.subject.slice(0, 50) + "..."
-                        : message.subject}
-                    </TitleMessage>
-                  </MessageBox>
-                </MessageBoxContainer>
-              );
-            })}
-        </BoxContainer>
+      <BigTitle>
+        <BigHeader>Message Box</BigHeader>
 
-        {messageReady ? <MessageDetail message={message} /> : <LoadingObject />}
-      </Container>
+        <Container>
+          <BoxContainer>
+            {allMessages &&
+              allMessages.map((message, index) => {
+                const date = new Date(message && message.date);
+                const month = format(date, "MMMM");
+                const day = format(date, "dd");
+                const year = format(date, "yyyy");
+                return (
+                  <MessageBoxContainer
+                    onClick={() => {
+                      setSelectedMessageId(message && message._id);
+                    }}
+                    key={index}
+                  >
+                    <MessageBox>
+                      <DateText>{month + " " + day + " " + year}</DateText>
+                      <TitleMessage>
+                        {message && message.subject.length >= 50
+                          ? message.subject.slice(0, 50) + "..."
+                          : message.subject}
+                      </TitleMessage>
+                    </MessageBox>
+                  </MessageBoxContainer>
+                );
+              })}
+          </BoxContainer>
+
+          {messageReady ? (
+            <MessageDetail message={message} />
+          ) : (
+            <MessageLoad messageReady={messageReady} />
+          )}
+        </Container>
+      </BigTitle>
     );
   }
 };
@@ -95,8 +119,26 @@ const MessageDetail = ({ message }) => {
   );
 };
 
+const MessageLoad = ({ messageReady }) => {
+  return (
+    <MessageContainer>
+      {!messageReady ? (
+        <BodyText>Select the message box to read...</BodyText>
+      ) : (
+        <BodyText>Loading...</BodyText>
+      )}
+    </MessageContainer>
+  );
+};
+const BigTitle = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+`;
+
 const Container = styled.div`
-  margin-top: 100px;
   width: 100%;
   height: auto;
   display: flex;
@@ -112,11 +154,14 @@ const MessageBoxContainer = styled.div`
   flex-direction: column;
   height: auto;
   border-bottom: 1px solid #c7c7c7;
-  /* border-top: 1px solid #c7c7c7; */
+
   transition: 0.3s ease-in-out;
   &:hover {
     background-color: #fff9ed;
     cursor: pointer;
+  }
+  &:first-child {
+    border-top: 1px solid #c7c7c7;
   }
 `;
 
@@ -126,7 +171,6 @@ const MessageBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 15px;
 `;
 
 const BodyText = styled.p`
@@ -184,11 +228,11 @@ const MessageTitle = styled.div`
 const BigHeader = styled.h1`
   width: 100%;
   text-transform: uppercase;
-  font-size: 35px;
+  font-size: 30px;
   font-family: "Anton", sans-serif;
   font-style: normal;
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   line-height: 60px;
 `;
 
@@ -205,8 +249,7 @@ const rotating = keyframes`
 
 const LoadingObject = styled(AiOutlineLoading3Quarters)`
   font-weight: 200;
-  margin-top: 250px;
-  margin: auto;
+  margin: 0 auto;
   animation: ${rotating} 2s infinite linear;
   font-size: 50px;
 `;

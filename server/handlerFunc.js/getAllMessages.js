@@ -14,6 +14,7 @@ const getAllMessages = async (req, res) => {
 
     if (allMessages.length <= 0) {
       res.status(404).json({
+        data: allMessages.reverse(),
         status: 404,
         message: "There is no message yet.",
       });

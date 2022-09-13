@@ -71,11 +71,13 @@ const Navigation = () => {
           </ContainerLogin>
         ) : (
           <ContainerTwo>
-            <MessageButton
-              onClick={() => {
-                navigate("/message");
-              }}
-            />
+            {currentUser.status === "admin" ? (
+              <MessageButton
+                onClick={() => {
+                  navigate("/message");
+                }}
+              />
+            ) : null}
             <AccountButton
               onClick={() => {
                 navigate(`/profile/${currentUser._id}`);
