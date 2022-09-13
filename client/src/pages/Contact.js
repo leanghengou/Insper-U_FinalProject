@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { AiFillCheckCircle } from "react-icons/ai";
+import { AiFillCheckCircle, AiOutlineExclamationCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
@@ -16,6 +16,7 @@ const Contact = () => {
   };
   // ------------------------------
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
   // -------------------------------
   const [messageForm, setMessageForm] = useState(initialUserValue);
   const sendMessageHandler = (e) => {
@@ -32,28 +33,31 @@ const Contact = () => {
         return res.json();
       })
       .then((data) => {
-        setMessageForm(initialUserValue);
-        setSuccess("success");
+        if (data.status === 200) {
+          setMessageForm(initialUserValue);
+          setSuccess(true);
+          setTimeout(() => {
+            setSuccess(false);
+          }, 7000);
+        } else {
+          setError(true);
+          setTimeout(() => {
+            setError(false);
+          }, 7000);
+        }
       })
       .catch((err) => {
         navigate("/error");
         console.log("Error: ", err);
       });
   };
+
   return (
     <Container>
       {/* --------------------------------------- */}
 
-      {success ? (
-        <SuccessBox>
-          <AiFillCheckCircle
-            style={{ fontSize: "35px", color: "white", marginRight: "15px" }}
-          />
-          <MessageText>
-            Your message is successfully sent. We will take a look at it soon!
-          </MessageText>
-        </SuccessBox>
-      ) : null}
+      {success ? <SuccessMessage /> : null}
+      {error ? <ErrorMessage /> : null}
 
       {/* --------------------------------------- */}
 
@@ -83,17 +87,7 @@ const Contact = () => {
           />
         </SmallInputContainer>
       </TwoColumnContainer>
-      <TwoColumnContainer>
-        <SmallInputContainer>
-          <LabelTitle>Phone number (Optional)</LabelTitle>
-          <InputBox
-            value={messageForm.phoneNumber}
-            onChange={(e) => {
-              setMessageForm({ ...messageForm, phoneNumber: e.target.value });
-            }}
-          />
-        </SmallInputContainer>
-      </TwoColumnContainer>
+
       <OneColumnContainer>
         <LabelTitle>Subject</LabelTitle>
         <InputBox
@@ -115,6 +109,35 @@ const Contact = () => {
   );
 };
 
+// ----------------------------
+
+const SuccessMessage = () => {
+  return (
+    <SuccessBox>
+      <AiFillCheckCircle
+        style={{ fontSize: "35px", color: "white", marginRight: "15px" }}
+      />
+      <MessageText>
+        Your message is successfully sent. We will take a look at it soon!
+      </MessageText>
+    </SuccessBox>
+  );
+};
+
+const ErrorMessage = () => {
+  return (
+    <ErrorBox>
+      <AiOutlineExclamationCircle
+        style={{ fontSize: "35px", color: "white", marginRight: "15px" }}
+      />
+      <MessageText>
+        There are some error in the message form. Please, check your email if
+        it's correct.
+      </MessageText>
+    </ErrorBox>
+  );
+};
+// ----------------------------
 const Container = styled.div`
   margin-top: 150px;
   width: 100%;
@@ -195,11 +218,18 @@ const SendButton = styled.button`
   }
 `;
 const animationOne = keyframes`
- from {
+ 0% {
     transform: translateY(-1000px);
   }
-  to {
-    transform: translateY(-460px);
+  25%{ 
+    transform: translateY(-400px);
+  }
+
+  75%{ 
+    transform: translateY(-400px);
+  }
+  100%{ 
+    transform: translateY(-1000px);
   }
 `;
 const SuccessBox = styled.div`
@@ -207,11 +237,25 @@ const SuccessBox = styled.div`
   justify-content: center;
   width: 1000px;
   height: 65px;
-  background-color: #0abf3c;
-  position: absolute;
+  background-color: #ed9c00;
+  position: fixed;
   border-radius: 10px;
   align-items: center;
-  animation: ${animationOne} 2s linear forwards;
+  animation: ${animationOne} 7s linear forwards;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+`;
+
+const ErrorBox = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 1000px;
+  height: 65px;
+  background-color: #ed0000;
+  position: fixed;
+  border-radius: 10px;
+  align-items: center;
+  animation: ${animationOne} 7s linear forwards;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 `;
 
 const MessageText = styled.div`
