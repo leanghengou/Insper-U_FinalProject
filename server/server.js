@@ -26,6 +26,7 @@ const { userQuotes } = require("./handlerFunc.js/userQuotes");
 const { userLikedQuotes } = require("./handlerFunc.js/userLikedQuotes");
 const { updateUser } = require("./handlerFunc.js/updateUser");
 const { getAllMessages } = require("./handlerFunc.js/getAllMessages");
+const { getSpecMessage } = require("./handlerFunc.js/getSpecMessage");
 
 express()
   // Below are methods that are included in express(). We chain them for convenience.
@@ -59,6 +60,7 @@ express()
   .get("/api/user-liked-quotes/:userId", userLikedQuotes)
   .patch("/api/update-user", updateUser)
   .get("/api/get-message", getAllMessages)
+  .get("/api/get-spec-message/:id", getSpecMessage)
 
   // Nothing to modify below this line
   // this is our catch all endpoint.
