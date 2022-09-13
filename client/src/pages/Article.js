@@ -72,11 +72,7 @@ const Article = () => {
                 <BigHeader>{article && article.title}</BigHeader>
                 <div>
                   <AuthorText>
-                    By{" "}
-                    {article &&
-                      article.authors.map((item) => {
-                        return item + "   |   ";
-                      })}
+                    {"By " + `${article && article.authors[0]}`}
                   </AuthorText>
                   <DateText>
                     {article &&
