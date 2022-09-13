@@ -1,16 +1,60 @@
 import styled from "styled-components";
+import { useEffect, useState, useContext } from "react";
+import { CurrentUserContext } from "../CurrentUserContext";
 
 const Message = () => {
+  const { setLoading, loading } = useContext(CurrentUserContext);
+  const [allMessages, setAllMessage] = useState(null);
+  const [message, setMessage] = useState(null);
+  const [selectedMessageId, setSelectedMessageId] = useState(null);
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/get-message`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAllMessage(data.data);
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/get-message`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAllMessage(data.data);
+        setLoading(false);
+      });
+  }, [selectedMessageId]);
+
   return (
     <Container>
-      <MessageBoxContainer>
-        <MessageBox>
-          <DateText>Sep 08 2022</DateText>
-          <TitleMessage>
-            Talent is a common word that everyone knows and respects...
-          </TitleMessage>
-        </MessageBox>
-      </MessageBoxContainer>
+      <BoxContainer>
+        {allMessages &&
+          allMessages.map((message, index) => {
+            return (
+              <MessageBoxContainer
+                onClick={() => {
+                  setSelectedMessageId(message && message._id);
+                }}
+                key={index}
+              >
+                <MessageBox>
+                  <DateText>{message && message.date}</DateText>
+                  <TitleMessage>{message && message.subject}</TitleMessage>
+                </MessageBox>
+              </MessageBoxContainer>
+            );
+          })}
+        {/* <MessageBoxContainer>
+          <MessageBox>
+            <DateText>Sep 08 2022</DateText>
+            <TitleMessage>
+              Talent is a common word that everyone knows and respects...
+            </TitleMessage>
+          </MessageBox>
+        </MessageBoxContainer> */}
+      </BoxContainer>
       <MessageContainer>
         <UserInfo>
           <BodyText>
@@ -45,19 +89,21 @@ const Container = styled.div`
   height: auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 `;
-
-const MessageBoxContainer = styled.div`
+const BoxContainer = styled.div`
   width: 25%;
+`;
+const MessageBoxContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   height: auto;
   border-bottom: 1px solid #c7c7c7;
-  border-top: 1px solid #c7c7c7;
+  /* border-top: 1px solid #c7c7c7; */
   transition: 0.3s ease-in-out;
   &:hover {
-    background-color: #ed9c00;
+    background-color: #fff9ed;
     cursor: pointer;
   }
 `;
