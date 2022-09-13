@@ -10,7 +10,7 @@ import CreateAccount from "./pages/CreateAccount";
 import QuoteGenerate from "./pages/QuoteGenerate";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
-import Search from "./pages/Search";
+import Message from "./pages/Message";
 import UploadImages from "./pages/UploadImage";
 import LoadingState from "./pages/LoadingState";
 import AllArticles from "./pages/AllArticles";
@@ -31,7 +31,7 @@ function App() {
           <Route path="/register" element={<CreateAccount />} />
           <Route path="/quotes" element={<QuoteGenerate />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/search" element={<Search />} />
+          <Route path="/message" element={<Message />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/upload" element={<UploadImages />} />
           <Route path="/loading" element={<LoadingState />} />

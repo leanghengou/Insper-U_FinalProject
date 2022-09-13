@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Search = () => {
+const Message = () => {
   return (
     <Container>
       <p>This is search page!</p>
@@ -17,4 +17,4 @@ const Container = styled.div`
   align-items: center;
 `;
 
-export default Search;
+export default Message;

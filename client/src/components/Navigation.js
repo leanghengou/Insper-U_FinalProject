@@ -5,6 +5,7 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineUser } from "react-icons/ai";
 import { useContext } from "react";
 import { IoSearch, IoLogOutOutline } from "react-icons/io5";
+import { BiEnvelope } from "react-icons/bi";
 
 const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -70,9 +71,9 @@ const Navigation = () => {
           </ContainerLogin>
         ) : (
           <ContainerTwo>
-            <SearchButton
+            <MessageButton
               onClick={() => {
-                navigate("/search");
+                navigate("/message");
               }}
             />
             <AccountButton
@@ -210,8 +211,8 @@ const LogoutButton = styled(IoLogOutOutline)`
   }
 `;
 
-const SearchButton = styled(IoSearch)`
-  font-size: 20px;
+const MessageButton = styled(BiEnvelope)`
+  font-size: 25px;
   margin-left: 35px;
   &:hover {
     cursor: pointer;
