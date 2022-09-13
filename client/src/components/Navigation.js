@@ -214,6 +214,7 @@ const LogoutButton = styled(IoLogOutOutline)`
 const MessageButton = styled(BiEnvelope)`
   font-size: 25px;
   margin-left: 35px;
+  font-weight: 300;
   &:hover {
     cursor: pointer;
     color: #ed9c00;
