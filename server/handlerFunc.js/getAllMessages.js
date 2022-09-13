@@ -20,7 +20,7 @@ const getAllMessages = async (req, res) => {
     } else {
       res.status(200).json({
         status: 200,
-        data: allMessages,
+        data: allMessages.reverse(),
         message: "The request is success.",
       });
     }

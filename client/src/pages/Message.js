@@ -1,12 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useEffect, useState, useContext } from "react";
 import { CurrentUserContext } from "../CurrentUserContext";
+import { format } from "date-fns";
+import LoadingState from "../pages/LoadingState";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Message = () => {
   const { setLoading, loading } = useContext(CurrentUserContext);
   const [allMessages, setAllMessage] = useState(null);
   const [message, setMessage] = useState(null);
   const [selectedMessageId, setSelectedMessageId] = useState(null);
+  const [messageReady, setMessageReading] = useState(false);
   useEffect(() => {
     setLoading(true);
     fetch(`/api/get-message`)
@@ -18,68 +22,76 @@ const Message = () => {
   }, []);
 
   useEffect(() => {
-    setLoading(true);
-    fetch(`/api/get-message`)
-      .then((res) => res.json())
-      .then((data) => {
-        setAllMessage(data.data);
-        setLoading(false);
-      });
+    if (selectedMessageId) {
+      setMessageReading(false);
+      fetch(`/api/get-spec-message/${selectedMessageId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setMessage(data.data);
+          setMessageReading(true);
+          console.log(message);
+        });
+    }
   }, [selectedMessageId]);
 
+  if (loading) {
+    return <LoadingState />;
+  } else {
+    return (
+      <Container>
+        <BoxContainer>
+          {allMessages &&
+            allMessages.map((message, index) => {
+              const date = new Date(message && message.date);
+              const month = format(date, "MMMM");
+              const day = format(date, "dd");
+              const year = format(date, "yyyy");
+              return (
+                <MessageBoxContainer
+                  onClick={() => {
+                    setSelectedMessageId(message && message._id);
+                  }}
+                  key={index}
+                >
+                  <MessageBox>
+                    <DateText>{month + " " + day + " " + year}</DateText>
+                    <TitleMessage>
+                      {message && message.subject.length >= 50
+                        ? message.subject.slice(0, 50) + "..."
+                        : message.subject}
+                    </TitleMessage>
+                  </MessageBox>
+                </MessageBoxContainer>
+              );
+            })}
+        </BoxContainer>
+
+        {messageReady ? <MessageDetail message={message} /> : <LoadingObject />}
+      </Container>
+    );
+  }
+};
+
+const MessageDetail = ({ message }) => {
+  const date = new Date(message && message.date);
+  const month = format(date, "MMMM");
+  const day = format(date, "dd");
+  const year = format(date, "yyyy");
   return (
-    <Container>
-      <BoxContainer>
-        {allMessages &&
-          allMessages.map((message, index) => {
-            return (
-              <MessageBoxContainer
-                onClick={() => {
-                  setSelectedMessageId(message && message._id);
-                }}
-                key={index}
-              >
-                <MessageBox>
-                  <DateText>{message && message.date}</DateText>
-                  <TitleMessage>{message && message.subject}</TitleMessage>
-                </MessageBox>
-              </MessageBoxContainer>
-            );
-          })}
-        {/* <MessageBoxContainer>
-          <MessageBox>
-            <DateText>Sep 08 2022</DateText>
-            <TitleMessage>
-              Talent is a common word that everyone knows and respects...
-            </TitleMessage>
-          </MessageBox>
-        </MessageBoxContainer> */}
-      </BoxContainer>
-      <MessageContainer>
-        <UserInfo>
-          <BodyText>
-            From:
-            <Bold> Leangheng Ou</Bold>
-          </BodyText>
-          <EmailText>{"<leanghengou5555@gmail.com>"}</EmailText>
-        </UserInfo>
-        <MessageTitle>
-          Talent is a common word that everyone knows and respects.
-        </MessageTitle>
+    <MessageContainer>
+      <UserInfo>
         <BodyText>
-          These days, youths are more prone to be depressed than ever before.
-          Due to parent's expectations, toxic people, competitive environments,
-          social media, and social norms. Countless youths start to develop
-          internal problems such as low self-esteem, stress, over-thinking,
-          insecurities, powerlessness, and hopelessness. Many are be able to
-          manage to handle these internal sicknesses. But some are too sensitive
-          or lack the experience to deal with the obstacles. It could lead them
-          to fall into some serious cases. Youths need positive messages and
-          inspirations from others. They need to realize how lucky they are to
-          be born in this peaceful, and prosperous time.
+          From:
+          <Bold> {message && message.name}</Bold>
         </BodyText>
-      </MessageContainer>
-    </Container>
+        <EmailText>{`<${message && message.email}>`}</EmailText>
+      </UserInfo>
+      <MessageTitle>{message && message.subject}</MessageTitle>
+      <BodyText>{message && message.message}</BodyText>
+      <DateText style={{ marginTop: "55px", color: "#6C6C6C" }}>
+        {"Date: " + month + " " + day + " " + year}
+      </DateText>
+    </MessageContainer>
   );
 };
 
@@ -152,7 +164,7 @@ const TitleMessage = styled.p`
   font-size: 16px;
   font-weight: 600;
   line-height: 22px;
-  font-style: italic;
+  /* font-style: italic; */
   margin-top: 15px;
 `;
 
@@ -179,4 +191,26 @@ const BigHeader = styled.h1`
   margin-bottom: 20px;
   line-height: 60px;
 `;
+
+// ---------------------
+
+const rotating = keyframes`
+ from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+`;
+
+const LoadingObject = styled(AiOutlineLoading3Quarters)`
+  font-weight: 200;
+  margin-top: 250px;
+  margin: auto;
+  animation: ${rotating} 2s infinite linear;
+  font-size: 50px;
+`;
+
+// ---------------------
+
 export default Message;
