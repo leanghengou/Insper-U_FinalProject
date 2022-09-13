@@ -1,7 +1,10 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { AiFillCheckCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
+  const navigate = useNavigate();
   const sentTime = Date.now();
   const date = new Date(sentTime);
   const initialUserValue = {
@@ -11,6 +14,9 @@ const Contact = () => {
     email: "",
     date: date,
   };
+  // ------------------------------
+  const [success, setSuccess] = useState(false);
+  // -------------------------------
   const [messageForm, setMessageForm] = useState(initialUserValue);
   const sendMessageHandler = (e) => {
     e.preventDefault();
@@ -27,13 +33,30 @@ const Contact = () => {
       })
       .then((data) => {
         setMessageForm(initialUserValue);
+        setSuccess("success");
       })
       .catch((err) => {
+        navigate("/error");
         console.log("Error: ", err);
       });
   };
   return (
     <Container>
+      {/* --------------------------------------- */}
+
+      {success ? (
+        <SuccessBox>
+          <AiFillCheckCircle
+            style={{ fontSize: "35px", color: "white", marginRight: "15px" }}
+          />
+          <MessageText>
+            Your message is successfully sent. We will take a look at it soon!
+          </MessageText>
+        </SuccessBox>
+      ) : null}
+
+      {/* --------------------------------------- */}
+
       <BigHeader>Have any question?</BigHeader>
       <BodyText>
         If you have any question to ask, or if you wish to disccus something
@@ -93,7 +116,7 @@ const Contact = () => {
 };
 
 const Container = styled.div`
-  margin-top: 100px;
+  margin-top: 150px;
   width: 100%;
   height: auto;
   display: flex;
@@ -170,6 +193,30 @@ const SendButton = styled.button`
     color: white;
     transition: 0.5s ease-in-out;
   }
+`;
+const animationOne = keyframes`
+ from {
+    transform: translateY(-1000px);
+  }
+  to {
+    transform: translateY(-460px);
+  }
+`;
+const SuccessBox = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 1000px;
+  height: 65px;
+  background-color: #0abf3c;
+  position: absolute;
+  border-radius: 10px;
+  align-items: center;
+  animation: ${animationOne} 2s linear forwards;
+`;
+
+const MessageText = styled.div`
+  color: white;
+  font-weight: 500;
 `;
 
 export default Contact;
