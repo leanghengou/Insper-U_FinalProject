@@ -1,15 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../CurrentUserContext";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import CommentSection from "../components/CommentSection";
 import YouMayInterested from "../components/YouMayInterested";
 import LoadingState from "../pages/LoadingState";
+import { AiFillCheckCircle, AiOutlineExclamationCircle } from "react-icons/ai";
 
 const Article = () => {
   const { currentUser, setLoading, loading } = useContext(CurrentUserContext);
   const navigate = useNavigate();
   const [currentCategory, setCurrentCategory] = useState();
+
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   if (!currentUser) {
     navigate("/login");
@@ -58,6 +62,8 @@ const Article = () => {
     // -------------------------
     return (
       <Container>
+        {success ? <SuccessMessage /> : null}
+        {error ? <ErrorMessage /> : null}
         {article ? (
           <>
             <ArticleImage imageSrc={article && article.image} />
@@ -128,6 +134,8 @@ const Article = () => {
               articleComments={article && article.comments}
               articleLikes={article && article.likes}
               articleTitle={article && article.title}
+              setError={setError}
+              setSuccess={setSuccess}
             />
             <YouMayInterested />
           </>
@@ -139,12 +147,34 @@ const Article = () => {
     // ---------------------------------
   }
 };
+// -----------------------
+const SuccessMessage = () => {
+  return (
+    <SuccessBox>
+      <AiFillCheckCircle
+        style={{ fontSize: "35px", color: "white", marginRight: "15px" }}
+      />
+      <MessageText>Your comment is successfully posted!</MessageText>
+    </SuccessBox>
+  );
+};
 
+const ErrorMessage = () => {
+  return (
+    <ErrorBox>
+      <AiOutlineExclamationCircle
+        style={{ fontSize: "35px", color: "white", marginRight: "15px" }}
+      />
+      <MessageText>Negative comments are not allowed here.</MessageText>
+    </ErrorBox>
+  );
+};
+// -----------------------
 const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   margin-top: 70px;
 `;
@@ -249,4 +279,52 @@ const TextContainer = styled.div`
   width: 95%;
 `;
 
+// ----------------------------
+const animationOne = keyframes`
+0% {
+    transform: translateY(-1000px);
+  }
+  25%{ 
+    transform: translateY(0px);
+  }
+
+  75%{ 
+    transform: translateY(0px);
+  }
+  100%{ 
+    transform: translateY(-1000px);
+  }
+`;
+const SuccessBox = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 1000px;
+  height: 65px;
+  background-color: #ed9c00;
+  position: fixed;
+  border-radius: 10px;
+  align-items: center;
+  animation: ${animationOne} 7s linear forwards;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+`;
+
+const ErrorBox = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 1000px;
+  height: 65px;
+  background-color: #ed0000;
+  position: fixed;
+  border-radius: 10px;
+  align-items: center;
+  animation: ${animationOne} 7s linear forwards;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+`;
+
+const MessageText = styled.div`
+  color: white;
+  font-weight: 500;
+`;
+
+// ----------------------------
 export default Article;

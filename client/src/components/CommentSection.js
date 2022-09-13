@@ -13,6 +13,8 @@ const CommentSection = ({
   articleComments,
   articleLikes,
   articleTitle,
+  setError,
+  setSuccess,
 }) => {
   const [isLike, setIsLike] = useState();
 
@@ -80,6 +82,8 @@ const CommentSection = ({
         currentUser={currentUser}
         setComments={setComments}
         articleTitle={articleTitle}
+        setError={setError}
+        setSuccess={setSuccess}
       />
       <CommentsPosted comments={comments} />
     </Container>

@@ -8,6 +8,8 @@ const CommentInputBox = ({
   currentUser,
   setComments,
   articleTitle,
+  setError,
+  setSuccess,
 }) => {
   const initialValue = {
     firstName: currentUser && currentUser.firstName,
@@ -47,6 +49,23 @@ const CommentInputBox = ({
           refreshComment();
           return res.json();
         })
+        // --------------------
+        .then((data) => {
+          if (data.status === 200) {
+            setSuccess(true);
+
+            setTimeout(() => {
+              setSuccess(false);
+            }, 7000);
+          }
+          if (data.status === 500) {
+            setError(true);
+            setTimeout(() => {
+              setError(false);
+            }, 7000);
+          }
+        })
+        // --------------------
         .catch((err) => {
           console.log(err);
         });
