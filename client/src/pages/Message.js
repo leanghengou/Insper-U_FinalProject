@@ -57,7 +57,6 @@ const Message = () => {
     setCurrentPage(num);
   };
 
-  console.log("All message", allMessages);
   // -----------------------------------------------------------
 
   if (loading) {
@@ -75,30 +74,32 @@ const Message = () => {
         <BigHeader>Message Box</BigHeader>
         <Container>
           <BoxContainer>
-            {messageGroup &&
-              messageGroup.map((message, index) => {
-                const date = new Date(message && message.date);
-                const month = format(date, "MMMM");
-                const day = format(date, "dd");
-                const year = format(date, "yyyy");
-                return (
-                  <MessageBoxContainer
-                    onClick={() => {
-                      setSelectedMessageId(message && message._id);
-                    }}
-                    key={index}
-                  >
-                    <MessageBox>
-                      <DateText>{month + " " + day + " " + year}</DateText>
-                      <TitleMessage>
-                        {message && message.subject.length >= 50
-                          ? message.subject.slice(0, 50) + "..."
-                          : message.subject}
-                      </TitleMessage>
-                    </MessageBox>
-                  </MessageBoxContainer>
-                );
-              })}
+            <MessagePerPageContainer>
+              {messageGroup &&
+                messageGroup.map((message, index) => {
+                  const date = new Date(message && message.date);
+                  const month = format(date, "MMMM");
+                  const day = format(date, "dd");
+                  const year = format(date, "yyyy");
+                  return (
+                    <MessageBoxContainer
+                      onClick={() => {
+                        setSelectedMessageId(message && message._id);
+                      }}
+                      key={index}
+                    >
+                      <MessageBox>
+                        <DateText>{month + " " + day + " " + year}</DateText>
+                        <TitleMessage>
+                          {message && message.subject.length >= 50
+                            ? message.subject.slice(0, 50) + "..."
+                            : message.subject}
+                        </TitleMessage>
+                      </MessageBox>
+                    </MessageBoxContainer>
+                  );
+                })}
+            </MessagePerPageContainer>
             <Pagination
               messageGroupNum={postPerPage}
               totalMessages={allMessages && allMessages.length}
@@ -256,6 +257,13 @@ const BigHeader = styled.h1`
   text-align: left;
   margin-bottom: 10px;
   line-height: 60px;
+`;
+
+const MessagePerPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 500px;
 `;
 
 // ---------------------
