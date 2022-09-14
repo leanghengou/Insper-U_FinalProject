@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import LoadingState from "../pages/LoadingState";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import Pagination from "../components/Pagination";
 
 const Message = () => {
   const { setLoading, loading, currentUser } = useContext(CurrentUserContext);
@@ -18,6 +19,7 @@ const Message = () => {
   const [selectedMessageId, setSelectedMessageId] = useState(null);
   const [messageReady, setMessageReading] = useState(false);
   const [emptyMessage, setEmptyMessage] = useState(false);
+
   useEffect(() => {
     setLoading(true);
     fetch(`/api/get-message`)
@@ -43,6 +45,21 @@ const Message = () => {
     }
   }, [selectedMessageId]);
 
+  // --------------------Pagination states----------------------
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(4);
+  const lastIndexMessage = currentPage * postPerPage;
+  const firstIndexMessage = lastIndexMessage - postPerPage;
+  const messageGroup =
+    allMessages && allMessages.slice(firstIndexMessage, lastIndexMessage);
+
+  const movePage = (num) => {
+    setCurrentPage(num);
+  };
+
+  console.log("All message", allMessages);
+  // -----------------------------------------------------------
+
   if (loading) {
     return <LoadingState />;
   }
@@ -56,11 +73,10 @@ const Message = () => {
     return (
       <BigTitle>
         <BigHeader>Message Box</BigHeader>
-
         <Container>
           <BoxContainer>
-            {allMessages &&
-              allMessages.map((message, index) => {
+            {messageGroup &&
+              messageGroup.map((message, index) => {
                 const date = new Date(message && message.date);
                 const month = format(date, "MMMM");
                 const day = format(date, "dd");
@@ -83,6 +99,11 @@ const Message = () => {
                   </MessageBoxContainer>
                 );
               })}
+            <Pagination
+              messageGroupNum={postPerPage}
+              totalMessages={allMessages && allMessages.length}
+              movePage={movePage}
+            />
           </BoxContainer>
 
           {messageReady ? (
