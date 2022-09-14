@@ -17,6 +17,7 @@ import AllArticles from "./pages/AllArticles";
 import Error404 from "./pages/Error404";
 import ErrorPage from "./pages/ErrorPage";
 import UpdateUser from "./pages/UpdateUser";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="*" element={<Error404 />} />
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/edit-user" element={<UpdateUser />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
         <Footer />
       </Container>
