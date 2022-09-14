@@ -1,17 +1,51 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { CurrentUserContext } from "../CurrentUserContext";
 import LoadingState from "./LoadingState";
 
 const Search = () => {
-  const { loading, setLoading, currentUser } = useContext(CurrentUserContext);
+  const { loading, setLoading, currentUser, allArticles } =
+    useContext(CurrentUserContext);
 
-  if (loading) {
+  const [searchText, setSearchText] = useState("");
+
+  if (!allArticles) {
     return <LoadingState />;
   } else {
     return (
       <Container>
-        <SearchInput placeholder="Write your search here..." />
+        <SearchInput
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+            console.log(searchText);
+          }}
+          placeholder="Write your search here..."
+        />
+
+        <div>
+          {allArticles &&
+            allArticles
+              .filter((item) => {
+                if (searchText === "") {
+                  return null;
+                } else if (
+                  item &&
+                  item.title
+                    .toLowerCase()
+                    .includes(searchText.toLocaleLowerCase())
+                ) {
+                  return item;
+                }
+              })
+              .map((article, index) => {
+                return (
+                  <div>
+                    <p>{article && article.title}</p>
+                  </div>
+                );
+              })}
+        </div>
       </Container>
     );
   }
