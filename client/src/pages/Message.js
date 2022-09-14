@@ -171,6 +171,7 @@ const MessageBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 15px;
 `;
 
 const BodyText = styled.p`

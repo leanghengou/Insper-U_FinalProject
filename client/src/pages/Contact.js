@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { AiFillCheckCircle, AiOutlineExclamationCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Contact = () => {
   // ------------------------------
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [sendClick, setSendClick] = useState(false);
   // -------------------------------
   const [messageForm, setMessageForm] = useState(initialUserValue);
   const sendMessageHandler = (e) => {
@@ -36,13 +38,17 @@ const Contact = () => {
         if (data.status === 200) {
           setMessageForm(initialUserValue);
           setSuccess(true);
+          setSendClick(true);
           setTimeout(() => {
             setSuccess(false);
+            setSendClick(false);
           }, 7000);
         } else {
+          setSendClick(true);
           setError(true);
           setTimeout(() => {
             setError(false);
+            setSendClick(false);
           }, 7000);
         }
       })
@@ -103,7 +109,9 @@ const Contact = () => {
             setMessageForm({ ...messageForm, message: e.target.value });
           }}
         />
-        <SendButton onClick={sendMessageHandler}>Send message</SendButton>
+        <SendButton onClick={sendMessageHandler}>
+          {sendClick ? <LoadingObject /> : "Send message"}
+        </SendButton>
       </OneColumnContainer>
     </Container>
   );
@@ -262,5 +270,25 @@ const MessageText = styled.div`
   color: white;
   font-weight: 500;
 `;
+
+// --------------------------
+
+const rotating = keyframes`
+ from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+`;
+
+const LoadingObject = styled(AiOutlineLoading3Quarters)`
+  font-weight: 200;
+  margin: 0 auto;
+  animation: ${rotating} 2s infinite linear;
+  font-size: 35px;
+`;
+
+// --------------------------
 
 export default Contact;
