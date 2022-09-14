@@ -54,6 +54,13 @@ const Navigation = () => {
         </NavLink>
         {!currentUser ? (
           <ContainerLogin>
+            <SearchButton
+              onClick={() => {
+                navigate("/search");
+              }}
+            >
+              Search
+            </SearchButton>
             <LoginButton
               onClick={() => {
                 navigate("/login");
@@ -78,6 +85,13 @@ const Navigation = () => {
                 }}
               />
             ) : null}
+            <SearchButton
+              onClick={() => {
+                navigate("/search");
+              }}
+            >
+              Search
+            </SearchButton>
             <AccountButton
               onClick={() => {
                 navigate(`/profile/${currentUser._id}`);
@@ -107,7 +121,7 @@ const Container = styled.div`
 const ContainerTwo = styled.div`
   display: flex;
   position: fixed;
-  margin-left: 80%;
+  margin-left: 76.5%;
   align-items: center;
 `;
 
@@ -120,19 +134,30 @@ const NavContainer = styled.div`
 const ContainerLogin = styled.div`
   display: flex;
   position: fixed;
-  margin-left: 77.4%;
+  margin-left: 74.2%;
   align-items: center;
 `;
 
 const LoginButton = styled.button`
   padding: 10px 25px;
   border: 1px solid #e9e9e9;
+  margin-left: 25px;
   background-color: transparent;
   border-radius: 3px;
   :hover& {
     cursor: pointer;
     background-color: black;
     color: white;
+    transition: 0.3s ease-in-out;
+  }
+`;
+
+const SearchButton = styled(IoSearch)`
+  font-size: 25px;
+  margin-left: 25px;
+  &:hover {
+    cursor: pointer;
+    color: #ed9c00;
     transition: 0.3s ease-in-out;
   }
 `;

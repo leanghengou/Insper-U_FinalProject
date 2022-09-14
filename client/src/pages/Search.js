@@ -5,8 +5,7 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import LoadingState from "./LoadingState";
 
 const Search = () => {
-  const { loading, setLoading, currentUser, allArticles } =
-    useContext(CurrentUserContext);
+  const { allArticles } = useContext(CurrentUserContext);
 
   const [searchText, setSearchText] = useState("");
 
@@ -98,14 +97,14 @@ const Container = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 80px;
 `;
 
 const PageTitle = styled.div`
   font-size: 30px;
   line-height: 43px;
   font-weight: 600;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 `;
 
 const SearchBackground = styled.div`

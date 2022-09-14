@@ -69,7 +69,9 @@ const Article = () => {
             <ArticleImage imageSrc={article && article.image} />
             <ArticleSection>
               <ArticleBox>
-                <BigHeader>{article && article.title}</BigHeader>
+                <TitleTextContainer>
+                  <BigHeader>{article && article.title}</BigHeader>
+                </TitleTextContainer>
                 <div>
                   <AuthorText>
                     {"By " + `${article && article.authors[0]}`}
@@ -273,6 +275,9 @@ const ArticleCategory = styled.p`
 
 const TextContainer = styled.div`
   width: 95%;
+`;
+const TitleTextContainer = styled.div`
+  width: 80%;
 `;
 
 // ----------------------------
