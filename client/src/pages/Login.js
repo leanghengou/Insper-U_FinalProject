@@ -52,10 +52,7 @@ const Login = () => {
         <FormContiner>
           <TextContainer>
             <BigHeader>Login</BigHeader>
-            <BodyText>
-              Special, that is our asset. Talent is a common word that everyone
-              knows and respects.
-            </BodyText>
+            <BodyText>Login with your password and email.</BodyText>
           </TextContainer>
           <LebelTag>
             <BodyText>Email</BodyText>
