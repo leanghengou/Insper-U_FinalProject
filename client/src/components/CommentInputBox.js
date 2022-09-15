@@ -120,11 +120,16 @@ const InputBoxContainer = styled.div`
 const InputBox = styled.textarea`
   font-family: "Roboto", sans-serif;
   width: auto;
-  height: 45px;
+  height: 50px;
   border: none;
   border-bottom: 1px solid #e9e9e9;
   outline: none;
   margin-left: 30px;
+  line-height: 25px;
+  font-size: 16px;
+  &:focus {
+    border-bottom: 1px solid #ed9c00;
+  }
 `;
 
 const ProfileImage = styled.div`
