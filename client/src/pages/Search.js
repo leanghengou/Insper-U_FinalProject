@@ -53,7 +53,6 @@ const Search = () => {
               value={searchText}
               onChange={(e) => {
                 setSearchText(e.target.value);
-                console.log(searchText);
               }}
               placeholder="Write your search here..."
             />
@@ -76,6 +75,7 @@ const Search = () => {
                 .map((article, index) => {
                   return (
                     <ArticleBox
+                      key={index}
                       onClick={() => {
                         navigate(`/article/${article && article._id}`);
                       }}
