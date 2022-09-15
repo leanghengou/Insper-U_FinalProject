@@ -171,6 +171,9 @@ const InputBox = styled.input`
   border-radius: 3px;
   margin-right: 5%;
   margin-bottom: 30px;
+  &:focus {
+    outline: 1px solid #ed9c00;
+  }
 `;
 const MessageInputBox = styled.textarea`
   padding: 15px 20px;
@@ -179,6 +182,11 @@ const MessageInputBox = styled.textarea`
   border-radius: 3px;
   margin-right: 5%;
   font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 25px;
+  &:focus {
+    outline: 1px solid #ed9c00;
+  }
 `;
 
 const TwoColumnContainer = styled.div`

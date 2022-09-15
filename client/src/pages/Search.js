@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../CurrentUserContext";
 import LoadingState from "./LoadingState";
+import { IoSearch } from "react-icons/io5";
 
 const Search = () => {
   const { allArticles } = useContext(CurrentUserContext);
@@ -20,14 +21,17 @@ const Search = () => {
           <PageTitle>
             Looking for something? You could search for it below!
           </PageTitle>
-          <SearchInput
-            value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-              console.log(searchText);
-            }}
-            placeholder="Write your search here..."
-          />
+          <InputFlex>
+            <SearchIcon />
+            <SearchInput
+              value={searchText}
+              onChange={(e) => {
+                setSearchText(e.target.value);
+                console.log(searchText);
+              }}
+              placeholder="Write your search here..."
+            />
+          </InputFlex>
           <ResultContainer>
             {allArticles &&
               allArticles
@@ -121,6 +125,7 @@ const SearchInput = styled.input`
   border: none;
   border-bottom: 1px solid #d9d9d9;
   outline: none;
+  margin-left: 20px;
 `;
 
 const ResultContainer = styled.div`
@@ -144,7 +149,7 @@ const animationOne = keyframes`
 // ------------------------
 
 const ArticleBox = styled.div`
-  width: 800px;
+  width: 850px;
   height: 120px;
   display: flex;
   align-items: center;
@@ -184,6 +189,16 @@ const ArticleImage = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center 20%;
+`;
+
+const InputFlex = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const SearchIcon = styled(IoSearch)`
+  font-size: 25px;
+  font-weight: 400;
 `;
 
 export default Search;
