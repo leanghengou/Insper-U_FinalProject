@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../CurrentUserContext";
@@ -12,6 +12,28 @@ const Search = () => {
 
   const navigate = useNavigate();
 
+  // -------------------------------------------------
+  const [changeIndex, setChangeIndex] = useState();
+
+  const sevenColors = [
+    "#ED9C00",
+    "#005FED",
+    "#EE3828",
+    "#000000",
+    "#36B908",
+    "#7809D0",
+    "#F0CA01",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setChangeIndex(Math.floor(Math.random() * sevenColors.length));
+    }, 500);
+    return () => clearInterval(interval);
+  }, [changeIndex]);
+  let randomColors = sevenColors[changeIndex];
+  // -------------------------------------------------
+
   if (!allArticles) {
     return <LoadingState />;
   } else {
@@ -19,7 +41,11 @@ const Search = () => {
       <Container>
         <SearchBackground>
           <PageTitle>
-            Looking for something? You could search for it below!
+            Looking for{" "}
+            <SevenColorsSpan randomColors={randomColors}>
+              something?
+            </SevenColorsSpan>{" "}
+            You could search for it below!
           </PageTitle>
           <InputFlex>
             <SearchIcon />
@@ -202,6 +228,13 @@ const InputFlex = styled.div`
 const SearchIcon = styled(IoSearch)`
   font-size: 25px;
   font-weight: 400;
+`;
+
+const SevenColorsSpan = styled.span`
+  font-style: italic;
+  color: ${({ randomColors }) => {
+    return randomColors;
+  }};
 `;
 
 export default Search;
