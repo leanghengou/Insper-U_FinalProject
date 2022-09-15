@@ -40,7 +40,6 @@ const Message = () => {
         .then((data) => {
           setMessage(data.data);
           setMessageReading(true);
-          console.log(message);
         });
     }
   }, [selectedMessageId]);

@@ -7,14 +7,15 @@ const Pagination = ({ totalMessages, messageGroupNum, movePage }) => {
   for (let i = 1; i <= Math.ceil(totalMessages / messageGroupNum); i++) {
     pageNumbers.push(i);
   }
-  console.log("page number", pageNumbers, totalMessages, messageGroupNum);
+
   return (
     <Container>
       <ul>
         {pageNumbers &&
-          pageNumbers.map((item) => {
+          pageNumbers.map((item, index) => {
             return (
               <NumberButton
+                key={index}
                 onClick={() => {
                   movePage(item);
                 }}
