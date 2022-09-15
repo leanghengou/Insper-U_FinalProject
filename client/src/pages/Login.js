@@ -167,6 +167,9 @@ const InputBox = styled.input`
   margin-bottom: 15px;
   border: 1px solid #c7c7c7;
   border-radius: 3px;
+  &:focus {
+    outline: 1px solid #ed9c00;
+  }
 `;
 
 const LoginButton = styled.button`

@@ -236,6 +236,9 @@ const InputBox = styled.input`
   margin-bottom: 15px;
   border: 1px solid #c7c7c7;
   border-radius: 3px;
+  &:focus {
+    outline: 1px solid #ed9c00;
+  }
 `;
 
 const BioInputBox = styled.textarea`
@@ -246,6 +249,9 @@ const BioInputBox = styled.textarea`
   padding-left: 15px;
   padding-top: 15px;
   border-radius: 3px;
+  &:focus {
+    outline: 1px solid #ed9c00;
+  }
 `;
 
 const LoginForm = styled.div`
