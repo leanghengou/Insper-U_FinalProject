@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import sliderOne from "../images/slider-one.jpg";
 import sliderTwo from "../images/topofthemountain.jpg";
@@ -8,11 +8,40 @@ import { useNavigate } from "react-router-dom";
 const Slider = () => {
   const sliders = [sliderOne, sliderTwo, slierThree];
   const nagivate = useNavigate();
+  // --------------------------
+
+  const [changeIndex, setChangeIndex] = useState();
+
+  const sevenColors = [
+    "#ED9C00",
+    "#005FED",
+    "#EE3828",
+    "#000000",
+    "#36B908",
+    "#7809D0",
+    "#F0CA01",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setChangeIndex(Math.floor(Math.random() * sevenColors.length));
+    }, 200);
+    return () => clearInterval(interval);
+  }, [changeIndex]);
+
+  let randomColors = sevenColors[changeIndex];
+
+  // -------------------------------
 
   return (
     <Container sliders={sliders[0]}>
       <TextContainer>
-        <BigHeader>Get Inspired</BigHeader>
+        <BigHeader>
+          Get{" "}
+          <SevenColorsSpan randomColors={randomColors}>
+            Inspired
+          </SevenColorsSpan>
+        </BigHeader>
         <BodyText>Be inspired by the essays from amazing people.</BodyText>
         <ClickButton
           onClick={() => {
@@ -72,6 +101,12 @@ const ClickButton = styled.button`
   &:active {
     background-color: black;
   }
+`;
+
+const SevenColorsSpan = styled.span`
+  color: ${({ randomColors }) => {
+    return randomColors;
+  }};
 `;
 
 export default Slider;
