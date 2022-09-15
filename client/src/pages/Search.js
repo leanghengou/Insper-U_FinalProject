@@ -126,6 +126,9 @@ const SearchInput = styled.input`
   border-bottom: 1px solid #d9d9d9;
   outline: none;
   margin-left: 20px;
+  &:focus {
+    border-bottom: 1px solid #ed9c00;
+  }
 `;
 
 const ResultContainer = styled.div`
