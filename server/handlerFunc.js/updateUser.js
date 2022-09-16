@@ -42,9 +42,12 @@ const updateUser = async (req, res) => {
       await db
         .collection("comments")
         .updateMany({ userId: req.body._id }, { $set: upComment });
+      const currentUser = await db
+        .collection("users")
+        .findOne({ _id: userUpdate._id });
       res.status(200).json({
         status: 200,
-        data: userUpdate,
+        data: currentUser,
         message: "User is successfully updated.",
       });
     }
