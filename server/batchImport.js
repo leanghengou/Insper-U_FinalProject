@@ -12,41 +12,53 @@ const options = {
 };
 
 const batchImport = async (dbName) => {
+  let client;
   try {
-    const client = new MongoClient(MONGO_URI, options);
+    client = new MongoClient(MONGO_URI, options);
     const db = client.db(dbName);
     await client.connect();
 
     // Insert all articles-------------------
-    // const correctArticles = articles.map((article) => {
-    //   article._id = article.id;
-    //   delete article.id;
-    //   return article;
-    // });
-    // await db.collection("articles").insertMany(correctArticles);
-    // Delete all articles-------------------
-    await db.collection("messages").deleteMany();
+    const correctArticles = articles.map((article) => {
+      article._id = article.id;
+      delete article.id;
+      return article;
+    });
+    await db.collection("articles").insertMany(correctArticles);
+    console.log(`articles   -> inserted ${correctArticles.length}`);
     // -----------------------------------------
 
     // Insert all authors-------------------
-    // await db.collection("authors").insertOne(authors);
+    await db.collection("authors").insertOne(authors);
+    console.log("authors    -> inserted 1");
     // -----------------------------------------
 
     // Insert all categories-------------------
-    // await db.collection("categories").insertOne(categories);
-    // -----------------------------------------
-    // Insert all users-------------------
-    // const correctUsers = userData.map((user) => {
-    //   user._id = user.id;
-    //   delete user.id;
-    //   return user;
-    // });
-    // await db.collection("users").insertMany(correctUsers);
+    await db.collection("categories").insertOne(categories);
+    console.log("categories -> inserted 1");
     // -----------------------------------------
 
-    client.close();
+    // Insert all users-------------------
+    const correctUsers = userData.map((user) => {
+      user._id = user.id;
+      delete user.id;
+      return user;
+    });
+    await db.collection("users").insertMany(correctUsers);
+    console.log(`users      -> inserted ${correctUsers.length}`);
+    // -----------------------------------------
+
+    console.log("Import complete.");
   } catch (err) {
-    console.log(err);
+    if (err.code === 11000) {
+      console.log(
+        "Duplicate key: this data is already imported. Drop the collection in Atlas first if you want to reseed."
+      );
+    } else {
+      console.log(err.message);
+    }
+  } finally {
+    if (client) await client.close();
   }
 };
 

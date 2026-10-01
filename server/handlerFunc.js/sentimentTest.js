@@ -1,20 +1,12 @@
-const axios = require("axios");
-const sentimentTest = (text) => {
-  const encodedParams = new URLSearchParams();
-  encodedParams.append("text", text);
+// Local sentiment check (replaces the expired Twinword RapidAPI subscription).
+// Keeps the same response shape ({ data: { type } }) so postComment.js is unchanged.
+const Sentiment = require("sentiment");
+const sentiment = new Sentiment();
 
-  const options = {
-    method: "POST",
-    url: "https://twinword-sentiment-analysis.p.rapidapi.com/analyze/",
-    headers: {
-      "content-type": "application/x-www-form-urlencoded",
-      "X-RapidAPI-Key": "fc644e9ef6mshf8d7cd3b47830b5p125ed2jsnb9387b9ac049",
-      "X-RapidAPI-Host": "twinword-sentiment-analysis.p.rapidapi.com",
-    },
-    data: encodedParams,
-  };
-
-  return axios.request(options);
+const sentimentTest = async (text) => {
+  const { score } = sentiment.analyze(text || "");
+  const type = score < 0 ? "negative" : score > 0 ? "positive" : "neutral";
+  return { data: { type, score } };
 };
 
 module.exports = { sentimentTest };
