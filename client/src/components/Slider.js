@@ -42,7 +42,10 @@ const Slider = () => {
             Inspired
           </SevenColorsSpan>
         </BigHeader>
-        <BodyText>Be inspired by the essays from amazing people.</BodyText>
+        <BodyText>
+          Be inspired by the essays from amazing people. Real students, real
+          stories, and honest perspectives on the things that shape our lives.
+        </BodyText>
         <ClickButton
           onClick={() => {
             nagivate("/articles");

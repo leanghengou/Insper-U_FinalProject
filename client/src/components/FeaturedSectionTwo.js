@@ -34,8 +34,9 @@ const FeaturedSectionsTwo = () => {
           Stay <RedColor>motivated</RedColor>
         </BigHeader>
         <BodyText>
-          Explore hundred of meaningful quotes from extraordinary individuals in
-          history. Click the below button to explore.
+          Explore hundreds of meaningful quotes from extraordinary individuals
+          in history. Need a push before an exam or a reminder to keep going?
+          Click the button below to explore the full collection.
         </BodyText>
         <ClickButton
           onClick={() => {

@@ -54,16 +54,27 @@ const Homepage = () => {
         <BigHeader>
           <YellowColor>Unpopular</YellowColor> social topics
         </BigHeader>
+        <SectionIntro>
+          The conversations people tend to avoid at the dinner table, written
+          by students who decided their voice was worth sharing.
+        </SectionIntro>
         <ArticleSections socialArticles={socialArticles && socialArticles} />
         <FeaturedSectionsOne />
         <FeaturedSectionsTwo />
         <FeaturedSectionsThree />
         <BigHeader>Featured articles</BigHeader>
+        <SectionIntro>
+          Hand-picked reads on personal development and the issues that matter
+          right now.
+        </SectionIntro>
         <BigArticleSections
           technologyArticles={technologyArticles && technologyArticles}
           issueArticles={issueArticles && issueArticles}
         />
         <BigHeader>Don't forget to read...</BigHeader>
+        <SectionIntro>
+          More stories from our community. Find your next favourite read.
+        </SectionIntro>
         <ArticleSectionsTwo allArticles={allArticles && allArticles} />
       </Container>
     );
@@ -89,6 +100,16 @@ const BigHeader = styled.h1`
   margin-bottom: 40px;
   padding-top: 20px;
   border-top: 0.5px solid rgba(255, 255, 255, 0.5);
+`;
+
+const SectionIntro = styled.p`
+  width: 100%;
+  max-width: 800px;
+  align-self: flex-start;
+  font-size: 16px;
+  line-height: 25px;
+  margin-top: -20px;
+  margin-bottom: 40px;
 `;
 
 const YellowColor = styled.span`

@@ -9,8 +9,12 @@ const FeaturedSectionsOne = () => {
           My <RedColor>personal</RedColor> experience
         </BigHeader>
         <BodyText>
-          There are interesting stories that you might never heard of! Check out
-          real stories from students.
+          There are interesting stories that you might never have heard of!
+          Check out real stories from students.
+        </BodyText>
+        <BodyText>
+          First-hand accounts in the writers' own voices. No filters, just
+          honest experiences you can relate to and learn from.
         </BodyText>
       </TextGroup>
       <Image image={image} />

@@ -12,6 +12,10 @@ const FeaturedSectionsOne = () => {
           been shared by many individuals. With so many topics being included
           readers could find interesting perspectives and enjoy the stories.
         </BodyText>
+        <BodyText>
+          Every essay comes from lived experience, not a textbook. Read with an
+          open mind, leave a comment, and join the conversation.
+        </BodyText>
       </TextGroup>
     </Container>
   );
